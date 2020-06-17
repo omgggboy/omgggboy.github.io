@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>process</title>
+    <url>/2020/ckbiupt6s00066h964eztamss/</url>
+    <content><![CDATA[<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h3 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h3><ul>
+<li>进程是正在运行的一个应用程序，程序一旦运行就是进程。</li>
+<li>进程是系统进行资源分配的最小单位，每个进程拥有独立的地址空间。</li>
+<li>一个进程无法直接去访问另外一个进程的变量和数据结构，需要进行进程间通信，包括管程，消息队列。</li>
+<li>线程是进程的一个实体，是资源调度的基本单位。</li>
+</ul>
+<h3 id="进程与线程的区别"><a href="#进程与线程的区别" class="headerlink" title="进程与线程的区别"></a>进程与线程的区别</h3><ul>
+<li>同一进程的线程共享进程的地址空间，而进程之间则是独立的地址空间</li>
+<li>同一进程内的线程共享本进程的资源，但是进程之间的资源是独立的</li>
+<li>一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃后，整个进程崩溃</li>
+<li>进程切换，消耗资源大，线程切换时间少于进程</li>
+<li>二者均可以并发执行</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>deadlock</title>
-    <url>/2020/ckbh5ucy70002wv967tr1hm39/</url>
+    <url>/2020/ckbiupt6o00026h96a6lr27c2/</url>
     <content><![CDATA[<h1 id="什么是死锁？在什么情况下产生？怎么解决？"><a href="#什么是死锁？在什么情况下产生？怎么解决？" class="headerlink" title="什么是死锁？在什么情况下产生？怎么解决？"></a>什么是死锁？在什么情况下产生？怎么解决？</h1><p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p>
 <p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
 <ul>
@@ -24,7 +42,7 @@
   </entry>
   <entry>
     <title>java的基本程序设计结构</title>
-    <url>/2020/ckbh5ucyn0003wv96dfcu3ox9/</url>
+    <url>/2020/ckbiupt6i00006h965grm34k9/</url>
     <content><![CDATA[<h2 id="最简单的Java程序"><a href="#最简单的Java程序" class="headerlink" title="最简单的Java程序"></a>最简单的Java程序</h2><ul>
 <li><p>java区分大小写</p>
 </li>
@@ -162,7 +180,7 @@
   </entry>
   <entry>
     <title>数据链路层</title>
-    <url>/2020/ckbh5ucy20000wv969t104jo2/</url>
+    <url>/2020/ckbiupt6u00096h963rbjbiad/</url>
     <content><![CDATA[<h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="点对点信道的数据链路层在进行通信时的主要步骤如下"><a href="#点对点信道的数据链路层在进行通信时的主要步骤如下" class="headerlink" title="点对点信道的数据链路层在进行通信时的主要步骤如下"></a>点对点信道的数据链路层在进行通信时的主要步骤如下</h3><ul>
 <li>1.结点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成帧</li>
 <li>2.结点A把封装好的帧发生发生给结点B的数据链路层</li>
@@ -403,7 +421,7 @@
   </entry>
   <entry>
     <title>我的博客诞生了</title>
-    <url>/2020/ckbh5ucyp0005wv96evd730wz/</url>
+    <url>/2020/ckbiupt6t00086h96c7u19o31/</url>
     <content><![CDATA[<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
 <li>macbook pro 2019 </li>
 </ul>
@@ -425,7 +443,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2020/ckbh5ucy60001wv9632d15bti/</url>
+    <url>/2020/ckbiupt6q00046h965wjvbawm/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
