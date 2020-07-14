@@ -74,6 +74,168 @@
     
     
     
+    <article id="post-deadlock" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckcl684zf00095j9k8mezd105/"
+    >什么是死锁？在什么情况下产生？怎么解决？</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckcl684zf00095j9k8mezd105/" class="article-date">
+  <time datetime="2020-07-06T15:12:11.229Z" itemprop="datePublished">2020-07-06</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p>
+<p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
+<ul>
+<li><strong>互斥（ mutual exclusion）</strong>：至少一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li>
+<li><strong>占有并等待（ hold and wait ）</strong>：一个进程应占有至少一个资源，并等待另一个资源，该资源为其他进程所占有。</li>
+<li><strong>非抢占（ no preemption ）</strong>：资源不能被抢占，即资源只能被进程完成任务后自愿释放。</li>
+<li><strong>循环等待（ circular wait ）</strong>：有一组等待进程{P0,P1,···，Pn},P0等待的资源为P1占有，P1等待的资源为P2占有，·······，P（n-1）等待的资源为Pn占有，Pn等待的资源被P0占有。</li>
+</ul>
+<p>四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p>
+<p>一般来说，处理死锁问题有三种方法：</p>
+<ul>
+<li>通过协议来预防和避免死锁，确保系统不进入死锁状态。</li>
+<li>可以允许系统进入死锁状态，然后检测它，并加以恢复。</li>
+<li>可以忽视这个问题，认为死锁不可能在系统内发生。</li>
+</ul>
+<p>第三种解决为大多数操作系统所采用，包括Linux和windows。因此应用程序开发人员需要自己编写程序，以便处理死锁。</p>
+<p>死锁预防 死锁避免 死锁检测 死锁恢复。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-interview_ByteDance" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckcl684zb00045j9k6104ccqi/"
+    >字节跳动秋招提前批c++客户端一面</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckcl684zb00045j9k6104ccqi/" class="article-date">
+  <time datetime="2020-07-06T14:42:30.477Z" itemprop="datePublished">2020-07-06</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
+<h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
+<li>简短的自我介绍</li>
+<li>询问项目相关</li>
+<li>QML和QWeight比较，当初项目为什么选用这个</li>
+<li>OpenGL版本</li>
+<li>QT的信号与槽， 可以用什么代替</li>
+<li>进程间通信方式，线程间通信方式</li>
+<li>c++面向对象的三个特性具体解释一下</li>
+<li>关于一段代码的虚函数调用后结果</li>
+<li>关于虚函数表的问题</li>
+</ol>
+<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>感觉对于图形学实际学习还存在欠缺，对于操作系统和C++语言深入了解不够细致，只是懂个大概，实际应用能力还有待增长。QT相关的应用也应该更加深入了解。查漏补缺吧。对于一面提及到的知识点回去好好温习巩固一下。只是提前批的第一波，不知道后面的公司有没有音讯，继续学习。期待能有二面吧，目前还是很想去字节上班的。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-libvdll" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +244,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9p00040x96besn4pj3/"
+  <a class="article-title" href="/2020/ckcl684zg000a5j9kabvu92ki/"
     >动态库与静态库的区别</a
   >
 </h2>
@@ -93,7 +255,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dx9p00040x96besn4pj3/" class="article-date">
+      <a href="/2020/ckcl684zg000a5j9kabvu92ki/" class="article-date">
   <time datetime="2020-06-23T14:11:27.372Z" itemprop="datePublished">2020-06-23</time>
 </a>
       
@@ -157,7 +319,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dxa9000a0x962f23h3yf/"
+  <a class="article-title" href="/2020/ckcl684zj000d5j9k9e31dc6b/"
     >虚函数</a
   >
 </h2>
@@ -168,7 +330,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dxa9000a0x962f23h3yf/" class="article-date">
+      <a href="/2020/ckcl684zj000d5j9k9e31dc6b/" class="article-date">
   <time datetime="2020-06-20T10:22:26.698Z" itemprop="datePublished">2020-06-20</time>
 </a>
       
@@ -257,7 +419,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9r00060x96ftabb6h2/"
+  <a class="article-title" href="/2020/ckcl684zi000c5j9k1q2w0xzy/"
     >new与malloc的区别</a
   >
 </h2>
@@ -268,7 +430,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dx9r00060x96ftabb6h2/" class="article-date">
+      <a href="/2020/ckcl684zi000c5j9k1q2w0xzy/" class="article-date">
   <time datetime="2020-06-18T16:15:16.710Z" itemprop="datePublished">2020-06-19</time>
 </a>
       
@@ -323,8 +485,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dxa700080x96f0g55zhy/"
-    >process</a
+  <a class="article-title" href="/2020/ckcl684zh000b5j9k5fc34z3s/"
+    >进程和线程</a
   >
 </h2>
   
@@ -334,7 +496,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dxa700080x96f0g55zhy/" class="article-date">
+      <a href="/2020/ckcl684zh000b5j9k5fc34z3s/" class="article-date">
   <time datetime="2020-06-17T04:20:38.388Z" itemprop="datePublished">2020-06-17</time>
 </a>
       
@@ -354,7 +516,7 @@
       
 
       
-      <h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><h3 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h3><ul>
+      <h3 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h3><ul>
 <li>进程是正在运行的一个应用程序，程序一旦运行就是进程。</li>
 <li>进程是系统进行资源分配的最小单位，每个进程拥有独立的地址空间。</li>
 <li>一个进程无法直接去访问另外一个进程的变量和数据结构，需要进行进程间通信，包括管程，消息队列。</li>
@@ -394,89 +556,6 @@
 
 </article>
     
-    <article id="post-deadlock" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9n00020x963hx100u6/"
-    >deadlock</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/ckbs0dx9n00020x963hx100u6/" class="article-date">
-  <time datetime="2020-06-15T23:53:15.537Z" itemprop="datePublished">2020-06-16</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h1 id="什么是死锁？在什么情况下产生？怎么解决？"><a href="#什么是死锁？在什么情况下产生？怎么解决？" class="headerlink" title="什么是死锁？在什么情况下产生？怎么解决？"></a>什么是死锁？在什么情况下产生？怎么解决？</h1><p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p>
-<p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
-<ul>
-<li><strong>互斥（ mutual exclusion）</strong>：至少一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li>
-<li><strong>占有并等待（ hold and wait ）</strong>：一个进程应占有至少一个资源，并等待另一个资源，该资源为其他进程所占有。</li>
-<li><strong>非抢占（ no preemption ）</strong>：资源不能被抢占，即资源只能被进程完成任务后自愿释放。</li>
-<li><strong>循环等待（ circular wait ）</strong>：有一组等待进程{P0,P1,···，Pn},P0等待的资源为P1占有，P1等待的资源为P2占有，·······，P（n-1）等待的资源为Pn占有，Pn等待的资源被P0占有。</li>
-</ul>
-<p>四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p>
-<p>一般来说，处理死锁问题有三种方法：</p>
-<ul>
-<li>通过协议来预防和避免死锁，确保系统不进入死锁状态。</li>
-<li>可以允许系统进入死锁状态，然后检测它，并加以恢复。</li>
-<li>可以忽视这个问题，认为死锁不可能在系统内发生。</li>
-</ul>
-<p>第三种解决为大多数操作系统所采用，包括Linux和windows。因此应用程序开发人员需要自己编写程序，以便处理死锁。</p>
-<p>死锁预防 死锁避免 死锁检测 死锁恢复。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-javav1ch03" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -485,7 +564,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9o00030x969vm4a3on/"
+  <a class="article-title" href="/2020/ckcl684z900025j9kdsw7dora/"
     >java的基本程序设计结构</a
   >
 </h2>
@@ -496,7 +575,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dx9o00030x969vm4a3on/" class="article-date">
+      <a href="/2020/ckcl684z900025j9kdsw7dora/" class="article-date">
   <time datetime="2020-03-18T14:01:21.375Z" itemprop="datePublished">2020-03-18</time>
 </a>
       
@@ -684,7 +763,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9g00000x96gyss9uy3/"
+  <a class="article-title" href="/2020/ckcl684zd00065j9kaxx63bmo/"
     >数据链路层</a
   >
 </h2>
@@ -695,7 +774,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dx9g00000x96gyss9uy3/" class="article-date">
+      <a href="/2020/ckcl684zd00065j9kaxx63bmo/" class="article-date">
   <time datetime="2020-03-08T12:28:52.720Z" itemprop="datePublished">2020-03-08</time>
 </a>
       
@@ -986,7 +1065,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9q00050x966s184qrv/"
+  <a class="article-title" href="/2020/ckcl684ze00085j9kdsj068wv/"
     >我的博客诞生了</a
   >
 </h2>
@@ -997,7 +1076,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dx9q00050x966s184qrv/" class="article-date">
+      <a href="/2020/ckcl684ze00085j9kdsj068wv/" class="article-date">
   <time datetime="2020-03-06T14:23:32.565Z" itemprop="datePublished">2020-03-06</time>
 </a>
       
@@ -1069,7 +1148,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckbs0dx9m00010x96hphq2mav/"
+  <a class="article-title" href="/2020/ckcl684z400005j9k040r2v74/"
     >Hello World</a
   >
 </h2>
@@ -1080,7 +1159,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckbs0dx9m00010x96hphq2mav/" class="article-date">
+      <a href="/2020/ckcl684z400005j9k040r2v74/" class="article-date">
   <time datetime="2020-03-06T10:01:43.506Z" itemprop="datePublished">2020-03-06</time>
 </a>
       
