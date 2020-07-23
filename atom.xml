@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-07-14T15:16:16.491Z</updated>
+  <updated>2020-07-23T15:28:56.470Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>华为笔试总结</title>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybszo0000ay9kd81a7jnw/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybszo0000ay9kd81a7jnw/</id>
+    <published>2020-07-23T15:28:56.470Z</published>
+    <updated>2020-07-23T15:28:56.470Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>中午预约的机考时间，记错成了第二天晚上才开始。结果，晚上7点多和朋友过生日的时候，收到了短信，提醒考试已经开始快半小时了。赶紧跑了回来。内心一百只草泥马飞过。总体而言就算给我更多的时间不一定思路就清晰了。</p><h3 id="1-求余数"><a href="#1-求余数" class="headerlink" title="1.求余数"></a>1.求余数</h3><p>给定两个数，将两个数的各位求和在求余数。<br>例如：<br>输入：<br>123 11</p><p>输出：<br>0</p><p>（1+2+3）%（1+1） = 6%2 = 0；</p><p> <strong>题解</strong></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> m, <span class="keyword">long</span> <span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> am = <span class="number">0</span>, an = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(m) &#123;</span><br><span class="line">        am += m % <span class="number">10</span>;</span><br><span class="line">        m /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(n) &#123;</span><br><span class="line">        an += n % <span class="number">10</span>;</span><br><span class="line">        n /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> am % an;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 怕数字范围溢出， 得回去记一下每个数据类型的表示范围。</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> m, n;</span><br><span class="line">    <span class="comment">// 牛客对于简单的测试需要循环输入。</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; m &gt;&gt; n)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; solution(m, n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这道题画了没几分钟，主要用来适应环境的。</p><h3 id="2-买最少的东西"><a href="#2-买最少的东西" class="headerlink" title="2. 买最少的东西"></a>2. 买最少的东西</h3><p>有五件商品，价格分别是1，3，7，11，13.给定的钱，和各商品数量，然后购买最少商品的数量， 务必将钱花完。<br>例如：<br>输入：<br>1 2 3 4 5<br>30<br>输出：<br>4</p><p>2 * 13 + 1 * 3 + 1 * 1 = 30；<br>2 + 1 + 1 = 4；</p><p><strong>题解</strong></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> pii = pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> X first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Y second</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; price = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> V;</span><br><span class="line">    <span class="built_in">vector</span>&lt;pii&gt; packs;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt, k = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; cnt;</span><br><span class="line">        <span class="keyword">while</span>(cnt &gt; k)&#123; <span class="comment">//混合背包转01背包</span></span><br><span class="line">            packs.push_back(&#123;k, k * price[i]&#125;);</span><br><span class="line">            cnt -= k;</span><br><span class="line">            k *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt) packs.push_back(&#123;cnt, cnt * price[i]&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; V;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(V + <span class="number">1</span>, <span class="number">0x3f3f3f</span>)</span></span>;<span class="comment">//dp[i],花费i，数量最少</span></span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; pack: packs) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = V; j &gt;= pack.Y; --j) &#123;</span><br><span class="line">            dp[j] = min(dp[j], dp[j - pack.Y] + pack.X);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[V];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-给定距离的不同走法"><a href="#3-给定距离的不同走法" class="headerlink" title="3. 给定距离的不同走法"></a>3. 给定距离的不同走法</h3><p>给定距离，并给出各种步长，nums[0]…num[n -1],请问有多少种走法（不考虑走路的顺序）先走短的再走长的，步长互异。</p><p>例如：<br>输入：<br>4<br>1 2</p><p>输出：<br>3<br>1+1+1+1 = 4<br>1+1+2 = 4；<br>2+2 = 4<br><strong>题解</strong></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp; num)</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = num[i]; j &lt;= n; j++) &#123;</span><br><span class="line">            dp[j] += dp[j - num[i]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; num;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">// 这里不能想牛客那样推出，  我就定义输入零结束输入</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; temp) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!temp) <span class="keyword">break</span>;</span><br><span class="line">        num.push_back(temp);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(num.begin(), num.end());</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; solution(n, num)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>后面两个解答都是参考了牛客博主xinxin1000的答案，还附赠了背包问题学习大礼包<a href="https://anivian.github.io/pack-master/V2.pdf" target="_blank" rel="noopener">https://anivian.github.io/pack-master/V2.pdf</a><br>超级感谢这位来自清华的小姐姐。<br>希望明天面试顺利～～～～</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;中午预约的机考时间，记错成了第二天晚上才开始。结果，晚上7点多和朋友过生日的时候，收到了短信，提醒考试已经开始快半小时了。赶紧跑了回来。内心
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6gp00006c9kbnzsb17o/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6gp00006c9kbnzsb17o/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybszu0002ay9k070sc5nw/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybszu0002ay9k070sc5nw/</id>
     <published>2020-07-14T15:16:16.491Z</published>
     <updated>2020-07-14T15:16:16.491Z</updated>
     
@@ -41,8 +63,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6gu00016c9khvu9d3qm/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6gu00016c9khvu9d3qm/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybszw0004ay9kgqt749e7/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybszw0004ay9kgqt749e7/</id>
     <published>2020-07-06T15:12:11.229Z</published>
     <updated>2020-07-06T15:12:11.230Z</updated>
     
@@ -64,8 +86,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6hm000a6c9kc4g7dlcs/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6hm000a6c9kc4g7dlcs/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybszx0005ay9k46j6euui/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybszx0005ay9k46j6euui/</id>
     <published>2020-07-06T14:42:30.477Z</published>
     <updated>2020-07-06T15:04:23.534Z</updated>
     
@@ -87,8 +109,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6hc00046c9kaa4g0g2n/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6hc00046c9kaa4g0g2n/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybt0g0006ay9kf2vphour/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybt0g0006ay9kf2vphour/</id>
     <published>2020-06-23T14:11:27.372Z</published>
     <updated>2020-06-23T14:11:42.944Z</updated>
     
@@ -112,8 +134,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6hp000e6c9k9kuegl47/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6hp000e6c9k9kuegl47/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybt0r000eay9k022m8rsm/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybt0r000eay9k022m8rsm/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-06-20T10:26:10.672Z</updated>
     
@@ -134,8 +156,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6ho000d6c9k6cv1drop/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6ho000d6c9k6cv1drop/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybt0j000aay9kdzwg5851/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybt0j000aay9kdzwg5851/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -156,8 +178,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6hn000c6c9k25zy91gr/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6hn000c6c9k25zy91gr/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybt0t000fay9kg5vu7spd/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybt0t000fay9kg5vu7spd/</id>
     <published>2020-06-17T04:20:38.388Z</published>
     <updated>2020-07-06T15:05:06.785Z</updated>
     
@@ -180,8 +202,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6he00066c9k896k047z/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6he00066c9k896k047z/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybt0p000cay9kfqsj44hq/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybt0p000cay9kfqsj44hq/</id>
     <published>2020-03-18T14:01:21.375Z</published>
     <updated>2020-03-19T01:21:13.398Z</updated>
     
@@ -205,8 +227,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6gv00026c9kavlhd5y3/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6gv00026c9kavlhd5y3/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybszv0003ay9kas9024ah/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybszv0003ay9kas9024ah/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-03-08T12:28:52.720Z</updated>
     
@@ -227,8 +249,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6hk00086c9k0c3i4vtb/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6hk00086c9k0c3i4vtb/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybt0h0008ay9k0jx0c26b/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybt0h0008ay9k0jx0c26b/</id>
     <published>2020-03-06T14:23:32.565Z</published>
     <updated>2020-03-06T14:23:32.565Z</updated>
     
@@ -252,8 +274,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckcm2x6gw00036c9k12uz10lg/"/>
-    <id>https://shen-yu.gitee.io/2020/ckcm2x6gw00036c9k12uz10lg/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckcyybszt0001ay9k8ikfb4lr/"/>
+    <id>https://shen-yu.gitee.io/2020/ckcyybszt0001ay9k8ikfb4lr/</id>
     <published>2020-03-06T10:01:43.506Z</published>
     <updated>2020-03-06T10:01:43.506Z</updated>
     

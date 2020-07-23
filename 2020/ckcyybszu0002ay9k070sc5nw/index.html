@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    数据链路层 |  猪猪侠
+    进程间通信 |  猪猪侠
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Data-Link-Layer" class="article article-type-post" itemscope
+  <article id="post-Interprocess_communication" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  数据链路层
+  进程间通信
 </h1>
   
 
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckcm2x6gv00026c9kavlhd5y3/" class="article-date">
-  <time datetime="2020-03-08T12:28:52.720Z" itemprop="datePublished">2020-03-08</time>
+      <a href="/2020/ckcyybszu0002ay9k070sc5nw/" class="article-date">
+  <time datetime="2020-07-14T15:16:16.491Z" itemprop="datePublished">2020-07-14</time>
 </a>
       
       
@@ -63,7 +63,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.8k字</span>
+            <span class="post-count">2.1k字</span>
         </span>
     </span>
 
@@ -72,7 +72,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">9分钟</span>
+            <span class="post-count">7分钟</span>
         </span>
     </span>
 </div>
@@ -99,242 +99,77 @@
       
 
       
-      <h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="点对点信道的数据链路层在进行通信时的主要步骤如下"><a href="#点对点信道的数据链路层在进行通信时的主要步骤如下" class="headerlink" title="点对点信道的数据链路层在进行通信时的主要步骤如下"></a>点对点信道的数据链路层在进行通信时的主要步骤如下</h3><ul>
-<li>1.结点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成帧</li>
-<li>2.结点A把封装好的帧发生发生给结点B的数据链路层</li>
-<li>3.若结点B的数据链路层收到的帧无差错，则从收到的帧中提取 出IP数据报交给上面的网络层；否则丢弃这个帧</li>
+      <h3 id="进程协作的目的"><a href="#进程协作的目的" class="headerlink" title="进程协作的目的"></a>进程协作的目的</h3><ul>
+<li><strong>信息共享</strong>： 由于多用户可能对同样的信息感兴趣（例如共享文件），所以应提供环境以允许并发访问这些信息。</li>
+<li><strong>计算加速</strong>： 如果希望一个特定快速运行，那么应将系统功能划分成子任务，而每个子任务可以与其他子任务一起并行执行。注意，如果要实现这样的加速，那么计算机需要有多个处理核。</li>
+<li><strong>模块化</strong>： 可以需要按模块化方式构造系统，如第2章所讨论的，可将系统功能划分成独立的进程和线程。</li>
+<li><strong>方便</strong>： 即使单个用户也可以同时执行许多任务。例如，用户可以并行的编辑、收听音乐、编译。</li>
 </ul>
-<h3 id="三个基本问题"><a href="#三个基本问题" class="headerlink" title="三个基本问题"></a>三个基本问题</h3><ul>
-<li><p>封装成帧</p>
+<h5 id="协作进程需要进程间通信（IPC"><a href="#协作进程需要进程间通信（IPC" class="headerlink" title="协作进程需要进程间通信（IPC)"></a>协作进程需要进程间通信（IPC)</h5><h3 id="进程间通信的两种基本模型：共享内存和消息传递"><a href="#进程间通信的两种基本模型：共享内存和消息传递" class="headerlink" title="进程间通信的两种基本模型：共享内存和消息传递"></a>进程间通信的两种基本模型：共享内存和消息传递</h3><h4 id="共享内存系统"><a href="#共享内存系统" class="headerlink" title="共享内存系统"></a>共享内存系统</h4><p>采用共享内存的进程间通信，需要通信进程建立共享内存区域。通常，一片共享内存区域驻留在创建共享内存段的进程空间内。其他希望使用这个共享内存段进行通信段进行通信的进程应将其附加到自己的地址空间。</p>
+<p>生产者进程生成信息，以供消费者进程消费。为了允许生存者进程和消费者进程并发执行，应有一个可用的缓冲区，以被生存者填充和被消费者清空。这个缓冲区驻留在生产者进程和消费者进程的共享内存区域内。当消费者使用一项时，生产者可生产另一项。生产者和消费者必须同步，这样消费者不会试图消费一个尚未生产出来的项。</p>
+<p>缓冲区域类型可分为两种。<br><strong>无界缓冲区</strong>没有限制缓冲区的大小。消费者可能不得不等待新的项，但生产者总是可以产生新项。<br><strong>有界缓冲区</strong>假设固定大小的缓冲区。对于这种情况，如果缓冲区空，那么消费者必须等待；并且如果缓冲区满，那么生产者必须等待。</p>
+<h6 id="采用共享内存的生产者进程如下："><a href="#采用共享内存的生产者进程如下：" class="headerlink" title="采用共享内存的生产者进程如下："></a>采用共享内存的生产者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    &#x2F;* produce an item in next_produced *&#x2F;</span><br><span class="line">    </span><br><span class="line">    while(((in + 1) % BUFFER_SIZE) &#x3D;&#x3D; out)</span><br><span class="line">        ; &#x2F;* do nothing *&#x2F;</span><br><span class="line">    </span><br><span class="line">    buffer[in] &#x3D; next_produced;</span><br><span class="line">    in &#x3D; (in + 1) % BUFFER_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="采用共享内存的消费者进程如下："><a href="#采用共享内存的消费者进程如下：" class="headerlink" title="采用共享内存的消费者进程如下："></a>采用共享内存的消费者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    while(in &#x3D;&#x3D; out)</span><br><span class="line">        ;&#x2F;* do nothing *&#x2F;</span><br><span class="line">    next_consumed &#x3D; buffer[out];</span><br><span class="line">    out &#x3D; (out + 1) % BUFFER_SIZE;</span><br><span class="line">    </span><br><span class="line">    &#x2F;* consume the item in next_consumed *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="消息传递系统"><a href="#消息传递系统" class="headerlink" title="消息传递系统"></a>消息传递系统</h4><p>对于分布式环境（通信进程可能位于通过网络连接的不同计算机），消息传递特别有用。<br>消息传递工具提供至少两种操作：</p>
 <ul>
-<li>在一段数据的前后分布添加首部和尾部，这样就构成了一个帧</li>
-<li>MTU(Maximum Transfer Unit)最大传送单元是指帧的数据部分长度上限,默认值1500字节</li>
+<li>send(message)     </li>
+<li>recevie(message)</li>
 </ul>
-</li>
-<li><p>透明传输</p>
+<p>进程发送消息可以是定长的或变长的。如果只能发生定长消息，那么系统级实现就简单。不过，这一限制使得编程任务更加困难。相反，变长消息要求更复杂的系统级实现，但是编程任务就变得更简单。在整个操作系统设计中，这种折中很常见。</p>
+<p>如果进程P和Q需要通信，那么它们必须相互发送消息和接受消息：它们之间要有<strong>通信链路</strong>。该链路的实现有多种方法。这里不关心链路的物理实现，而只关心链路的逻辑实现。这里有几个方法，用于实现链路和操作send()/receive():</p>
 <ul>
-<li>“透明”表示某一个实际存在的事物看起来却好像不存在。这些数据就“看不见”数据链路层有什么防碍数据传输的东西。</li>
-<li>为解决透明传输问题，发送端的数据链路层在出现控制字符“SOH”和“EOT”之前加入转义字符“ESC”，在接收端的数据链路层把数据运往网络层之前删除这些之前插入的转义字符。这种方法叫字节填充或字符填充。</li>
+<li>直接或间接的通信</li>
+<li>同步或异步的通信</li>
+<li>自动或显式的缓冲</li>
 </ul>
-</li>
-<li><p>差错检测</p>
+<h4 id="1-命名"><a href="#1-命名" class="headerlink" title="1. 命名"></a>1. 命名</h4><p>需要通信的进程应有一个方法，以便相互引用。它们可以直接或间接的通信。<br>对于<strong>直接通信</strong>，需要通信的每个进程必须指明指定通信的接收者或发送者。采用这种方案，原语send()和receive()定义如下：</p>
 <ul>
-<li><p>误码率</p>
+<li>send(P, message): 向进程P发送message。</li>
+<li>receive(Q, message)： 从进程Q接收message。</li>
+</ul>
+<p>这种方案的通信链路具有以下属性：</p>
 <ul>
-<li>在一段时间内，传输错误的比特占所传输比特总数的比率</li>
+<li>在需要通信的每对进程之间，自动建立链路。进程仅需知道对方身份就可交流。</li>
+<li>每个链路只与两个进程相关。</li>
+<li>每个进程只有一个链路。</li>
 </ul>
-</li>
-<li><p>循环冗余检测CRC(Cyclic Redundancy Check)</p>
+<p>这种方案展示了寻址的对称性，即发送和接收进程必须指定对方，以便通信。这种方案的一个变形采用寻址的非对称性，即只要发送者指定接收者，而接受者不需要指定发送者。采用这种方案，原语send()和receive()的定义如下：</p>
 <ul>
-<li>在每组数据后面增加n位冗余码供差错检测</li>
+<li>send(P, message): 向进程P发送message。</li>
+<li>receive(id, message): 从任何进程，接收message，这里变量id被设置成与其通信进程的名称。</li>
 </ul>
-</li>
-<li><p>帧检验序列FCS(Frame Check Sequence)</p>
+<p>这两个方案（对称和非对称的寻址）的缺点是：生成进程定义的有限模块化。更改进程的标志符可能需要分析其他进程定义。所有旧的标志符的引用都应找到，以便修改成为新标识符。通常，任何时候的硬编码技术（其中标志符需要明确指定），与下面所诉的采用间接技术相比要差。</p>
+<p>在<strong>间接通信</strong>中，通过邮箱和端口来接收消息。邮箱可以抽象成一个对象，进程可以向其中存放消息，也可以从中删除消息，每个邮箱都有一个唯一的标识符。一个进程可以通过不同邮箱与另一个进程通信，但是两个进程只有拥有一个共享邮箱时才能通信。原语send()和receive()定义如下：</p>
 <ul>
-<li>CRC是一种检错方法，而FSC是添加在数据后面的冗余码，在检错方法上可以选用CRC，但也可以不选用CRC</li>
+<li>send(A, message): 向邮箱A发送message。</li>
+<li>receive(A, message): 从邮箱A接收messgae。</li>
 </ul>
-</li>
-<li><p>数据链路层若仅仅使用CRC差错检测技术，则只能做到对帧但无差错接收</p>
-</li>
-<li><p>传输差错</p>
+<p>对于这种方案，链路通信具有如下特点：</p>
 <ul>
-<li><p>比特差错</p>
+<li>只有两个进程共享一个邮箱时，才能建立通信链路。</li>
+<li>一个链路可以与两个或更多进程相关联。</li>
+<li>两个通信进程之间可有多个不同链路，每个链路对应于一个邮箱。</li>
+</ul>
+<h4 id="2-同步"><a href="#2-同步" class="headerlink" title="2. 同步"></a>2. 同步</h4><p>进程间通信可以通过调用原语send()和receive()来进行。实现这些原语有不同的设计方案。消息传递可以是阻塞或非阻塞，也称为同步或异步。</p>
 <ul>
-<li>比特在传输过程中可能会产生差错，1变0，0变1</li>
+<li><strong>阻塞发送</strong>： 发送进程阻塞，直到消息由接收进程或邮箱所接收。</li>
+<li><strong>非阻塞发送</strong>： 发送进程发送消息，并且恢复操作。</li>
+<li><strong>阻塞接收</strong>： 接收进程阻塞，直到消息可用。</li>
+<li><strong>非阻塞接收</strong>： 接收进程收到一个有效消息或者空消息。</li>
 </ul>
-</li>
-<li><p>没有比特差错</p>
+<p>不同组合的send()和receive()都有可能。当send()和receive()都是阻塞的，则在发送者和接收者之间就有一个<strong>交互</strong>。当采用阻塞的send()和receive()时，生产者-消费者问题的解决就简单了。生产者仅需调用阻塞send()并且等待，直到消息被送到接收者或者邮箱。同样，当消费者调用reiceve()时，它会阻塞直到有一个消息可用。</p>
+<h6 id="采用消息传递的生产者进程如下："><a href="#采用消息传递的生产者进程如下：" class="headerlink" title="采用消息传递的生产者进程如下："></a>采用消息传递的生产者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message next_produced</span><br><span class="line">while(true) &#123;</span><br><span class="line">    &#x2F;* produce an item in next_produced *&#x2F;</span><br><span class="line">    </span><br><span class="line">    send(next_produced);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="采用消息传递的消费者进程如下："><a href="#采用消息传递的消费者进程如下：" class="headerlink" title="采用消息传递的消费者进程如下："></a>采用消息传递的消费者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message next_comsumed</span><br><span class="line">while(true) &#123;</span><br><span class="line">    receive(next_consumed);</span><br><span class="line">    </span><br><span class="line">    &#x2F;* consume the item in next_consumed *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-缓存"><a href="#3-缓存" class="headerlink" title="3. 缓存"></a>3. 缓存</h4><p>不管通信时直接的还是间接的，通信进程交换的消息总是驻留在临时队列中。简单地讲，队列实现有三种方法：</p>
 <ul>
-<li>帧丢失</li>
-<li>帧重复</li>
-<li>帧失序</li>
+<li><strong>零容量</strong>：队列的最大长度为0；因此，链路中不能有任何消息处于等待。对于这种情况，发送者应阻塞，直到接收者接收消息。</li>
+<li><strong>有限容量</strong>： 队列长度为有限的n；因此，最多只能有n个消息驻留其中。如果在发送消失时队列未满，那么该消息可以放在队列中（或者复制消息或者保存消息的指针），且发生者可以继续执行而不必等待。然而，链路容量是有限。如果链路已满，那么发送者应阻塞，直到队列空间有有用的为止。</li>
+<li><strong>无限容量</strong>： 队列长度可以无限，因此，不管多少消息都可以在其中等待。发送者从不阻塞。</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>对于通信质量较差但无线传输链路，数据链路层协议使用确认和重传机制，数据链路层向上提供可靠传输的服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="点对点协议PPP-Point-to-Point-Protocol"><a href="#点对点协议PPP-Point-to-Point-Protocol" class="headerlink" title="点对点协议PPP(Point -to-Point Protocol)"></a>点对点协议PPP(Point -to-Point Protocol)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li><p>应该满足的需求</p>
-<ul>
-<li>简单</li>
-<li>封装成帧</li>
-<li>透明性</li>
-<li>多种网络层协议</li>
-<li>多种类型链路</li>
-<li>差错检测</li>
-<li>检测连接状态</li>
-<li>最大传送单元</li>
-<li>网络层地址协商</li>
-<li>数据压缩协商</li>
-</ul>
-</li>
-<li><p>组成</p>
-<ul>
-<li>一个将IP数据报封装到串行链路的方法。PPP既支持异步链路（无奇偶检验的8比特数据），也支持面向比特的同步链路。IP数据报在PPP帧中就是信息部分。这个信息部分长度受最大传送单元MTU限制</li>
-<li>一个用来建立、配置和测试数据链路连接的链路控制协议LCP(Link Control Protocol)。通信双方可以协商一些选项。在RFC 1661中定义了11种类型的LCP分组</li>
-<li>一套网络控制协议NCP(Network Control Protocol),其中的每个协议支持不同的网络层协议，如IP、OSI的网络层、DECnet、以及AppleTalk等。</li>
-</ul>
-</li>
-</ul>
-<h3 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h3><ul>
-<li><p>各字段意义</p>
-<ul>
-<li>首部的第一个字段和尾部的第二个字段F(Flag),规定为0x7E</li>
-<li>首部中的字段A规定为0xFF，控制字段C规定为0x03。最初考虑以后再对这两个字段的值进行定义，但自今也没有给出。</li>
-<li>PPP首部的第四个字段是2字节的协议字段。当协议字段为0x0021时，PPP帧的信息字段就是IP数据报。若为0xC021，则信息字段是PPP链路控制协议LCP的数据，而0x8021表示网络层的控制数据。</li>
-<li>信息字段的长度是可变的，不超过1500字节</li>
-<li>尾部中的第一个字段(2字节)是使用CRC的帧检验序列FCS</li>
-</ul>
-</li>
-<li><p>字节填充</p>
-<ul>
-<li><p>当PPP使用异步传输时，他把转义符定义为0x7D，并使用字节填充</p>
-<ul>
-<li>把信息字段中出现的每一个0x7E字节转变为2字节序列(0x7D,0x5E)</li>
-<li>若信息字段中出现一个0x7D的字节(即出现了和转义字符一样的比特组合），则把0x7D转变为2字节序列(0x7D,0x5D)</li>
-<li>若信息字段中出现ASCII码的控制符（即树枝小于0x20的字符），则在字符前面加上一个0x7D字节，同时把该字符的编码加以改变。例如，出现0x03就把它转变为2字节序列(0x7D,0x23)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>零比特填充</p>
-<ul>
-<li><p>PPP协议用在SONET/SDH链路时，使用同步传输（一连串的比特连续传送）而不是异步传输（逐个字符地传送）</p>
-<ul>
-<li>在发送端，先扫描整个信息字段（通常用硬件实现，但也是可用软件实现，只是会慢些）。只要发现有5个连续1，则立即填入一个0.因此经过这个零比特填充后的数据，就可以保证在信息字段不会出现6个连续1。接收端在收到一个帧时，先找到标志字段F以确定一个帧的边界，接着再用硬件对其中的比特流进行扫描。每当发现5个连续1时，就把这5个连续1后的0删除，以还原成原来的信息比特流</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="工作状态"><a href="#工作状态" class="headerlink" title="工作状态"></a>工作状态</h3><ul>
-<li>当用户拨号接入ISP后，就建立一条从用户个人电脑到ISP的物理连接。这时，用户个人电脑向ISP发送一系列的链路控制协议LCP分组（封装成多个PPP帧），以便建立LCP连接。这些分组以及其响应选择了将要使用的一些PPP参数。接着还要进行网络层配置，网络控制协议NCP给新接入的用户个人电脑分配一些临时的IP地址。这样，用户个人电脑就称为互联网上的一个有IP地址的主机了</li>
-</ul>
-<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><h3 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h3><ul>
-<li><p>局域网的优点</p>
-<ul>
-<li>具有广播功能，从一个站点可很方便地访问全网。局域网上的主机可共享连接在局域网上的各种硬件和软件资源</li>
-<li>便于系统的扩展和逐渐演变，各设备的位置可灵活调节和改变</li>
-<li>提高了系统的可靠性、可用性和生存性</li>
-</ul>
-</li>
-<li><p>局域网按网络拓扑分类</p>
-<ul>
-<li>星形网</li>
-<li>环形网</li>
-<li>总线网</li>
-</ul>
-</li>
-<li><p>共享信道技术上的两种方法</p>
-<ul>
-<li><p>静态划分信道</p>
-<ul>
-<li>频分复用、时分复用、波分复用和码分复用等，用户只要分配到了信道就不会和其他用户发送冲突。但这种方法代价较高，不适合局域网使用</li>
-</ul>
-</li>
-<li><p>动态媒体接入控制</p>
-<ul>
-<li><p>随机接入</p>
-<ul>
-<li>随机接入的特点是所有的用户可随机地发送信息。但如果恰巧有两个或更多但用户在同一时刻发送信息，那么在共享媒体上就要产生碰撞（即发送了冲突），使得这些用户但发送都失败。因此，必须有解决碰撞的网络协议。</li>
-</ul>
-</li>
-<li><p>受控接入</p>
-<ul>
-<li>受控接入的特点是用户不能随机地发送信息而必须服从一定的控制。这类的典型代表有分散控制的令牌环局域网和集中控制的多点线路探询（polling），或称为轮询。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>IEEE802委员会曾把局域网的数据链路层拆成两个子层，即逻辑链路控制（LLC）子层（与传输媒体无关）和媒体接入控制子层（MAC）子层（与传输媒体有关）。但现在LLC子层已成历史。MAC（Medium Access Control）LLC（Logical Link Control）</p>
-</li>
-<li><p>计算机与外界局域网的通信要通过通信适配器（或网络适配器），它又称为网络接口卡或网卡。计算机的硬件地址就在适配器的ROM中</p>
-</li>
-</ul>
-<h3 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h3><ul>
-<li><p>协议要点</p>
-<ul>
-<li><p>多点接入</p>
-<ul>
-<li>说明这是总线型网络，许多计算机以多点接入的方式连接在一个总线上</li>
-</ul>
-</li>
-<li><p>载波监听</p>
-<ul>
-<li>载波监听就是检测信道。不管发送前，还是发送中，每个站都必须不停地检测信道</li>
-</ul>
-</li>
-<li><p>碰撞检测</p>
-<ul>
-<li>就是“便发送边监听”，即适配器边发送数据边检测信道上的信号电压的变化情况，以便判断自己在发送数据时其他站是否也在发送数据</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><p>准备发送</p>
-<ul>
-<li>适配器从网络层获得一个分组，加上以太网的首部和尾部，以组成以太网帧，放入适配器的缓存中。但是发送之前，必须先检测信道</li>
-</ul>
-</li>
-<li><p>检测信道</p>
-<ul>
-<li>若检测到信道忙，则应不停地检测，一直等待信道转为空闲。若检测到信道空闲，并在96比特时间内信道保持空闲（保证了帧间最小间隔），就发送这个帧。</li>
-</ul>
-</li>
-<li><p>在发送过程中仍不停地检测信道，即网络适配器要边发送边监听</p>
-<ul>
-<li>发送成功：争用期内一直为检测到碰撞。这个帧肯定能够发送成功。发送完毕后，其他什么也不做。然后回到准备发送的状态。</li>
-<li>发送失败：在争用期内检测到碰撞。这时立即停止发送数据，并按规定发送人为干扰信号。适配器接着执行指数退避算法，等待r倍512比特时间后，返回到检测信道。但若重传达16次仍不成功，则停止重传而向上报错</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h3><ul>
-<li>使用集线器物理上是星型网实际，在逻辑上仍然是一个总线网，各站使用的还是CSMA/CD协议</li>
-<li>集线器有很多接口，很像一个多接口的转发器</li>
-<li>集线器工作在物理层，工作只是简单地转发，不进行碰撞检测</li>
-<li>集线器采用了专门的芯片，进行自适应串音回波抵消</li>
-</ul>
-<h3 id="以太网的MAC层（medium-access-control）"><a href="#以太网的MAC层（medium-access-control）" class="headerlink" title="以太网的MAC层（medium access control）"></a>以太网的MAC层（medium access control）</h3><ul>
-<li><p>MAC层的硬件地址</p>
-<ul>
-<li>硬件地址又称为物理地址或MAC地址</li>
-<li>MAC地址固化在适配器的ROM中</li>
-</ul>
-</li>
-<li><p>MAC帧的格式</p>
-<ul>
-<li><p>第一个字段：6字节长的目的地址</p>
-</li>
-<li><p>第二个字段：6字节长的源地址</p>
-</li>
-<li><p>第三个字段：2字节长的类型字段</p>
-<ul>
-<li>IP数据报：0x0800</li>
-<li>Novell IPX：0x8137</li>
-</ul>
-</li>
-<li><p>第四个字段：长度在46到1500字节之间的数据字段</p>
-</li>
-<li><p>第五个字段：4字节的帧检验序列FCS（使用CRC检验）</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="扩展的以太网"><a href="#扩展的以太网" class="headerlink" title="扩展的以太网"></a>扩展的以太网</h3><ul>
-<li>使用集线器在物理层扩展以太网</li>
-<li>交换式集线器常称为以太网交换机或第二层交换机（工作在数据链路层）。他就是一个多接口的网桥，而每个接口都直接与某台主机或另一个集线器相连，且工作在全双工方式。以太网交换机能同时连通许多对的接口，使每一对相互通信的主机都能像独占通信媒体那样，无碰撞地传输数据</li>
-</ul>
-<p><em>XMind: ZEN - Trial Version</em></p>
+<p>零容量情况称为无缓冲的消息系统，其他情况称为自动缓冲的消息系统。</p>
 
       
       <!-- reward -->
@@ -404,7 +239,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckcm2x6gv00026c9kavlhd5y3/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckcyybszu0002ay9k070sc5nw/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -420,19 +255,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ckcm2x6he00066c9k896k047z/" class="article-nav-link">
+      <a href="/2020/ckcyybszo0000ay9kd81a7jnw/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            java的基本程序设计结构
+            华为笔试总结
           
         </div>
       </a>
     
     
-      <a href="/2020/ckcm2x6hk00086c9k0c3i4vtb/" class="article-nav-link">
+      <a href="/2020/ckcyybszw0004ay9kgqt749e7/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">我的博客诞生了</div>
+        <div class="article-nav-title">什么是死锁？在什么情况下产生？怎么解决？</div>
       </a>
     
   </nav>
