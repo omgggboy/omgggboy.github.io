@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>华为软件开发工程师提前批一面</title>
+    <url>/2020/ckd2sray4000ah59kgouf5zjp/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p>
+<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  test_HW</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 张嘉喜 on 2020/7/24.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 张嘉喜. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</span><br><span class="line">            ans.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.size() &amp;&amp; target - candidates[i] &gt;= <span class="number">0</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">//剪枝去重</span></span><br><span class="line">            <span class="comment">//这里i &gt; start 放在前面不然有些编译器会提示数组越界了</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; start &amp;&amp; candidates[i] == candidates[i - <span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            DFS(i + <span class="number">1</span>, target - candidates[i]);</span><br><span class="line">            <span class="comment">// 回溯</span></span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 排序后方便剪枝</span></span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        </span><br><span class="line">        DFS(<span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates ;</span><br><span class="line">    candidates.push_back(<span class="number">10</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">2</span>);</span><br><span class="line">    candidates.push_back(<span class="number">7</span>);</span><br><span class="line">    candidates.push_back(<span class="number">6</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    Solution s = Solution();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans = s.combinationSum2(candidates, <span class="number">8</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; ans.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; ans[i].size(); j++ ) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i][j] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于回溯和剪枝的题目还是作太少了。应该要加强练习。</p>
+<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.查看了我leetcode的刷题情况，询问我主要擅长什么类型的题目，能否独立完成困难题目。<br>2.询问了是否知道回溯。<br>3.考察了DFS和BFS，原理和实现，应用场景<br>4.考察了C++虚函数<br>5.能讲解一下类吗<br>6.询问了项目相关<br>7.询问是否对数据库底层原理了解<br>8.学习能力怎么样</p>
+<h3 id="我询问面试官准备秋招还有哪些方面"><a href="#我询问面试官准备秋招还有哪些方面" class="headerlink" title="我询问面试官准备秋招还有哪些方面"></a>我询问面试官准备秋招还有哪些方面</h3><p>1.继续刷题，笔试500分会重点关注。要了解更多的算法思想，并查集，回溯，递归，递推，归并，贪心，动态规划，模拟，枚举<br>2.熟悉操作系统，因为杭研所主要还是做底层开发的，所以对整个CPU执行程序的过程，汇编等需要用到<br>3.如果有兴趣来做数据库的话，也要需要了解数据库相关的底层原理</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>和面试官整个沟通过程，感觉整个状态很好，所以也如愿以偿收到二面通知，明天就要二面了。加油～</p>
+]]></content>
+      <categories>
+        <category>招聘</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>华为笔试总结</title>
-    <url>/2020/ckcyybszo0000ay9kd81a7jnw/</url>
+    <url>/2020/ckd2sray10006h59k76c5fa0a/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>中午预约的机考时间，记错成了第二天晚上才开始。结果，晚上7点多和朋友过生日的时候，收到了短信，提醒考试已经开始快半小时了。赶紧跑了回来。内心一百只草泥马飞过。总体而言就算给我更多的时间不一定思路就清晰了。</p>
 <h3 id="1-求余数"><a href="#1-求余数" class="headerlink" title="1.求余数"></a>1.求余数</h3><p>给定两个数，将两个数的各位求和在求余数。<br>例如：<br>输入：<br>123 11</p>
 <p>输出：<br>0</p>
@@ -24,10 +43,16 @@
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>后面两个解答都是参考了牛客博主xinxin1000的答案，还附赠了背包问题学习大礼包<a href="https://anivian.github.io/pack-master/V2.pdf" target="_blank" rel="noopener">https://anivian.github.io/pack-master/V2.pdf</a><br>超级感谢这位来自清华的小姐姐。<br>希望明天面试顺利～～～～</p>
 ]]></content>
+      <categories>
+        <category>招聘</category>
+      </categories>
+      <tags>
+        <tag>笔试</tag>
+      </tags>
   </entry>
   <entry>
     <title>进程间通信</title>
-    <url>/2020/ckcyybszu0002ay9k070sc5nw/</url>
+    <url>/2020/ckd2sraxy0004h59kdwf9duxx/</url>
     <content><![CDATA[<h3 id="进程协作的目的"><a href="#进程协作的目的" class="headerlink" title="进程协作的目的"></a>进程协作的目的</h3><ul>
 <li><strong>信息共享</strong>： 由于多用户可能对同样的信息感兴趣（例如共享文件），所以应提供环境以允许并发访问这些信息。</li>
 <li><strong>计算加速</strong>： 如果希望一个特定快速运行，那么应将系统功能划分成子任务，而每个子任务可以与其他子任务一起并行执行。注意，如果要实现这样的加速，那么计算机需要有多个处理核。</li>
@@ -100,10 +125,60 @@
 </ul>
 <p>零容量情况称为无缓冲的消息系统，其他情况称为自动缓冲的消息系统。</p>
 ]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字节跳动秋招提前批c++客户端一面</title>
+    <url>/2020/ckd2sray00005h59k8fl18uy6/</url>
+    <content><![CDATA[<h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
+<h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
+<li>简短的自我介绍</li>
+<li>询问项目相关</li>
+<li>QML和QWeight比较，当初项目为什么选用这个</li>
+<li>OpenGL版本</li>
+<li>QT的信号与槽， 可以用什么代替</li>
+<li>进程间通信方式，线程间通信方式</li>
+<li>c++面向对象的三个特性具体解释一下</li>
+<li>关于一段代码的虚函数调用后结果</li>
+<li>关于虚函数表的问题</li>
+</ol>
+<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>感觉对于图形学实际学习还存在欠缺，对于操作系统和C++语言深入了解不够细致，只是懂个大概，实际应用能力还有待增长。QT相关的应用也应该更加深入了解。查漏补缺吧。对于一面提及到的知识点回去好好温习巩固一下。只是提前批的第一波，不知道后面的公司有没有音讯，继续学习。期待能有二面吧，目前还是很想去字节上班的。</p>
+]]></content>
+      <categories>
+        <category>招聘</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态库与静态库的区别</title>
+    <url>/2020/ckd2srays0013h59kfrw3dfwd/</url>
+    <content><![CDATA[<ul>
+<li>区别：静态库和动态库最本质的区别就是：该库是否被编译进目标（程序）内部。</li>
+</ul>
+<h4 id="静态（函数）库"><a href="#静态（函数）库" class="headerlink" title="静态（函数）库"></a>静态（函数）库</h4><p>一般拓展名为（.a或者.lib),这类的函数库通常拓展名为libxxx.a或者xxx.lib。<br>这类库在编译的时候会直接整合到目标程序中，所以利用静态函数库编译程的文件会比较大，这类函数库最大的优点就是编译成功的可执行文件可以独立运行，而不再需要向外部要求读取函数库的内容；但是从升级难易度来看明显没有优势，如果函数库更新，需要重新编译。</p>
+<h4 id="动态函数库"><a href="#动态函数库" class="headerlink" title="动态函数库"></a>动态函数库</h4><p>动态函数库的拓展名一般为 （.so或.dll)，这类函数库通常名为libxxx.so或xxx.dll。<br>与静态函数库被整个捕捉到程序中不同，动态函数库在编译的时候，在程序中只有一个“指向”的位置而已，也就是说当可执行文件需要使用到函数库的机制时，程序才会去读取函数库来使用；也就是说可执行文件无法单独运行。这样从产品功能升级角度方便升级，只要替换对应动态库即可，不必重新编译整个可执行文件。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>从产品化的角度，发布的算法库和功能库尽量使用动态库，这样方便更新和升级，不必重新编译整个可执行文件，只需新版本动态库替换掉旧动态库即可。</li>
+<li>从函数库集成的角度，若要将发布的所有子库（不止一个）集成成一个动态库向外提供接口，那么就需要将所有子库编译为静态库，这样所有子库就可以全部编译进目标动态库中，由最终的一个集成库向外提供功能。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <url>/2020/ckcyybszw0004ay9kgqt749e7/</url>
+    <url>/2020/ckd2sraxn0000h59k3b8vdmsk/</url>
     <content><![CDATA[<p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p>
 <p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
 <ul>
@@ -122,42 +197,16 @@
 <p>第三种解决为大多数操作系统所采用，包括Linux和windows。因此应用程序开发人员需要自己编写程序，以便处理死锁。</p>
 <p>死锁预防 死锁避免 死锁检测 死锁恢复。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>字节跳动秋招提前批c++客户端一面</title>
-    <url>/2020/ckcyybszx0005ay9k46j6euui/</url>
-    <content><![CDATA[<h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
-<h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
-<li>简短的自我介绍</li>
-<li>询问项目相关</li>
-<li>QML和QWeight比较，当初项目为什么选用这个</li>
-<li>OpenGL版本</li>
-<li>QT的信号与槽， 可以用什么代替</li>
-<li>进程间通信方式，线程间通信方式</li>
-<li>c++面向对象的三个特性具体解释一下</li>
-<li>关于一段代码的虚函数调用后结果</li>
-<li>关于虚函数表的问题</li>
-</ol>
-<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>感觉对于图形学实际学习还存在欠缺，对于操作系统和C++语言深入了解不够细致，只是懂个大概，实际应用能力还有待增长。QT相关的应用也应该更加深入了解。查漏补缺吧。对于一面提及到的知识点回去好好温习巩固一下。只是提前批的第一波，不知道后面的公司有没有音讯，继续学习。期待能有二面吧，目前还是很想去字节上班的。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>动态库与静态库的区别</title>
-    <url>/2020/ckcyybt0g0006ay9kf2vphour/</url>
-    <content><![CDATA[<ul>
-<li>区别：静态库和动态库最本质的区别就是：该库是否被编译进目标（程序）内部。</li>
-</ul>
-<h4 id="静态（函数）库"><a href="#静态（函数）库" class="headerlink" title="静态（函数）库"></a>静态（函数）库</h4><p>一般拓展名为（.a或者.lib),这类的函数库通常拓展名为libxxx.a或者xxx.lib。<br>这类库在编译的时候会直接整合到目标程序中，所以利用静态函数库编译程的文件会比较大，这类函数库最大的优点就是编译成功的可执行文件可以独立运行，而不再需要向外部要求读取函数库的内容；但是从升级难易度来看明显没有优势，如果函数库更新，需要重新编译。</p>
-<h4 id="动态函数库"><a href="#动态函数库" class="headerlink" title="动态函数库"></a>动态函数库</h4><p>动态函数库的拓展名一般为 （.so或.dll)，这类函数库通常名为libxxx.so或xxx.dll。<br>与静态函数库被整个捕捉到程序中不同，动态函数库在编译的时候，在程序中只有一个“指向”的位置而已，也就是说当可执行文件需要使用到函数库的机制时，程序才会去读取函数库来使用；也就是说可执行文件无法单独运行。这样从产品功能升级角度方便升级，只要替换对应动态库即可，不必重新编译整个可执行文件。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>从产品化的角度，发布的算法库和功能库尽量使用动态库，这样方便更新和升级，不必重新编译整个可执行文件，只需新版本动态库替换掉旧动态库即可。</li>
-<li>从函数库集成的角度，若要将发布的所有子库（不止一个）集成成一个动态库向外提供接口，那么就需要将所有子库编译为静态库，这样所有子库就可以全部编译进目标动态库中，由最终的一个集成库向外提供功能。</li>
-</ul>
-]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>虚函数</title>
-    <url>/2020/ckcyybt0r000eay9k022m8rsm/</url>
+    <url>/2020/ckd2srayy001bh59kgy3h57xa/</url>
     <content><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在c++中，基类必须指出派生类重定义哪些函数，定义为virtual的函数是基类期待派生类重新定义的，基类希望派生类继承的函数不能定义为虚函数。（c++ primer）</p>
 <h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>在C++中，通过基类的引用（或指针）调用虚函数时，发生动态绑定。引用（或指针）即可以指向基类对象也可以指向派生类对象，这一事实是动态绑定的关键。用引用（或指针）调用虚函数在<u><strong>运行</strong></u>时确定，被调用的函数是引用（或指针）所指对象的实际类型所定义的。</p>
 <p>保留字virtual的目的是启用动态绑定。成员默认是非虚函数，对非虚函数的调用在<u><strong>编译</strong></u>时确定。为了指明函数为虚函数，在其返回类型类型前面加上保留字virtual。除了构造函数外，任何非static成员函数都可以是虚函数。保留字virtual只能在类内部的成员函数声明中出现，不能在类定义体外部出现的函数定义上。</p>
@@ -193,15 +242,21 @@
 <p>无论由构造函数（或析构函数）直接调用虚函数，或者从构造函数（或虚构函数）所调用的函数间接调用虚函数，都应用这种绑定。</p>
 <p>要理解这种行为，考虑如果从基类构造函数（或析构函数）调用虚函数的派生类版本会怎样。虚函数的派生类版本很可能会访问派生类对象的成员，毕竟，如果派生类版本不需要使用派生类对象的成员，派生类多半能够使用基类中的定义。但是，对象的派生部分的成员不会在基类构造函数运行期间初始化，实际上，如果允许这样的访问，程序很可能会崩溃。 </p>
 ]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>new与malloc的区别</title>
-    <url>/2020/ckcyybt0j000aay9kdzwg5851/</url>
+    <url>/2020/ckd2srayz001eh59k3t4xgxet/</url>
     <content><![CDATA[<h4 id="1-molloc与free是C-c语言的标准函数，-new-delete是c-的运算符。"><a href="#1-molloc与free是C-c语言的标准函数，-new-delete是c-的运算符。" class="headerlink" title="1. molloc与free是C++/c语言的标准函数， new/delete是c++的运算符。"></a>1. molloc与free是C++/c语言的标准函数， new/delete是c++的运算符。</h4><h4 id="2-他们都可以用于申请动态内存和释放内存。new-delete比molloc-free更加智能，其实底层也是执行的malloc-free。为啥说new-delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。"><a href="#2-他们都可以用于申请动态内存和释放内存。new-delete比molloc-free更加智能，其实底层也是执行的malloc-free。为啥说new-delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。" class="headerlink" title="2.他们都可以用于申请动态内存和释放内存。new/delete比molloc/free更加智能，其实底层也是执行的malloc/free。为啥说new/delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。"></a>2.他们都可以用于申请动态内存和释放内存。new/delete比molloc/free更加智能，其实底层也是执行的malloc/free。为啥说new/delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。</h4><h5 id="既然new-delete的功能完全覆盖了malloc和free，-为什么c-中不把malloc-free淘汰出局呢？"><a href="#既然new-delete的功能完全覆盖了malloc和free，-为什么c-中不把malloc-free淘汰出局呢？" class="headerlink" title="既然new/delete的功能完全覆盖了malloc和free， 为什么c++中不把malloc/free淘汰出局呢？"></a>既然new/delete的功能完全覆盖了malloc和free， 为什么c++中不把malloc/free淘汰出局呢？</h5><h5 id="因为c-程序经常要调用c语言，而c语言只能用malloc-free管理动态内存。"><a href="#因为c-程序经常要调用c语言，而c语言只能用malloc-free管理动态内存。" class="headerlink" title="因为c++程序经常要调用c语言，而c语言只能用malloc/free管理动态内存。"></a>因为c++程序经常要调用c语言，而c语言只能用malloc/free管理动态内存。</h5><h4 id="3-new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void-，-必须强制转换为实际类型的指针。"><a href="#3-new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void-，-必须强制转换为实际类型的指针。" class="headerlink" title="3. new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void*， 必须强制转换为实际类型的指针。"></a>3. new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void*， 必须强制转换为实际类型的指针。</h4>]]></content>
   </entry>
   <entry>
     <title>进程和线程</title>
-    <url>/2020/ckcyybt0t000fay9kg5vu7spd/</url>
+    <url>/2020/ckd2srayx0018h59k7e2h8j6l/</url>
     <content><![CDATA[<h3 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h3><ul>
 <li>进程是正在运行的一个应用程序，程序一旦运行就是进程。</li>
 <li>进程是系统进行资源分配的最小单位，每个进程拥有独立的地址空间。</li>
@@ -216,10 +271,16 @@
 <li>二者均可以并发执行</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>java的基本程序设计结构</title>
-    <url>/2020/ckcyybt0p000cay9kfqsj44hq/</url>
+    <url>/2020/ckd2sray5000bh59k9tva8fvx/</url>
     <content><![CDATA[<h2 id="最简单的Java程序"><a href="#最简单的Java程序" class="headerlink" title="最简单的Java程序"></a>最简单的Java程序</h2><ul>
 <li><p>java区分大小写</p>
 </li>
@@ -354,10 +415,16 @@
 </ul>
 <p><em>XMind: ZEN - Trial Version</em></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>数据链路层</title>
-    <url>/2020/ckcyybszv0003ay9kas9024ah/</url>
+    <url>/2020/ckd2sraxw0001h59k5a8ift3e/</url>
     <content><![CDATA[<h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="点对点信道的数据链路层在进行通信时的主要步骤如下"><a href="#点对点信道的数据链路层在进行通信时的主要步骤如下" class="headerlink" title="点对点信道的数据链路层在进行通信时的主要步骤如下"></a>点对点信道的数据链路层在进行通信时的主要步骤如下</h3><ul>
 <li>1.结点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成帧</li>
 <li>2.结点A把封装好的帧发生发生给结点B的数据链路层</li>
@@ -595,10 +662,16 @@
 </ul>
 <p><em>XMind: ZEN - Trial Version</em></p>
 ]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>学习总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>我的博客诞生了</title>
-    <url>/2020/ckcyybt0h0008ay9k0jx0c26b/</url>
+    <url>/2020/ckd2srayu0015h59khkx123mu/</url>
     <content><![CDATA[<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
 <li>macbook pro 2019 </li>
 </ul>
@@ -617,10 +690,16 @@
 <li>查看你的github网站是否更改</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>实践记录</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2020/ckcyybszt0001ay9k8ikfb4lr/</url>
+    <url>/2020/ckd2sray7000gh59kes6e4xfn/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
@@ -635,5 +714,11 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>实践记录</tag>
+      </tags>
   </entry>
 </search>
