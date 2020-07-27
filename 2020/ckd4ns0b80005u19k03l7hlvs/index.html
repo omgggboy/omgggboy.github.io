@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    字节跳动秋招提前批c++客户端一面 |  猪猪侠
+    华为软件开发工程师提前批二面 |  猪猪侠
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-interview_ByteDance" class="article article-type-post" itemscope
+  <article id="post-interview_HW2" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  字节跳动秋招提前批c++客户端一面
+  华为软件开发工程师提前批二面
 </h1>
   
 
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd2sray00005h59k8fl18uy6/" class="article-date">
-  <time datetime="2020-07-06T06:00:00.000Z" itemprop="datePublished">2020-07-06</time>
+      <a href="/2020/ckd4ns0b80005u19k03l7hlvs/" class="article-date">
+  <time datetime="2020-07-27T15:19:46.008Z" itemprop="datePublished">2020-07-27</time>
 </a>
       
   <div class="article-category">
@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">262字</span>
+            <span class="post-count">454字</span>
         </span>
     </span>
 
@@ -103,19 +103,14 @@
       
 
       
-      <h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
-<h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
-<li>简短的自我介绍</li>
-<li>询问项目相关</li>
-<li>QML和QWeight比较，当初项目为什么选用这个</li>
-<li>OpenGL版本</li>
-<li>QT的信号与槽， 可以用什么代替</li>
-<li>进程间通信方式，线程间通信方式</li>
-<li>c++面向对象的三个特性具体解释一下</li>
-<li>关于一段代码的虚函数调用后结果</li>
-<li>关于虚函数表的问题</li>
-</ol>
-<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>感觉对于图形学实际学习还存在欠缺，对于操作系统和C++语言深入了解不够细致，只是懂个大概，实际应用能力还有待增长。QT相关的应用也应该更加深入了解。查漏补缺吧。对于一面提及到的知识点回去好好温习巩固一下。只是提前批的第一波，不知道后面的公司有没有音讯，继续学习。期待能有二面吧，目前还是很想去字节上班的。</p>
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p>
+<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.find(s[i]) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!str.empty() &amp;&amp; str.back() &gt; s[i] &amp;&amp; s.find(str.back(), i)!=<span class="built_in">string</span>::npos)</span><br><span class="line">                str.pop_back();</span><br><span class="line">            str.push_back(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>贪心加栈，同时，当根据条件去掉一个栈顶元素时，新的栈顶元素可能也大于当前元素，所以应该继续判断新的栈顶元素和当前元素的关系，用一个while循环，直到出现一个不满足循环条件的栈顶元素（要么小于当前元素，要么大于当前元素但后续又无与之相同的元素来替代）。</p>
+<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.考察了设计模式<br>2.考察了面向对象的三个特点<br>3.考察了stl和红黑树<br>4.考察了C++虚函数<br>5.询问了项目相关<br>6.考察了模版类<br>7.考察了软件工程相关的整个流程<br>8.考察了类的六大特性</p>
+<h3 id="我询问面试官软件工程的知识在实际开发过程中真的会用到么"><a href="#我询问面试官软件工程的知识在实际开发过程中真的会用到么" class="headerlink" title="我询问面试官软件工程的知识在实际开发过程中真的会用到么"></a>我询问面试官软件工程的知识在实际开发过程中真的会用到么</h3><p>会用到很多，对于整个过程管理会很严格，文档和单元测试，集成测试等环节。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>感觉整个面试还是很不错，但是不知道会不会有三面，好想拿到offer！</p>
 
       
       <!-- reward -->
@@ -185,7 +180,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd2sray00005h59k8fl18uy6/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd4ns0b80005u19k03l7hlvs/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -203,19 +198,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ckd2sraxy0004h59kdwf9duxx/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            进程间通信
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/ckd2srays0013h59kfrw3dfwd/" class="article-nav-link">
+      <a href="/2020/ckd4ns0bg000hu19k65v1ft8k/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">动态库与静态库的区别</div>
+        <div class="article-nav-title">华为软件开发工程师提前批一面</div>
       </a>
     
   </nav>

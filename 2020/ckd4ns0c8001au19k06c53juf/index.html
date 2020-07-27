@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    动态库与静态库的区别 |  猪猪侠
+    我的博客诞生了 |  猪猪侠
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-libvdll" class="article article-type-post" itemscope
+  <article id="post-my-first-blog" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  动态库与静态库的区别
+  我的博客诞生了
 </h1>
   
 
@@ -52,12 +52,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd2srays0013h59kfrw3dfwd/" class="article-date">
-  <time datetime="2020-06-27T06:00:00.000Z" itemprop="datePublished">2020-06-27</time>
+      <a href="/2020/ckd4ns0c8001au19k06c53juf/" class="article-date">
+  <time datetime="2020-03-05T06:00:00.000Z" itemprop="datePublished">2020-03-05</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    <a class="article-category-link" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
   </div>
 
       
@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">495字</span>
+            <span class="post-count">151字</span>
         </span>
     </span>
 
@@ -103,15 +103,23 @@
       
 
       
-      <ul>
-<li>区别：静态库和动态库最本质的区别就是：该库是否被编译进目标（程序）内部。</li>
+      <h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
+<li>macbook pro 2019 </li>
 </ul>
-<h4 id="静态（函数）库"><a href="#静态（函数）库" class="headerlink" title="静态（函数）库"></a>静态（函数）库</h4><p>一般拓展名为（.a或者.lib),这类的函数库通常拓展名为libxxx.a或者xxx.lib。<br>这类库在编译的时候会直接整合到目标程序中，所以利用静态函数库编译程的文件会比较大，这类函数库最大的优点就是编译成功的可执行文件可以独立运行，而不再需要向外部要求读取函数库的内容；但是从升级难易度来看明显没有优势，如果函数库更新，需要重新编译。</p>
-<h4 id="动态函数库"><a href="#动态函数库" class="headerlink" title="动态函数库"></a>动态函数库</h4><p>动态函数库的拓展名一般为 （.so或.dll)，这类函数库通常名为libxxx.so或xxx.dll。<br>与静态函数库被整个捕捉到程序中不同，动态函数库在编译的时候，在程序中只有一个“指向”的位置而已，也就是说当可执行文件需要使用到函数库的机制时，程序才会去读取函数库来使用；也就是说可执行文件无法单独运行。这样从产品功能升级角度方便升级，只要替换对应动态库即可，不必重新编译整个可执行文件。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>从产品化的角度，发布的算法库和功能库尽量使用动态库，这样方便更新和升级，不必重新编译整个可执行文件，只需新版本动态库替换掉旧动态库即可。</li>
-<li>从函数库集成的角度，若要将发布的所有子库（不止一个）集成成一个动态库向外提供接口，那么就需要将所有子库编译为静态库，这样所有子库就可以全部编译进目标动态库中，由最终的一个集成库向外提供功能。</li>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>下载并安装</p>
+<ul>
+<li>git</li>
+<li>node.js</li>
 </ul>
+<p><em>tips：如果下载速度过慢，可以找下国内镜像仓库</em><br><em>npm的国内镜像<a href="https://npm.taobao.org/mirrors/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/</a></em><br><em>上面这个网址里也有git的资源</em></p>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p><code>$ npm install -g hexo-cli</code></p>
+<h3 id="github仓库建立"><a href="#github仓库建立" class="headerlink" title="github仓库建立"></a>github仓库建立</h3><p>仓库名必须满足：<br><code>&lt;用户名&gt;.github.io</code></p>
+<h3 id="github-pages部署"><a href="#github-pages部署" class="headerlink" title="github pages部署"></a>github pages部署</h3><ol>
+<li>安装hexo-deployer-git<br><code>npm install hexo-deployer-git</code></li>
+<li>修改配置文件_config.yml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delpoy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:github.com&#x2F;&lt;用户名&gt;&#x2F;&lt;用户名&gt;.github.io</span><br><span class="line">  branch:gh-pages</span><br></pre></td></tr></table></figure></li>
+<li>运行<code>hexo clean &amp;&amp; hexo deploy</code></li>
+<li>查看你的github网站是否更改</li>
+</ol>
 
       
       <!-- reward -->
@@ -181,14 +189,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd2srays0013h59kfrw3dfwd/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd4ns0c8001au19k06c53juf/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/" rel="tag">实践记录</a></li></ul>
 
 
     </footer>
@@ -199,19 +207,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ckd2sray00005h59k8fl18uy6/" class="article-nav-link">
+      <a href="/2020/ckd4ns0b40001u19k05k107e8/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            字节跳动秋招提前批c++客户端一面
+            数据链路层
           
         </div>
       </a>
     
     
-      <a href="/2020/ckd2sraxn0000h59k3b8vdmsk/" class="article-nav-link">
+      <a href="/2020/ckd4ns0be000cu19k7bpt7pib/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">什么是死锁？在什么情况下产生？怎么解决？</div>
+        <div class="article-nav-title">Hello World</div>
       </a>
     
   </nav>
