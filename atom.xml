@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-07-27T15:19:46.008Z</updated>
+  <updated>2020-07-28T04:33:28.944Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -18,19 +18,19 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0b80005u19k03l7hlvs/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0b80005u19k03l7hlvs/</id>
-    <published>2020-07-27T15:19:46.008Z</published>
-    <updated>2020-07-27T15:19:46.008Z</updated>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyi000fdi9k5wjb7c3x/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyi000fdi9k5wjb7c3x/</id>
+    <published>2020-07-28T04:33:28.944Z</published>
+    <updated>2020-07-28T04:33:28.944Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p><h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.find(s[i]) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!str.empty() &amp;&amp; str.back() &gt; s[i] &amp;&amp; s.find(str.back(), i)!=<span class="built_in">string</span>::npos)</span><br><span class="line">                str.pop_back();</span><br><span class="line">            str.push_back(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>贪心加栈，同时，当根据条件去掉一个栈顶元素时，新的栈顶元素可能也大于当前元素，所以应该继续判断新的栈顶元素和当前元素的关系，用一个while循环，直到出现一个不满足循环条件的栈顶元素（要么小于当前元素，要么大于当前元素但后续又无与之相同的元素来替代）。</p><h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.考察了设计模式<br>2.考察了面向对象的三个特点<br>3.考察了stl和红黑树<br>4.考察了C++虚函数<br>5.询问了项目相关<br>6.考察了模版类<br>7.考察了软件工程相关的整个流程<br>8.考察了类的六大特性</p><h3 id="我询问面试官软件工程的知识在实际开发过程中真的会用到么"><a href="#我询问面试官软件工程的知识在实际开发过程中真的会用到么" class="headerlink" title="我询问面试官软件工程的知识在实际开发过程中真的会用到么"></a>我询问面试官软件工程的知识在实际开发过程中真的会用到么</h3><p>会用到很多，对于整个过程管理会很严格，文档和单元测试，集成测试等环节。</p><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>感觉整个面试还是很不错，但是不知道会不会有三面，好想拿到offer！</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一个电话没接着，打不回去，就好怕改时间还是自己错过了。打校招电话回去咨询。还请教了一面的面试官。不过最后还是完美收尾了</p><h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode316原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.find(s[i]) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!str.empty() &amp;&amp; str.back() &gt; s[i] &amp;&amp; s.find(str.back(), i)!=<span class="built_in">string</span>::npos)</span><br><span class="line">                str.pop_back();</span><br><span class="line">            str.push_back(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>贪心加栈，同时，当根据条件去掉一个栈顶元素时，新的栈顶元素可能也大于当前元素，所以应该继续判断新的栈顶元素和当前元素的关系，用一个while循环，直到出现一个不满足循环条件的栈顶元素（要么小于当前元素，要么大于当前元素但后续又无与之相同的元素来替代）。</p><h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.考察了设计模式<br>2.考察了面向对象的三个特点<br>3.考察了stl和红黑树<br>4.考察了C++虚函数<br>5.询问了项目相关<br>6.考察了模版类<br>7.考察了软件工程相关的整个流程<br>8.考察了类的六大特性<br>9.new和molloc的区别<br>10.构造函数和析构函数的调用过程<br>11.介绍一下继承的种类</p><h3 id="我询问面试官软件工程的知识在实际开发过程中真的会用到么"><a href="#我询问面试官软件工程的知识在实际开发过程中真的会用到么" class="headerlink" title="我询问面试官软件工程的知识在实际开发过程中真的会用到么"></a>我询问面试官软件工程的知识在实际开发过程中真的会用到么</h3><p>会用到很多，对于整个过程管理会很严格，文档和单元测试，集成测试等环节。</p><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>感觉整个面试还是很不错，但是不知道会不会有三面，好想拿到offer！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。&lt;/p&gt;
-&lt;h3 id=&quot;手写代码&quot;&gt;&lt;a href=
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;一个电话没接着，打不回去，就好怕改时间还是自己错过了。打校招电话回去咨询。还请教了一面的面试官。不过最后还是完美收尾了&lt;/p&gt;
+&lt;h3 id
       
     
     </summary>
@@ -45,8 +45,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0bg000hu19k65v1ft8k/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0bg000hu19k65v1ft8k/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyv0017di9ka0bv1cmg/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyv0017di9ka0bv1cmg/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -72,8 +72,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0b70004u19kbrecefdv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0b70004u19kbrecefdv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyf000adi9kemu02jx6/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyf000adi9kemu02jx6/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -98,8 +98,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0b00000u19k041933ab/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0b00000u19k041933ab/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gxs0000di9k0ztyb2xj/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gxs0000di9k0ztyb2xj/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -125,8 +125,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0bc000au19kavbgcdng/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0bc000au19kavbgcdng/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gxz0001di9k79p6fyzl/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gxz0001di9k79p6fyzl/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -152,8 +152,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0bh000ju19k0ov73wks/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0bh000ju19k0ov73wks/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyk000jdi9k6ltp9g8f/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyk000jdi9k6ltp9g8f/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -181,8 +181,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0b90006u19kfu94b0yl/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0b90006u19kfu94b0yl/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyn000odi9k37w8dank/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyn000odi9k37w8dank/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -208,8 +208,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0cc001fu19k51krhasn/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0cc001fu19k51krhasn/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyu0015di9kho4d5fmi/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyu0015di9kho4d5fmi/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -234,8 +234,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0c60018u19keqtk350y/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0c60018u19keqtk350y/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyt0013di9kfzizf3s3/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyt0013di9kfzizf3s3/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -256,8 +256,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0ca001cu19k85tt5j0e/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0ca001cu19k85tt5j0e/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyp000sdi9k2rei73ml/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyp000sdi9k2rei73ml/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -284,8 +284,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0bi000nu19k16lqb8v9/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0bi000nu19k16lqb8v9/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyg000cdi9k5qfqcysa/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyg000cdi9k5qfqcysa/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -313,8 +313,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0b40001u19k05k107e8/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0b40001u19k05k107e8/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyl000mdi9k85yf6amr/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyl000mdi9k85yf6amr/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -339,8 +339,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0c8001au19k06c53juf/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0c8001au19k06c53juf/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyr000ydi9k4jnp4gev/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyr000ydi9k4jnp4gev/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -368,8 +368,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckd4ns0be000cu19k7bpt7pib/"/>
-    <id>https://shen-yu.gitee.io/2020/ckd4ns0be000cu19k7bpt7pib/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckd5g3gyq000vdi9kbpzl3icq/"/>
+    <id>https://shen-yu.gitee.io/2020/ckd5g3gyq000vdi9kbpzl3icq/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     

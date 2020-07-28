@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    华为软件开发工程师提前批一面 |  猪猪侠
+    进程间通信 |  猪猪侠
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-interview_HW_1" class="article article-type-post" itemscope
+  <article id="post-Interprocess_communication" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  华为软件开发工程师提前批一面
+  进程间通信
 </h1>
   
 
@@ -52,12 +52,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd4ns0bg000hu19k65v1ft8k/" class="article-date">
-  <time datetime="2020-07-26T08:04:28.466Z" itemprop="datePublished">2020-07-26</time>
+      <a href="/2020/ckd5g3gxs0000di9k0ztyb2xj/" class="article-date">
+  <time datetime="2020-07-14T06:00:00.000Z" itemprop="datePublished">2020-07-14</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
   </div>
 
       
@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">695字</span>
+            <span class="post-count">2.1k字</span>
         </span>
     </span>
 
@@ -76,7 +76,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">7分钟</span>
         </span>
     </span>
 </div>
@@ -103,14 +103,77 @@
       
 
       
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p>
-<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  test_HW</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 张嘉喜 on 2020/7/24.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 张嘉喜. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</span><br><span class="line">            ans.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.size() &amp;&amp; target - candidates[i] &gt;= <span class="number">0</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">//剪枝去重</span></span><br><span class="line">            <span class="comment">//这里i &gt; start 放在前面不然有些编译器会提示数组越界了</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; start &amp;&amp; candidates[i] == candidates[i - <span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            DFS(i + <span class="number">1</span>, target - candidates[i]);</span><br><span class="line">            <span class="comment">// 回溯</span></span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 排序后方便剪枝</span></span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        </span><br><span class="line">        DFS(<span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates ;</span><br><span class="line">    candidates.push_back(<span class="number">10</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">2</span>);</span><br><span class="line">    candidates.push_back(<span class="number">7</span>);</span><br><span class="line">    candidates.push_back(<span class="number">6</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    Solution s = Solution();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans = s.combinationSum2(candidates, <span class="number">8</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; ans.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; ans[i].size(); j++ ) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i][j] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <h3 id="进程协作的目的"><a href="#进程协作的目的" class="headerlink" title="进程协作的目的"></a>进程协作的目的</h3><ul>
+<li><strong>信息共享</strong>： 由于多用户可能对同样的信息感兴趣（例如共享文件），所以应提供环境以允许并发访问这些信息。</li>
+<li><strong>计算加速</strong>： 如果希望一个特定快速运行，那么应将系统功能划分成子任务，而每个子任务可以与其他子任务一起并行执行。注意，如果要实现这样的加速，那么计算机需要有多个处理核。</li>
+<li><strong>模块化</strong>： 可以需要按模块化方式构造系统，如第2章所讨论的，可将系统功能划分成独立的进程和线程。</li>
+<li><strong>方便</strong>： 即使单个用户也可以同时执行许多任务。例如，用户可以并行的编辑、收听音乐、编译。</li>
+</ul>
+<h5 id="协作进程需要进程间通信（IPC"><a href="#协作进程需要进程间通信（IPC" class="headerlink" title="协作进程需要进程间通信（IPC)"></a>协作进程需要进程间通信（IPC)</h5><h3 id="进程间通信的两种基本模型：共享内存和消息传递"><a href="#进程间通信的两种基本模型：共享内存和消息传递" class="headerlink" title="进程间通信的两种基本模型：共享内存和消息传递"></a>进程间通信的两种基本模型：共享内存和消息传递</h3><h4 id="共享内存系统"><a href="#共享内存系统" class="headerlink" title="共享内存系统"></a>共享内存系统</h4><p>采用共享内存的进程间通信，需要通信进程建立共享内存区域。通常，一片共享内存区域驻留在创建共享内存段的进程空间内。其他希望使用这个共享内存段进行通信段进行通信的进程应将其附加到自己的地址空间。</p>
+<p>生产者进程生成信息，以供消费者进程消费。为了允许生存者进程和消费者进程并发执行，应有一个可用的缓冲区，以被生存者填充和被消费者清空。这个缓冲区驻留在生产者进程和消费者进程的共享内存区域内。当消费者使用一项时，生产者可生产另一项。生产者和消费者必须同步，这样消费者不会试图消费一个尚未生产出来的项。</p>
+<p>缓冲区域类型可分为两种。<br><strong>无界缓冲区</strong>没有限制缓冲区的大小。消费者可能不得不等待新的项，但生产者总是可以产生新项。<br><strong>有界缓冲区</strong>假设固定大小的缓冲区。对于这种情况，如果缓冲区空，那么消费者必须等待；并且如果缓冲区满，那么生产者必须等待。</p>
+<h6 id="采用共享内存的生产者进程如下："><a href="#采用共享内存的生产者进程如下：" class="headerlink" title="采用共享内存的生产者进程如下："></a>采用共享内存的生产者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    &#x2F;* produce an item in next_produced *&#x2F;</span><br><span class="line">    </span><br><span class="line">    while(((in + 1) % BUFFER_SIZE) &#x3D;&#x3D; out)</span><br><span class="line">        ; &#x2F;* do nothing *&#x2F;</span><br><span class="line">    </span><br><span class="line">    buffer[in] &#x3D; next_produced;</span><br><span class="line">    in &#x3D; (in + 1) % BUFFER_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="采用共享内存的消费者进程如下："><a href="#采用共享内存的消费者进程如下：" class="headerlink" title="采用共享内存的消费者进程如下："></a>采用共享内存的消费者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    while(in &#x3D;&#x3D; out)</span><br><span class="line">        ;&#x2F;* do nothing *&#x2F;</span><br><span class="line">    next_consumed &#x3D; buffer[out];</span><br><span class="line">    out &#x3D; (out + 1) % BUFFER_SIZE;</span><br><span class="line">    </span><br><span class="line">    &#x2F;* consume the item in next_consumed *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>对于回溯和剪枝的题目还是作太少了。应该要加强练习。</p>
-<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.查看了我leetcode的刷题情况，询问我主要擅长什么类型的题目，能否独立完成困难题目。<br>2.询问了是否知道回溯。<br>3.考察了DFS和BFS，原理和实现，应用场景<br>4.考察了C++虚函数<br>5.能讲解一下类吗<br>6.询问了项目相关<br>7.询问是否对数据库底层原理了解<br>8.学习能力怎么样</p>
-<h3 id="我询问面试官准备秋招还有哪些方面"><a href="#我询问面试官准备秋招还有哪些方面" class="headerlink" title="我询问面试官准备秋招还有哪些方面"></a>我询问面试官准备秋招还有哪些方面</h3><p>1.继续刷题，笔试500分会重点关注。要了解更多的算法思想，并查集，回溯，递归，递推，归并，贪心，动态规划，模拟，枚举<br>2.熟悉操作系统，因为杭研所主要还是做底层开发的，所以对整个CPU执行程序的过程，汇编等需要用到<br>3.如果有兴趣来做数据库的话，也要需要了解数据库相关的底层原理</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>和面试官整个沟通过程，感觉整个状态很好，所以也如愿以偿收到二面通知，明天就要二面了。加油～</p>
+
+<h4 id="消息传递系统"><a href="#消息传递系统" class="headerlink" title="消息传递系统"></a>消息传递系统</h4><p>对于分布式环境（通信进程可能位于通过网络连接的不同计算机），消息传递特别有用。<br>消息传递工具提供至少两种操作：</p>
+<ul>
+<li>send(message)     </li>
+<li>recevie(message)</li>
+</ul>
+<p>进程发送消息可以是定长的或变长的。如果只能发生定长消息，那么系统级实现就简单。不过，这一限制使得编程任务更加困难。相反，变长消息要求更复杂的系统级实现，但是编程任务就变得更简单。在整个操作系统设计中，这种折中很常见。</p>
+<p>如果进程P和Q需要通信，那么它们必须相互发送消息和接受消息：它们之间要有<strong>通信链路</strong>。该链路的实现有多种方法。这里不关心链路的物理实现，而只关心链路的逻辑实现。这里有几个方法，用于实现链路和操作send()/receive():</p>
+<ul>
+<li>直接或间接的通信</li>
+<li>同步或异步的通信</li>
+<li>自动或显式的缓冲</li>
+</ul>
+<h4 id="1-命名"><a href="#1-命名" class="headerlink" title="1. 命名"></a>1. 命名</h4><p>需要通信的进程应有一个方法，以便相互引用。它们可以直接或间接的通信。<br>对于<strong>直接通信</strong>，需要通信的每个进程必须指明指定通信的接收者或发送者。采用这种方案，原语send()和receive()定义如下：</p>
+<ul>
+<li>send(P, message): 向进程P发送message。</li>
+<li>receive(Q, message)： 从进程Q接收message。</li>
+</ul>
+<p>这种方案的通信链路具有以下属性：</p>
+<ul>
+<li>在需要通信的每对进程之间，自动建立链路。进程仅需知道对方身份就可交流。</li>
+<li>每个链路只与两个进程相关。</li>
+<li>每个进程只有一个链路。</li>
+</ul>
+<p>这种方案展示了寻址的对称性，即发送和接收进程必须指定对方，以便通信。这种方案的一个变形采用寻址的非对称性，即只要发送者指定接收者，而接受者不需要指定发送者。采用这种方案，原语send()和receive()的定义如下：</p>
+<ul>
+<li>send(P, message): 向进程P发送message。</li>
+<li>receive(id, message): 从任何进程，接收message，这里变量id被设置成与其通信进程的名称。</li>
+</ul>
+<p>这两个方案（对称和非对称的寻址）的缺点是：生成进程定义的有限模块化。更改进程的标志符可能需要分析其他进程定义。所有旧的标志符的引用都应找到，以便修改成为新标识符。通常，任何时候的硬编码技术（其中标志符需要明确指定），与下面所诉的采用间接技术相比要差。</p>
+<p>在<strong>间接通信</strong>中，通过邮箱和端口来接收消息。邮箱可以抽象成一个对象，进程可以向其中存放消息，也可以从中删除消息，每个邮箱都有一个唯一的标识符。一个进程可以通过不同邮箱与另一个进程通信，但是两个进程只有拥有一个共享邮箱时才能通信。原语send()和receive()定义如下：</p>
+<ul>
+<li>send(A, message): 向邮箱A发送message。</li>
+<li>receive(A, message): 从邮箱A接收messgae。</li>
+</ul>
+<p>对于这种方案，链路通信具有如下特点：</p>
+<ul>
+<li>只有两个进程共享一个邮箱时，才能建立通信链路。</li>
+<li>一个链路可以与两个或更多进程相关联。</li>
+<li>两个通信进程之间可有多个不同链路，每个链路对应于一个邮箱。</li>
+</ul>
+<h4 id="2-同步"><a href="#2-同步" class="headerlink" title="2. 同步"></a>2. 同步</h4><p>进程间通信可以通过调用原语send()和receive()来进行。实现这些原语有不同的设计方案。消息传递可以是阻塞或非阻塞，也称为同步或异步。</p>
+<ul>
+<li><strong>阻塞发送</strong>： 发送进程阻塞，直到消息由接收进程或邮箱所接收。</li>
+<li><strong>非阻塞发送</strong>： 发送进程发送消息，并且恢复操作。</li>
+<li><strong>阻塞接收</strong>： 接收进程阻塞，直到消息可用。</li>
+<li><strong>非阻塞接收</strong>： 接收进程收到一个有效消息或者空消息。</li>
+</ul>
+<p>不同组合的send()和receive()都有可能。当send()和receive()都是阻塞的，则在发送者和接收者之间就有一个<strong>交互</strong>。当采用阻塞的send()和receive()时，生产者-消费者问题的解决就简单了。生产者仅需调用阻塞send()并且等待，直到消息被送到接收者或者邮箱。同样，当消费者调用reiceve()时，它会阻塞直到有一个消息可用。</p>
+<h6 id="采用消息传递的生产者进程如下："><a href="#采用消息传递的生产者进程如下：" class="headerlink" title="采用消息传递的生产者进程如下："></a>采用消息传递的生产者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message next_produced</span><br><span class="line">while(true) &#123;</span><br><span class="line">    &#x2F;* produce an item in next_produced *&#x2F;</span><br><span class="line">    </span><br><span class="line">    send(next_produced);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="采用消息传递的消费者进程如下："><a href="#采用消息传递的消费者进程如下：" class="headerlink" title="采用消息传递的消费者进程如下："></a>采用消息传递的消费者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message next_comsumed</span><br><span class="line">while(true) &#123;</span><br><span class="line">    receive(next_consumed);</span><br><span class="line">    </span><br><span class="line">    &#x2F;* consume the item in next_consumed *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-缓存"><a href="#3-缓存" class="headerlink" title="3. 缓存"></a>3. 缓存</h4><p>不管通信时直接的还是间接的，通信进程交换的消息总是驻留在临时队列中。简单地讲，队列实现有三种方法：</p>
+<ul>
+<li><strong>零容量</strong>：队列的最大长度为0；因此，链路中不能有任何消息处于等待。对于这种情况，发送者应阻塞，直到接收者接收消息。</li>
+<li><strong>有限容量</strong>： 队列长度为有限的n；因此，最多只能有n个消息驻留其中。如果在发送消失时队列未满，那么该消息可以放在队列中（或者复制消息或者保存消息的指针），且发生者可以继续执行而不必等待。然而，链路容量是有限。如果链路已满，那么发送者应阻塞，直到队列空间有有用的为止。</li>
+<li><strong>无限容量</strong>： 队列长度可以无限，因此，不管多少消息都可以在其中等待。发送者从不阻塞。</li>
+</ul>
+<p>零容量情况称为无缓冲的消息系统，其他情况称为自动缓冲的消息系统。</p>
 
       
       <!-- reward -->
@@ -180,14 +243,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd4ns0bg000hu19k65v1ft8k/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd5g3gxs0000di9k0ztyb2xj/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
 
 
     </footer>
@@ -198,19 +261,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ckd4ns0b80005u19k03l7hlvs/" class="article-nav-link">
+      <a href="/2020/ckd5g3gyf000adi9kemu02jx6/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            华为软件开发工程师提前批二面
+            华为笔试总结
           
         </div>
       </a>
     
     
-      <a href="/2020/ckd4ns0b70004u19kbrecefdv/" class="article-nav-link">
+      <a href="/2020/ckd5g3gxz0001di9k79p6fyzl/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">华为笔试总结</div>
+        <div class="article-nav-title">字节跳动秋招提前批c++客户端一面</div>
       </a>
     
   </nav>
