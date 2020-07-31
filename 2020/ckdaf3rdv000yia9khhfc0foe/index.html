@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    数据链路层 |  猪猪侠
+    华为软件开发工程师提前批一面 |  猪猪侠
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Data-Link-Layer" class="article article-type-post" itemscope
+  <article id="post-interview_HW_1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  数据链路层
+  华为软件开发工程师提前批一面
 </h1>
   
 
@@ -52,12 +52,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wce0001s19k56ii6baj/" class="article-date">
-  <time datetime="2020-03-08T12:28:52.720Z" itemprop="datePublished">2020-03-08</time>
+      <a href="/2020/ckdaf3rdv000yia9khhfc0foe/" class="article-date">
+  <time datetime="2020-07-26T08:04:28.466Z" itemprop="datePublished">2020-07-26</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
   </div>
 
       
@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.8k字</span>
+            <span class="post-count">695字</span>
         </span>
     </span>
 
@@ -76,7 +76,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">9分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -103,242 +103,14 @@
       
 
       
-      <h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="点对点信道的数据链路层在进行通信时的主要步骤如下"><a href="#点对点信道的数据链路层在进行通信时的主要步骤如下" class="headerlink" title="点对点信道的数据链路层在进行通信时的主要步骤如下"></a>点对点信道的数据链路层在进行通信时的主要步骤如下</h3><ul>
-<li>1.结点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成帧</li>
-<li>2.结点A把封装好的帧发生发生给结点B的数据链路层</li>
-<li>3.若结点B的数据链路层收到的帧无差错，则从收到的帧中提取 出IP数据报交给上面的网络层；否则丢弃这个帧</li>
-</ul>
-<h3 id="三个基本问题"><a href="#三个基本问题" class="headerlink" title="三个基本问题"></a>三个基本问题</h3><ul>
-<li><p>封装成帧</p>
-<ul>
-<li>在一段数据的前后分布添加首部和尾部，这样就构成了一个帧</li>
-<li>MTU(Maximum Transfer Unit)最大传送单元是指帧的数据部分长度上限,默认值1500字节</li>
-</ul>
-</li>
-<li><p>透明传输</p>
-<ul>
-<li>“透明”表示某一个实际存在的事物看起来却好像不存在。这些数据就“看不见”数据链路层有什么防碍数据传输的东西。</li>
-<li>为解决透明传输问题，发送端的数据链路层在出现控制字符“SOH”和“EOT”之前加入转义字符“ESC”，在接收端的数据链路层把数据运往网络层之前删除这些之前插入的转义字符。这种方法叫字节填充或字符填充。</li>
-</ul>
-</li>
-<li><p>差错检测</p>
-<ul>
-<li><p>误码率</p>
-<ul>
-<li>在一段时间内，传输错误的比特占所传输比特总数的比率</li>
-</ul>
-</li>
-<li><p>循环冗余检测CRC(Cyclic Redundancy Check)</p>
-<ul>
-<li>在每组数据后面增加n位冗余码供差错检测</li>
-</ul>
-</li>
-<li><p>帧检验序列FCS(Frame Check Sequence)</p>
-<ul>
-<li>CRC是一种检错方法，而FSC是添加在数据后面的冗余码，在检错方法上可以选用CRC，但也可以不选用CRC</li>
-</ul>
-</li>
-<li><p>数据链路层若仅仅使用CRC差错检测技术，则只能做到对帧但无差错接收</p>
-</li>
-<li><p>传输差错</p>
-<ul>
-<li><p>比特差错</p>
-<ul>
-<li>比特在传输过程中可能会产生差错，1变0，0变1</li>
-</ul>
-</li>
-<li><p>没有比特差错</p>
-<ul>
-<li>帧丢失</li>
-<li>帧重复</li>
-<li>帧失序</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>对于通信质量较差但无线传输链路，数据链路层协议使用确认和重传机制，数据链路层向上提供可靠传输的服务</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="点对点协议PPP-Point-to-Point-Protocol"><a href="#点对点协议PPP-Point-to-Point-Protocol" class="headerlink" title="点对点协议PPP(Point -to-Point Protocol)"></a>点对点协议PPP(Point -to-Point Protocol)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li><p>应该满足的需求</p>
-<ul>
-<li>简单</li>
-<li>封装成帧</li>
-<li>透明性</li>
-<li>多种网络层协议</li>
-<li>多种类型链路</li>
-<li>差错检测</li>
-<li>检测连接状态</li>
-<li>最大传送单元</li>
-<li>网络层地址协商</li>
-<li>数据压缩协商</li>
-</ul>
-</li>
-<li><p>组成</p>
-<ul>
-<li>一个将IP数据报封装到串行链路的方法。PPP既支持异步链路（无奇偶检验的8比特数据），也支持面向比特的同步链路。IP数据报在PPP帧中就是信息部分。这个信息部分长度受最大传送单元MTU限制</li>
-<li>一个用来建立、配置和测试数据链路连接的链路控制协议LCP(Link Control Protocol)。通信双方可以协商一些选项。在RFC 1661中定义了11种类型的LCP分组</li>
-<li>一套网络控制协议NCP(Network Control Protocol),其中的每个协议支持不同的网络层协议，如IP、OSI的网络层、DECnet、以及AppleTalk等。</li>
-</ul>
-</li>
-</ul>
-<h3 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h3><ul>
-<li><p>各字段意义</p>
-<ul>
-<li>首部的第一个字段和尾部的第二个字段F(Flag),规定为0x7E</li>
-<li>首部中的字段A规定为0xFF，控制字段C规定为0x03。最初考虑以后再对这两个字段的值进行定义，但自今也没有给出。</li>
-<li>PPP首部的第四个字段是2字节的协议字段。当协议字段为0x0021时，PPP帧的信息字段就是IP数据报。若为0xC021，则信息字段是PPP链路控制协议LCP的数据，而0x8021表示网络层的控制数据。</li>
-<li>信息字段的长度是可变的，不超过1500字节</li>
-<li>尾部中的第一个字段(2字节)是使用CRC的帧检验序列FCS</li>
-</ul>
-</li>
-<li><p>字节填充</p>
-<ul>
-<li><p>当PPP使用异步传输时，他把转义符定义为0x7D，并使用字节填充</p>
-<ul>
-<li>把信息字段中出现的每一个0x7E字节转变为2字节序列(0x7D,0x5E)</li>
-<li>若信息字段中出现一个0x7D的字节(即出现了和转义字符一样的比特组合），则把0x7D转变为2字节序列(0x7D,0x5D)</li>
-<li>若信息字段中出现ASCII码的控制符（即树枝小于0x20的字符），则在字符前面加上一个0x7D字节，同时把该字符的编码加以改变。例如，出现0x03就把它转变为2字节序列(0x7D,0x23)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>零比特填充</p>
-<ul>
-<li><p>PPP协议用在SONET/SDH链路时，使用同步传输（一连串的比特连续传送）而不是异步传输（逐个字符地传送）</p>
-<ul>
-<li>在发送端，先扫描整个信息字段（通常用硬件实现，但也是可用软件实现，只是会慢些）。只要发现有5个连续1，则立即填入一个0.因此经过这个零比特填充后的数据，就可以保证在信息字段不会出现6个连续1。接收端在收到一个帧时，先找到标志字段F以确定一个帧的边界，接着再用硬件对其中的比特流进行扫描。每当发现5个连续1时，就把这5个连续1后的0删除，以还原成原来的信息比特流</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="工作状态"><a href="#工作状态" class="headerlink" title="工作状态"></a>工作状态</h3><ul>
-<li>当用户拨号接入ISP后，就建立一条从用户个人电脑到ISP的物理连接。这时，用户个人电脑向ISP发送一系列的链路控制协议LCP分组（封装成多个PPP帧），以便建立LCP连接。这些分组以及其响应选择了将要使用的一些PPP参数。接着还要进行网络层配置，网络控制协议NCP给新接入的用户个人电脑分配一些临时的IP地址。这样，用户个人电脑就称为互联网上的一个有IP地址的主机了</li>
-</ul>
-<h2 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h2><h3 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h3><ul>
-<li><p>局域网的优点</p>
-<ul>
-<li>具有广播功能，从一个站点可很方便地访问全网。局域网上的主机可共享连接在局域网上的各种硬件和软件资源</li>
-<li>便于系统的扩展和逐渐演变，各设备的位置可灵活调节和改变</li>
-<li>提高了系统的可靠性、可用性和生存性</li>
-</ul>
-</li>
-<li><p>局域网按网络拓扑分类</p>
-<ul>
-<li>星形网</li>
-<li>环形网</li>
-<li>总线网</li>
-</ul>
-</li>
-<li><p>共享信道技术上的两种方法</p>
-<ul>
-<li><p>静态划分信道</p>
-<ul>
-<li>频分复用、时分复用、波分复用和码分复用等，用户只要分配到了信道就不会和其他用户发送冲突。但这种方法代价较高，不适合局域网使用</li>
-</ul>
-</li>
-<li><p>动态媒体接入控制</p>
-<ul>
-<li><p>随机接入</p>
-<ul>
-<li>随机接入的特点是所有的用户可随机地发送信息。但如果恰巧有两个或更多但用户在同一时刻发送信息，那么在共享媒体上就要产生碰撞（即发送了冲突），使得这些用户但发送都失败。因此，必须有解决碰撞的网络协议。</li>
-</ul>
-</li>
-<li><p>受控接入</p>
-<ul>
-<li>受控接入的特点是用户不能随机地发送信息而必须服从一定的控制。这类的典型代表有分散控制的令牌环局域网和集中控制的多点线路探询（polling），或称为轮询。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>IEEE802委员会曾把局域网的数据链路层拆成两个子层，即逻辑链路控制（LLC）子层（与传输媒体无关）和媒体接入控制子层（MAC）子层（与传输媒体有关）。但现在LLC子层已成历史。MAC（Medium Access Control）LLC（Logical Link Control）</p>
-</li>
-<li><p>计算机与外界局域网的通信要通过通信适配器（或网络适配器），它又称为网络接口卡或网卡。计算机的硬件地址就在适配器的ROM中</p>
-</li>
-</ul>
-<h3 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h3><ul>
-<li><p>协议要点</p>
-<ul>
-<li><p>多点接入</p>
-<ul>
-<li>说明这是总线型网络，许多计算机以多点接入的方式连接在一个总线上</li>
-</ul>
-</li>
-<li><p>载波监听</p>
-<ul>
-<li>载波监听就是检测信道。不管发送前，还是发送中，每个站都必须不停地检测信道</li>
-</ul>
-</li>
-<li><p>碰撞检测</p>
-<ul>
-<li>就是“便发送边监听”，即适配器边发送数据边检测信道上的信号电压的变化情况，以便判断自己在发送数据时其他站是否也在发送数据</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><p>准备发送</p>
-<ul>
-<li>适配器从网络层获得一个分组，加上以太网的首部和尾部，以组成以太网帧，放入适配器的缓存中。但是发送之前，必须先检测信道</li>
-</ul>
-</li>
-<li><p>检测信道</p>
-<ul>
-<li>若检测到信道忙，则应不停地检测，一直等待信道转为空闲。若检测到信道空闲，并在96比特时间内信道保持空闲（保证了帧间最小间隔），就发送这个帧。</li>
-</ul>
-</li>
-<li><p>在发送过程中仍不停地检测信道，即网络适配器要边发送边监听</p>
-<ul>
-<li>发送成功：争用期内一直为检测到碰撞。这个帧肯定能够发送成功。发送完毕后，其他什么也不做。然后回到准备发送的状态。</li>
-<li>发送失败：在争用期内检测到碰撞。这时立即停止发送数据，并按规定发送人为干扰信号。适配器接着执行指数退避算法，等待r倍512比特时间后，返回到检测信道。但若重传达16次仍不成功，则停止重传而向上报错</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h3><ul>
-<li>使用集线器物理上是星型网实际，在逻辑上仍然是一个总线网，各站使用的还是CSMA/CD协议</li>
-<li>集线器有很多接口，很像一个多接口的转发器</li>
-<li>集线器工作在物理层，工作只是简单地转发，不进行碰撞检测</li>
-<li>集线器采用了专门的芯片，进行自适应串音回波抵消</li>
-</ul>
-<h3 id="以太网的MAC层（medium-access-control）"><a href="#以太网的MAC层（medium-access-control）" class="headerlink" title="以太网的MAC层（medium access control）"></a>以太网的MAC层（medium access control）</h3><ul>
-<li><p>MAC层的硬件地址</p>
-<ul>
-<li>硬件地址又称为物理地址或MAC地址</li>
-<li>MAC地址固化在适配器的ROM中</li>
-</ul>
-</li>
-<li><p>MAC帧的格式</p>
-<ul>
-<li><p>第一个字段：6字节长的目的地址</p>
-</li>
-<li><p>第二个字段：6字节长的源地址</p>
-</li>
-<li><p>第三个字段：2字节长的类型字段</p>
-<ul>
-<li>IP数据报：0x0800</li>
-<li>Novell IPX：0x8137</li>
-</ul>
-</li>
-<li><p>第四个字段：长度在46到1500字节之间的数据字段</p>
-</li>
-<li><p>第五个字段：4字节的帧检验序列FCS（使用CRC检验）</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="扩展的以太网"><a href="#扩展的以太网" class="headerlink" title="扩展的以太网"></a>扩展的以太网</h3><ul>
-<li>使用集线器在物理层扩展以太网</li>
-<li>交换式集线器常称为以太网交换机或第二层交换机（工作在数据链路层）。他就是一个多接口的网桥，而每个接口都直接与某台主机或另一个集线器相连，且工作在全双工方式。以太网交换机能同时连通许多对的接口，使每一对相互通信的主机都能像独占通信媒体那样，无碰撞地传输数据</li>
-</ul>
-<p><em>XMind: ZEN - Trial Version</em></p>
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p>
+<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  test_HW</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 张嘉喜 on 2020/7/24.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 张嘉喜. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</span><br><span class="line">            ans.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.size() &amp;&amp; target - candidates[i] &gt;= <span class="number">0</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">//剪枝去重</span></span><br><span class="line">            <span class="comment">//这里i &gt; start 放在前面不然有些编译器会提示数组越界了</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; start &amp;&amp; candidates[i] == candidates[i - <span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            DFS(i + <span class="number">1</span>, target - candidates[i]);</span><br><span class="line">            <span class="comment">// 回溯</span></span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 排序后方便剪枝</span></span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        </span><br><span class="line">        DFS(<span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates ;</span><br><span class="line">    candidates.push_back(<span class="number">10</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">2</span>);</span><br><span class="line">    candidates.push_back(<span class="number">7</span>);</span><br><span class="line">    candidates.push_back(<span class="number">6</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    Solution s = Solution();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans = s.combinationSum2(candidates, <span class="number">8</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; ans.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; ans[i].size(); j++ ) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i][j] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于回溯和剪枝的题目还是作太少了。应该要加强练习。</p>
+<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.查看了我leetcode的刷题情况，询问我主要擅长什么类型的题目，能否独立完成困难题目。<br>2.询问了是否知道回溯。<br>3.考察了DFS和BFS，原理和实现，应用场景<br>4.考察了C++虚函数<br>5.能讲解一下类吗<br>6.询问了项目相关<br>7.询问是否对数据库底层原理了解<br>8.学习能力怎么样</p>
+<h3 id="我询问面试官准备秋招还有哪些方面"><a href="#我询问面试官准备秋招还有哪些方面" class="headerlink" title="我询问面试官准备秋招还有哪些方面"></a>我询问面试官准备秋招还有哪些方面</h3><p>1.继续刷题，笔试500分会重点关注。要了解更多的算法思想，并查集，回溯，递归，递推，归并，贪心，动态规划，模拟，枚举<br>2.熟悉操作系统，因为杭研所主要还是做底层开发的，所以对整个CPU执行程序的过程，汇编等需要用到<br>3.如果有兴趣来做数据库的话，也要需要了解数据库相关的底层原理</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>和面试官整个沟通过程，感觉整个状态很好，所以也如愿以偿收到二面通知，明天就要二面了。加油～</p>
 
       
       <!-- reward -->
@@ -408,14 +180,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd8y3wce0001s19k56ii6baj/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckdaf3rdv000yia9khhfc0foe/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
 
 
     </footer>
@@ -426,19 +198,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ckd8y3wcs000ms19kc8v9grpy/" class="article-nav-link">
+      <a href="/2020/ckdaf3rdp000oia9kc0w49fpd/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            java的基本程序设计结构
+            华为软件开发工程师提前批二面
           
         </div>
       </a>
     
     
-      <a href="/2020/ckd8y3wdn001ms19kdibo28n7/" class="article-nav-link">
+      <a href="/2020/ckdaf3rcx0005ia9kefjkg7vt/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">我的博客诞生了</div>
+        <div class="article-nav-title">华为笔试总结</div>
       </a>
     
   </nav>

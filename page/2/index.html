@@ -74,6 +74,72 @@
     
     
     
+    <article id="post-new_and_malloc" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckdaf3rdz0017ia9k4ed37qdb/"
+    >new与malloc的区别</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckdaf3rdz0017ia9k4ed37qdb/" class="article-date">
+  <time datetime="2020-06-18T16:15:16.710Z" itemprop="datePublished">2020-06-19</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h4 id="1-molloc与free是C-c语言的标准函数，-new-delete是c-的运算符。"><a href="#1-molloc与free是C-c语言的标准函数，-new-delete是c-的运算符。" class="headerlink" title="1. molloc与free是C++/c语言的标准函数， new/delete是c++的运算符。"></a>1. molloc与free是C++/c语言的标准函数， new/delete是c++的运算符。</h4><h4 id="2-他们都可以用于申请动态内存和释放内存。new-delete比molloc-free更加智能，其实底层也是执行的malloc-free。为啥说new-delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。"><a href="#2-他们都可以用于申请动态内存和释放内存。new-delete比molloc-free更加智能，其实底层也是执行的malloc-free。为啥说new-delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。" class="headerlink" title="2.他们都可以用于申请动态内存和释放内存。new/delete比molloc/free更加智能，其实底层也是执行的malloc/free。为啥说new/delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。"></a>2.他们都可以用于申请动态内存和释放内存。new/delete比molloc/free更加智能，其实底层也是执行的malloc/free。为啥说new/delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。</h4><h5 id="既然new-delete的功能完全覆盖了malloc和free，-为什么c-中不把malloc-free淘汰出局呢？"><a href="#既然new-delete的功能完全覆盖了malloc和free，-为什么c-中不把malloc-free淘汰出局呢？" class="headerlink" title="既然new/delete的功能完全覆盖了malloc和free， 为什么c++中不把malloc/free淘汰出局呢？"></a>既然new/delete的功能完全覆盖了malloc和free， 为什么c++中不把malloc/free淘汰出局呢？</h5><h5 id="因为c-程序经常要调用c语言，而c语言只能用malloc-free管理动态内存。"><a href="#因为c-程序经常要调用c语言，而c语言只能用malloc-free管理动态内存。" class="headerlink" title="因为c++程序经常要调用c语言，而c语言只能用malloc/free管理动态内存。"></a>因为c++程序经常要调用c语言，而c语言只能用malloc/free管理动态内存。</h5><h4 id="3-new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void-，-必须强制转换为实际类型的指针。"><a href="#3-new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void-，-必须强制转换为实际类型的指针。" class="headerlink" title="3. new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void*， 必须强制转换为实际类型的指针。"></a>3. new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void*， 必须强制转换为实际类型的指针。</h4>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-process" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +148,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckd8y3wdj001hs19kghca91yt/"
+  <a class="article-title" href="/2020/ckdaf3re1001bia9ke0pp54py/"
     >进程和线程</a
   >
 </h2>
@@ -93,7 +159,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wdj001hs19kghca91yt/" class="article-date">
+      <a href="/2020/ckdaf3re1001bia9ke0pp54py/" class="article-date">
   <time datetime="2020-06-17T06:00:00.000Z" itemprop="datePublished">2020-06-17</time>
 </a>
       
@@ -167,7 +233,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckd8y3wcs000ms19kc8v9grpy/"
+  <a class="article-title" href="/2020/ckdaf3rdy0014ia9k9b01h1yq/"
     >java的基本程序设计结构</a
   >
 </h2>
@@ -178,7 +244,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wcs000ms19kc8v9grpy/" class="article-date">
+      <a href="/2020/ckdaf3rdy0014ia9k9b01h1yq/" class="article-date">
   <time datetime="2020-03-18T06:00:00.000Z" itemprop="datePublished">2020-03-18</time>
 </a>
       
@@ -372,7 +438,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckd8y3wce0001s19k56ii6baj/"
+  <a class="article-title" href="/2020/ckdaf3rdo000mia9k8sih0w8o/"
     >数据链路层</a
   >
 </h2>
@@ -383,7 +449,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wce0001s19k56ii6baj/" class="article-date">
+      <a href="/2020/ckdaf3rdo000mia9k8sih0w8o/" class="article-date">
   <time datetime="2020-03-08T12:28:52.720Z" itemprop="datePublished">2020-03-08</time>
 </a>
       
@@ -680,7 +746,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckd8y3wdn001ms19kdibo28n7/"
+  <a class="article-title" href="/2020/ckdaf3re3001hia9k6a7ie6nq/"
     >我的博客诞生了</a
   >
 </h2>
@@ -691,7 +757,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wdn001ms19kdibo28n7/" class="article-date">
+      <a href="/2020/ckdaf3re3001hia9k6a7ie6nq/" class="article-date">
   <time datetime="2020-03-05T06:00:00.000Z" itemprop="datePublished">2020-03-05</time>
 </a>
       
@@ -769,7 +835,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckd8y3wct000os19k1fvfelx8/"
+  <a class="article-title" href="/2020/ckdaf3rdr000sia9k16mw9g77/"
     >Hello World</a
   >
 </h2>
@@ -780,7 +846,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wct000os19k1fvfelx8/" class="article-date">
+      <a href="/2020/ckdaf3rdr000sia9k16mw9g77/" class="article-date">
   <time datetime="2020-03-03T06:00:00.000Z" itemprop="datePublished">2020-03-03</time>
 </a>
       

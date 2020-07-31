@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    华为软件开发工程师提前批二面 |  猪猪侠
+    华为提前批综合面试 |  猪猪侠
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -35,7 +35,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-interview_HW2" class="article article-type-post" itemscope
+  <article id="post-interview_HW_3" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -43,7 +43,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  华为软件开发工程师提前批二面
+  华为提前批综合面试
 </h1>
   
 
@@ -52,8 +52,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckd8y3wcm000as19keong8mbi/" class="article-date">
-  <time datetime="2020-07-28T04:33:28.944Z" itemprop="datePublished">2020-07-28</time>
+      <a href="/2020/ckdaf3rdt000via9ka83sc8x5/" class="article-date">
+  <time datetime="2020-07-30T06:00:00.000Z" itemprop="datePublished">2020-07-30</time>
 </a>
       
   <div class="article-category">
@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">499字</span>
+            <span class="post-count">402字</span>
         </span>
     </span>
 
@@ -103,14 +103,24 @@
       
 
       
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一个电话没接着，打不回去，就好怕改时间还是自己错过了。打校招电话回去咨询。还请教了一面的面试官。不过最后还是完美收尾了</p>
-<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode316原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.find(s[i]) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!str.empty() &amp;&amp; str.back() &gt; s[i] &amp;&amp; s.find(str.back(), i)!=<span class="built_in">string</span>::npos)</span><br><span class="line">                str.pop_back();</span><br><span class="line">            str.push_back(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>贪心加栈，同时，当根据条件去掉一个栈顶元素时，新的栈顶元素可能也大于当前元素，所以应该继续判断新的栈顶元素和当前元素的关系，用一个while循环，直到出现一个不满足循环条件的栈顶元素（要么小于当前元素，要么大于当前元素但后续又无与之相同的元素来替代）。</p>
-<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.考察了设计模式<br>2.考察了面向对象的三个特点<br>3.考察了stl和红黑树<br>4.考察了C++虚函数<br>5.询问了项目相关<br>6.考察了模版类<br>7.考察了软件工程相关的整个流程<br>8.考察了类的六大特性<br>9.new和molloc的区别<br>10.构造函数和析构函数的调用过程<br>11.介绍一下继承的种类</p>
-<h3 id="我询问面试官软件工程的知识在实际开发过程中真的会用到么"><a href="#我询问面试官软件工程的知识在实际开发过程中真的会用到么" class="headerlink" title="我询问面试官软件工程的知识在实际开发过程中真的会用到么"></a>我询问面试官软件工程的知识在实际开发过程中真的会用到么</h3><p>会用到很多，对于整个过程管理会很严格，文档和单元测试，集成测试等环节。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>感觉整个面试还是很不错，但是不知道会不会有三面，好想拿到offer！</p>
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>开始很紧张，面试前巨害怕。会不会和自己昨晚在网上搜索的内容一样有相似的经历。然后，又不得不请个假。面试前面试官不能录屏。然后又反复进入，留我一个人在视频里。这次面试没有像前两次一样一上来就手撕代码。（我前两次都没能撕出来）。主要的面试内容就是看着你的简历向你提问。</p>
+<h3 id="面试要点"><a href="#面试要点" class="headerlink" title="面试要点"></a>面试要点</h3><ol>
+<li>询问了本科和研究生的绩点</li>
+<li>询问了本科和研究生的主要课程</li>
+<li>询问课程在实际生活是否有应用，在哪里</li>
+<li>询问了软件开发的完整流程</li>
+<li>询问了个人的优缺点，分别在哪里体现</li>
+<li>询问了为什么选择进入软件开发</li>
+<li>周末喜欢做什么 </li>
+<li>询问了个人对地域选择的意愿</li>
+<li>询问了学长学姐的主要去向</li>
+<li>询问了个人对薪资的期望</li>
+</ol>
+<h3 id="反问面试官"><a href="#反问面试官" class="headerlink" title="反问面试官"></a>反问面试官</h3><ol>
+<li>你能给我介绍一下杭州的主要业务？华为的四大BG，软件研究院里面主要做研究的。杭州定位为计算研究所。华为开源的各种底层服务，open欧拉 open罗庚等等。</li>
+<li>如果我进入计算产品线，需要具备哪些计算栈？主要强力推荐了《计算机体系结构》。</li>
+</ol>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>隔天，查看官网的招聘进度，已经显示通过，并且询问了在职学长，说明已经进入池子了。等待被打捞，收获第一个offer。</p>
 
       
       <!-- reward -->
@@ -180,7 +190,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckd8y3wcm000as19keong8mbi/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckdaf3rdt000via9ka83sc8x5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -198,19 +208,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ckd8y3wcn000bs19k3eqw7t2j/" class="article-nav-link">
+      <a href="/2020/ckdaf3rco0000ia9kbov93a1o/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            华为提前批综合面试
+            7.31 阿里笔试
           
         </div>
       </a>
     
     
-      <a href="/2020/ckd8y3wcq000hs19kfiea3uex/" class="article-nav-link">
+      <a href="/2020/ckdaf3rdp000oia9kc0w49fpd/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">华为软件开发工程师提前批一面</div>
+        <div class="article-nav-title">华为软件开发工程师提前批二面</div>
       </a>
     
   </nav>
