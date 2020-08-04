@@ -74,6 +74,201 @@
     
     
     
+    <article id="post-deadlock" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckdfgfmwd0004fa9k80hb6xhd/"
+    >什么是死锁？在什么情况下产生？怎么解决？</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckdfgfmwd0004fa9k80hb6xhd/" class="article-date">
+  <time datetime="2020-06-23T06:00:00.000Z" itemprop="datePublished">2020-06-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p>
+<p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
+<ul>
+<li><strong>互斥（ mutual exclusion）</strong>：至少一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li>
+<li><strong>占有并等待（ hold and wait ）</strong>：一个进程应占有至少一个资源，并等待另一个资源，该资源为其他进程所占有。</li>
+<li><strong>非抢占（ no preemption ）</strong>：资源不能被抢占，即资源只能被进程完成任务后自愿释放。</li>
+<li><strong>循环等待（ circular wait ）</strong>：有一组等待进程{P0,P1,···，Pn},P0等待的资源为P1占有，P1等待的资源为P2占有，·······，P（n-1）等待的资源为Pn占有，Pn等待的资源被P0占有。</li>
+</ul>
+<p>四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p>
+<p>一般来说，处理死锁问题有三种方法：</p>
+<ul>
+<li>通过协议来预防和避免死锁，确保系统不进入死锁状态。</li>
+<li>可以允许系统进入死锁状态，然后检测它，并加以恢复。</li>
+<li>可以忽视这个问题，认为死锁不可能在系统内发生。</li>
+</ul>
+<p>第三种解决为大多数操作系统所采用，包括Linux和windows。因此应用程序开发人员需要自己编写程序，以便处理死锁。</p>
+<p>死锁预防 死锁避免 死锁检测 死锁恢复。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-virtual" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckdfgfmxj001pfa9k5psu0qk2/"
+    >虚函数</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckdfgfmxj001pfa9k5psu0qk2/" class="article-date">
+  <time datetime="2020-06-20T10:22:26.698Z" itemprop="datePublished">2020-06-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在c++中，基类必须指出派生类重定义哪些函数，定义为virtual的函数是基类期待派生类重新定义的，基类希望派生类继承的函数不能定义为虚函数。（c++ primer）</p>
+<h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>在C++中，通过基类的引用（或指针）调用虚函数时，发生动态绑定。引用（或指针）即可以指向基类对象也可以指向派生类对象，这一事实是动态绑定的关键。用引用（或指针）调用虚函数在<u><strong>运行</strong></u>时确定，被调用的函数是引用（或指针）所指对象的实际类型所定义的。</p>
+<p>保留字virtual的目的是启用动态绑定。成员默认是非虚函数，对非虚函数的调用在<u><strong>编译</strong></u>时确定。为了指明函数为虚函数，在其返回类型类型前面加上保留字virtual。除了构造函数外，任何非static成员函数都可以是虚函数。保留字virtual只能在类内部的成员函数声明中出现，不能在类定义体外部出现的函数定义上。</p>
+<h3 id="派生类与虚函数"><a href="#派生类与虚函数" class="headerlink" title="派生类与虚函数"></a>派生类与虚函数</h3><p>尽管不是必须这么做，派生类一般会重定义所继承的虚函数。如果派生类没有重定义某个虚函数，则使用基类中定义的版本。派生类必须对想要重定义的每个继承成员进行声明。派生类中虚函数的声明必须与基类中的定义方式完全匹配，但有一个例外：返回对基类型的引用（或指针）的虚函数。派生类中的虚函数可以返回基类函数所返回类型的派生类的引用（或指针）。</p>
+<p>tips：一旦函数在基类中声明为虚函数，他就一直为虚函数，派生类无法改变该函数为虚函数这一事实。派生类重定义虚函数时，可以使用virtual保留字，但不是必须这么做。</p>
+<h3 id="覆盖虚函数机制"><a href="#覆盖虚函数机制" class="headerlink" title="覆盖虚函数机制"></a>覆盖虚函数机制</h3><p>在某些情况下，希望覆盖虚函数机制并强制函数调用使用虚函数的特定版本，这时可以用作用域操作符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Item_base *baseP &#x3D; &amp;derived;</span><br><span class="line">&#x2F;&#x2F; calls version from the base class regardless of the dynamic type of baseP</span><br><span class="line">double d &#x3D; baseP -&gt; Item_base::net_prise(42);</span><br></pre></td></tr></table></figure>
+<p>这段代码强制将net_price调用确定为Item_base中定义的版本，该调用将在编译时确定。<br>为什么会希望覆盖虚函数机制？最常见的理由是为了派生类虚函数调用基类中的版本。在这种情况下，基类版本可以完成继承层次中所有类型的公共任务，而每个派生类型只添加自己的特殊工作。</p>
+<p>tips：派生类虚函数调用基类版本时，必须显式使用作用域操作符。如果派生类忽略这样做，则函数调用会在运行时确定并且将是一个自身调用，从而导致无穷递归。</p>
+<h3 id="虚函数与默认实参"><a href="#虚函数与默认实参" class="headerlink" title="虚函数与默认实参"></a>虚函数与默认实参</h3><p>像其他任何函数一样，虚函数也可以有默认实参值，该值将在编译时确定。如果一个调用省略了具有默认值的实参，则所用的值由调用该函数类型定义，与对象的动态类型无关。通过基类的引用或指针调用虚函数时，默认实参为在基类虚函数声明中指定的值，如果通过派生类的指针或引用调用虚函数，则默认实参是在派生类版本中声明的值。</p>
+<p>在同一虚函数的基类版本和派生类版本中使用不同的默认实参几乎一定会引起麻烦。如果通过基类的引用或指针调用虚函数，但实际执行的是派生类中定义的版本，这时就可能会出现问题。在这种情况下，为虚函数的基类版本定义的默认实参将传给派生类定义的版本，而派生类版本是用不同的默认实参定义的。</p>
+<h3 id="c-的多态性"><a href="#c-的多态性" class="headerlink" title="c++的多态性"></a>c++的多态性</h3><p>引用和指针的静态类型和动态类型可以不同，这是C++用以支持多态性的基石。</p>
+<p>通过基类引用或指针调用基类中定义的函数时，我们并不知道执行函数的对象的确切类型，执行函数的对象可能是基类类型的，也可能是派生类型的。</p>
+<p>如果调用非虚函数，则无论实际对象是什么类型，都执行基类类型所定义的函数。如果调用虚函数，则直到运行时才能确定调用哪个函数，运行的虚函数是引用所绑定的或指针所指向的对象所属类型定义的版本。</p>
+<h3 id="虚析构函数"><a href="#虚析构函数" class="headerlink" title="虚析构函数"></a>虚析构函数</h3><p>自动调用基类部分的析构函数对基类的设计有重要影响。</p>
+<p>删除指向动态分配对象的指针时，需要运行析构函数在释放对象的内存之前清理对象。处理继承层次中的对象时，指针的静态类型可能与删除对象的动态类型不同，可能会删除实际指向派生类对象的基类类型指针。</p>
+<p>如果删除基类指针，则需要运行基类析构函数并清除基类的成员，如果对象实际时派生类型的，则没有定义该行为。要保证运行适当的析构函数，基类中的析构函数必须为虚函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Item_base &#123;</span><br><span class="line">public:</span><br><span class="line">    &#x2F;&#x2F; no work,but virtual destructor needed</span><br><span class="line">    &#x2F;&#x2F; if base pointer that points to a derived object is ever deleted</span><br><span class="line">    virtual ~Item_base() &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>如果析构函数为虚函数，那么通过指针调用时，运行哪个析构函数将因指针所指对象类型的不同而不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Item_base *itemP &#x3D; new Item_base; &#x2F;&#x2F; same static and dymatic type </span><br><span class="line">delete item; &#x2F;&#x2F; ok:destructor for Item_base called</span><br><span class="line">itemP &#x3D; new Bulk_item; &#x2F;&#x2F; ok:static and dynamic types differ</span><br><span class="line">delete itemP; &#x2F;&#x2F; ok:destructor for Bulk_item called</span><br></pre></td></tr></table></figure>
+<p>像其他虚函数一样，析构函数的性质都将继承。因此，如果层次中根类的析构函数也虚函数，则派生类析构函数也将是虚函数，无论派生类显式定义析构函数还是使用合成析构函数，派生类析构函数都是虚函数。</p>
+<p>基类虚构函数式三法则的一个重要例外。三法则指出，如果类需要析构函数，则类几乎也确实需要其他复制控制成员，基类几乎总是需要析构函数，从而可以将析构函数设定为虚函数。如果基类为了将析构函数设为虚函数而具有空析构函数，那么，类具有析构函数并不表示需要赋值操作符或复制构造函数。</p>
+<p>tips：即使析构函数没有工作要做，继承层次的根类也应该定义一个虚析构函数。</p>
+<h4 id="构造函数和复制操作符不是虚函数"><a href="#构造函数和复制操作符不是虚函数" class="headerlink" title="构造函数和复制操作符不是虚函数"></a>构造函数和复制操作符不是虚函数</h4><p>在复制控制成员中， 只有析构函数应定义为虚函数，构造函数不能定义为虚函数。构造函数是对对象完全构造之前运行的，在构造函数运行的时候，对象的动态类型还不完整。</p>
+<p>虽然可以在基类中将对象成员函数 operator=定义为虚函数，但这样做并不影响派生类中使用的复制操作符。每个类有自己的赋值操作符，派生类中的赋值操作符有一个与类本身类型相同的形参，该类型必须不同于继承层次中任何其他类的赋值操作符的形参类型。</p>
+<p>将赋值操作符设为虚函数可能会令人混淆，因为虚函数必须在基类和派生类中具有相同的形参。基类赋值操作符有一个形参是自身类类型的引用，如果该操作符为虚函数，则每个类型都将得到一个虚函数成员，该成员定义了参数为一个基类对象的operator=。但是，对派生类而言，这个操作符与赋值操作符是不同的。</p>
+<p>tips：将类的赋值操作符定义为虚函数很可能令人混淆，而且没什么用处。</p>
+<h3 id="构造函数和析构函数中的虚函数"><a href="#构造函数和析构函数中的虚函数" class="headerlink" title="构造函数和析构函数中的虚函数"></a>构造函数和析构函数中的虚函数</h3><p>构造派生类对象时首先运行基类构造函数初始化对象的基类部分。在执行基类构造函数时，对象的派生类部分是未初始化的。实际上，此时对象还不是一个派生类对象。</p>
+<p>撤销派生类对象时，首先撤销它的派生类部分，然后按照与构造顺序的逆序撤销它的基类部分。</p>
+<p>在这两种情况下，运行构造函数或析构函数的时候，对象都是不完整的。为了适应这种不完整，编译器将对象的类型视为在构造或析构期间发生了变化。在基类构造函数或析构函数中，将派生类对象作为基类类型对象对待。</p>
+<p>构造或析构期间的对象类型对虚函数的绑定有影响。</p>
+<p>tips：如果在构造函数或析构函数中调用虚函数，则运行的是为构造函数或析构函数自身类型定义的版本。</p>
+<p>无论由构造函数（或析构函数）直接调用虚函数，或者从构造函数（或虚构函数）所调用的函数间接调用虚函数，都应用这种绑定。</p>
+<p>要理解这种行为，考虑如果从基类构造函数（或析构函数）调用虚函数的派生类版本会怎样。虚函数的派生类版本很可能会访问派生类对象的成员，毕竟，如果派生类版本不需要使用派生类对象的成员，派生类多半能够使用基类中的定义。但是，对象的派生部分的成员不会在基类构造函数运行期间初始化，实际上，如果允许这样的访问，程序很可能会崩溃。 </p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-new_and_malloc" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +277,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckdaf3rdz0017ia9k4ed37qdb/"
+  <a class="article-title" href="/2020/ckdfgfmxg001mfa9ka5i9dx9j/"
     >new与malloc的区别</a
   >
 </h2>
@@ -93,7 +288,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckdaf3rdz0017ia9k4ed37qdb/" class="article-date">
+      <a href="/2020/ckdfgfmxg001mfa9ka5i9dx9j/" class="article-date">
   <time datetime="2020-06-18T16:15:16.710Z" itemprop="datePublished">2020-06-19</time>
 </a>
       
@@ -148,7 +343,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckdaf3re1001bia9ke0pp54py/"
+  <a class="article-title" href="/2020/ckdfgfmxd001dfa9kdyv7bkdo/"
     >进程和线程</a
   >
 </h2>
@@ -159,7 +354,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckdaf3re1001bia9ke0pp54py/" class="article-date">
+      <a href="/2020/ckdfgfmxd001dfa9kdyv7bkdo/" class="article-date">
   <time datetime="2020-06-17T06:00:00.000Z" itemprop="datePublished">2020-06-17</time>
 </a>
       
@@ -233,7 +428,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckdaf3rdy0014ia9k9b01h1yq/"
+  <a class="article-title" href="/2020/ckdfgfmx5000vfa9k69n13829/"
     >java的基本程序设计结构</a
   >
 </h2>
@@ -244,7 +439,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckdaf3rdy0014ia9k9b01h1yq/" class="article-date">
+      <a href="/2020/ckdfgfmx5000vfa9k69n13829/" class="article-date">
   <time datetime="2020-03-18T06:00:00.000Z" itemprop="datePublished">2020-03-18</time>
 </a>
       
@@ -438,7 +633,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckdaf3rdo000mia9k8sih0w8o/"
+  <a class="article-title" href="/2020/ckdfgfmwa0001fa9k47h1cscy/"
     >数据链路层</a
   >
 </h2>
@@ -449,7 +644,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckdaf3rdo000mia9k8sih0w8o/" class="article-date">
+      <a href="/2020/ckdfgfmwa0001fa9k47h1cscy/" class="article-date">
   <time datetime="2020-03-08T12:28:52.720Z" itemprop="datePublished">2020-03-08</time>
 </a>
       
@@ -746,7 +941,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckdaf3re3001hia9k6a7ie6nq/"
+  <a class="article-title" href="/2020/ckdfgfmxa0014fa9k2ckk876u/"
     >我的博客诞生了</a
   >
 </h2>
@@ -757,7 +952,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckdaf3re3001hia9k6a7ie6nq/" class="article-date">
+      <a href="/2020/ckdfgfmxa0014fa9k2ckk876u/" class="article-date">
   <time datetime="2020-03-05T06:00:00.000Z" itemprop="datePublished">2020-03-05</time>
 </a>
       
@@ -835,7 +1030,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckdaf3rdr000sia9k16mw9g77/"
+  <a class="article-title" href="/2020/ckdfgfmwy000pfa9k8w7b24xq/"
     >Hello World</a
   >
 </h2>
@@ -846,7 +1041,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckdaf3rdr000sia9k16mw9g77/" class="article-date">
+      <a href="/2020/ckdfgfmwy000pfa9k8w7b24xq/" class="article-date">
   <time datetime="2020-03-03T06:00:00.000Z" itemprop="datePublished">2020-03-03</time>
 </a>
       
