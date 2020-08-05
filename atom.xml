@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-08-03T13:01:25.538Z</updated>
+  <updated>2020-08-05T04:42:26.562Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>网易互娱图形开发工程师sp</title>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxo000a4l9kd56p8q1t/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxo000a4l9kd56p8q1t/</id>
+    <published>2020-08-04T06:00:00.000Z</published>
+    <updated>2020-08-05T04:42:26.562Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在面试之前，特地去网易互娱校招官网查看了图形开发工程师的职位描述和要求。</p><p>以下复制一下 职位要求</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">您可以：</span><br><span class="line">- 负责游戏产品的视觉效果，实现各种酷炫的效果，让所有平台和设备的玩家都有同样震撼的游戏体验；</span><br><span class="line">- 负责游戏产品的图形部分相关开发； </span><br><span class="line">- 与美术协作实现各种高级视觉效果，并优化content pipeline。</span><br><span class="line">任职资格</span><br><span class="line">我们希望您具备以下条件：</span><br><span class="line">- 计算机视觉或图形学等相关研究方向；</span><br><span class="line">- 有扎实的c++基础；</span><br><span class="line">- 有良好的图形学和数学基础；</span><br><span class="line">- 至少熟悉DirectX、OpenGL、Metal或者Vulkan中的一种图形API，并有很强的shader编写能力；</span><br><span class="line">- 熟悉AAA级游戏中常见的渲染技术，并对某一领域有深入理解，比如全局光照、粒子、材质表现、性能优化；</span><br><span class="line">- 有一定debug和性能分析能力。</span><br><span class="line"></span><br><span class="line">备注：广州需求80，杭州需求15，上海需求25。</span><br></pre></td></tr></table></figure><p>当看到熟悉AAA级游戏中的渲染技术，对某一领域有深入理解。内心就频频发虚。看了看杭州需求15人，基本也没有我的什么机会了。<br>但是，面试就是抱试试水的心态，一探虚实。</p><p>预约14：30面试，可能是面试官来不及安排，所以安排我们手撕了一道简单的算法题。</p><h3 id="试前代码"><a href="#试前代码" class="headerlink" title="试前代码"></a>试前代码</h3><p>题目：区间合并（leetcode 56题原题）<br>给出一个区间的集合，请合并所有重叠的区间。</p><p>示例 1:</p><p>输入: [[1,3],[2,6],[8,10],[15,18]]<br>输出: [[1,6],[8,10],[15,18]]<br>解释: 区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].<br>示例2:</p><p>输入: [[1,4],[4,5]]<br>输出: [[1,5]]<br>解释: 区间 [1,4] 和 [4,5] 可被视为重叠区间。</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-intervals" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-intervals</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><h4 id="题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）"><a href="#题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）" class="headerlink" title="题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）"></a>题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; intervals)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(intervals.begin(), intervals.end());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; merged;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> L = intervals[i][<span class="number">0</span>], R = intervals[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (!merged.size() || merged.back()[<span class="number">1</span>] &lt; L) &#123;</span><br><span class="line">                merged.push_back(&#123;L, R&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                merged.back()[<span class="number">1</span>] = max(merged.back()[<span class="number">1</span>], R);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> merged;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https:<span class="comment">//leetcode-cn.com/problems/merge-intervals/solution/he-bing-qu-jian-by-leetcode-solution/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure><h3 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h3><p>刷完笔试题后，15分钟看着电脑屏幕里的自己，不敢玩手机，怕被误认为作弊，也不管浏览网页，就这样傻傻的看着自己。</p><p>15：00面试官来了。</p><p>相比较字节和华为的面试官，网易的这位面试官发量明显稀少了很多。</p><p>开篇：先做个简单的自我介绍，知识点考察主要分为c++和图形学相关知识</p><h4 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h4><ol><li>你知道程序由于异常退出，导致资源无法释放。这样的问题有什么解决方案么？（主要考察智能指针）</li><li>由智能指针出发询问你是否知道RAII？</li><li>考察了为什么要引入move</li><li>new和molloc的区别</li><li>vector和list遍历一遍谁比较快</li><li>map和unordered_map的区别和使用场景</li><li>你对多线程有了解么</li><li>虚函数的考察：构造函数调用虚函数 字节面试官也问了(<a href="https://blog.csdn.net/songchuwang1868/article/details/96481853" target="_blank" rel="noopener">https://blog.csdn.net/songchuwang1868/article/details/96481853</a>)</li></ol><h4 id="图形学"><a href="#图形学" class="headerlink" title="图形学"></a>图形学</h4><ol><li>这个渲染管线的流程</li><li>顶点着色器完成了什么</li><li>光栅化完成了什么</li><li>混合和测试完成了什么</li><li>用于加速光线追踪的算法</li><li>阴影的算法</li><li>描述一个算法如何实现只将你看到的内容加载，没看到的内容就不加载</li></ol><h3 id="回马枪笔试"><a href="#回马枪笔试" class="headerlink" title="回马枪笔试"></a>回马枪笔试</h3><p>考察了一下纸牌排序random_shuffle, 查了一下这个是stl的内部函数</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>, <span class="title">class</span> <span class="title">RandomNumberGenerator</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">void</span> <span class="title">random_shuffle</span> (<span class="title">RandomAccessIterator</span> <span class="title">first</span>, <span class="title">RandomAccessIterator</span> <span class="title">last</span>,</span></span><br><span class="line"><span class="class">                       <span class="title">RandomNumberGenerator</span>&amp; <span class="title">gen</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  iterator_traits&lt;RandomAccessIterator&gt;::difference_type i, n;</span><br><span class="line">  n = (last-first);</span><br><span class="line">  <span class="keyword">for</span> (i=n<span class="number">-1</span>; i&gt;<span class="number">0</span>; --i) &#123;</span><br><span class="line">    swap (first[i],first[gen(i+<span class="number">1</span>)]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="反问面试官"><a href="#反问面试官" class="headerlink" title="反问面试官"></a>反问面试官</h3><ol><li>询问了RAII的意思</li><li>询问了图形开发工程师和引擎开发工程师， 图形可能会更偏向渲染这一块， 引擎更偏向物理引擎这一块。</li></ol><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>GAMES101更偏向讲rendering偏向图形开发， GAMES201更偏向讲物理引擎和数值计算偏向与引擎。但是GAMES201难度比GAMES101高多了，有时间还是得去复习一下GAMES101的内容如果想面试图形开发工程师的话，当然，多线程编程也需要去学习和弄个小项目自己玩玩。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在面试之前，特地去网易互娱校招官网查看了图形开发工程师的职位描述和要求。&lt;/p&gt;
+&lt;p&gt;以下复制一下 职位要求&lt;/p&gt;
+&lt;figure cl
+      
+    
+    </summary>
+    
+    
+      <category term="招聘" scheme="https://shen-yu.gitee.io/categories/%E6%8B%9B%E8%81%98/"/>
+    
+    
+      <category term="面试" scheme="https://shen-yu.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmwz000rfa9kedbdcztf/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmwz000rfa9kedbdcztf/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxg00044l9kauiufz33/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxg00044l9kauiufz33/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -44,8 +72,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmx6000yfa9k2tjbe7i2/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmx6000yfa9k2tjbe7i2/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxx000n4l9k107f25tl/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxx000n4l9k107f25tl/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -70,8 +98,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmwe0005fa9k31nfdmsg/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmwe0005fa9k31nfdmsg/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxl00064l9kfxlugf1o/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxl00064l9kfxlugf1o/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -97,8 +125,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxb0016fa9ke0t3aa1r/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxb0016fa9ke0t3aa1r/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy300154l9k9h324i9l/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhy300154l9k9h324i9l/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -123,8 +151,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxe001ffa9kgpt17moj/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxe001ffa9kgpt17moj/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy1000x4l9kh0wp0bdw/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhy1000x4l9kh0wp0bdw/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -150,8 +178,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxc0019fa9k30m05v5i/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxc0019fa9k30m05v5i/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxz000u4l9k34dj0j1k/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxz000u4l9k34dj0j1k/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -177,8 +205,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmwf0006fa9kfbn9epgx/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmwf0006fa9kfbn9epgx/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxu000h4l9k80pk557z/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxu000h4l9k80pk557z/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -203,8 +231,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmw50000fa9k6sot3ira/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmw50000fa9k6sot3ira/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxc00014l9k55wg1j6p/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxc00014l9k55wg1j6p/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -230,8 +258,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxf001ifa9kh7tx0azg/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxf001ifa9kh7tx0azg/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxv000i4l9kfk1vcdeh/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxv000i4l9kfk1vcdeh/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -257,8 +285,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmx80010fa9kd6to1lm6/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmx80010fa9kd6to1lm6/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy200124l9k9jlr3cam/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhy200124l9k9jlr3cam/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -286,8 +314,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmwd0004fa9k80hb6xhd/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmwd0004fa9k80hb6xhd/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxh00054l9k1ufbea7i/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxh00054l9k1ufbea7i/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -313,8 +341,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxj001pfa9k5psu0qk2/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxj001pfa9k5psu0qk2/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhyk001v4l9kcui4a8hj/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhyk001v4l9kcui4a8hj/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -339,8 +367,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxg001mfa9ka5i9dx9j/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxg001mfa9ka5i9dx9j/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhyn001x4l9kalt5cmi8/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhyn001x4l9kalt5cmi8/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -361,8 +389,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxd001dfa9kdyv7bkdo/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxd001dfa9kdyv7bkdo/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy5001d4l9kdz2b1rf0/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhy5001d4l9kdz2b1rf0/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -389,8 +417,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmx5000vfa9k69n13829/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmx5000vfa9k69n13829/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxy000p4l9kfvu28jib/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxy000p4l9kfvu28jib/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -418,8 +446,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmwa0001fa9k47h1cscy/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmwa0001fa9k47h1cscy/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhx800004l9khvv206w8/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhx800004l9khvv206w8/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -444,8 +472,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmxa0014fa9k2ckk876u/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmxa0014fa9k2ckk876u/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy4001a4l9kcja04jzr/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhy4001a4l9kcja04jzr/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -473,8 +501,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdfgfmwy000pfa9k8w7b24xq/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdfgfmwy000pfa9k8w7b24xq/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxs000c4l9k12r53ef3/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdgvyhxs000c4l9k12r53ef3/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     
