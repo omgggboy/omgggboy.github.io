@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-08-05T04:42:26.562Z</updated>
+  <updated>2020-08-12T15:07:29.851Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>网易互联网笔试</title>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrs6000ach9kfi0o7r0z/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrs6000ach9kfi0o7r0z/</id>
+    <published>2020-08-08T06:00:00.000Z</published>
+    <updated>2020-08-12T15:07:29.851Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>中午被麻辣香锅搞得死去活来，下午被网易笔试搞得死去活来。四道题AC1.25,第三题没看，第四题是强连通量，关于图的题目是我的薄弱，得去花些时间看看。</p><h3 id="第一题-回文串"><a href="#第一题-回文串" class="headerlink" title="第一题 回文串"></a>第一题 回文串</h3><p>给定一个长度为n(n&lt;=1e3)的字符串，可以在后面加无限多的字母，问能组成的最短回文串是多长？<br>解法一：注意到n比较小，直接暴力<br>解法二：可以用manachar算法，算出原串最长回文后缀的长度，然后就可以得到最短的字符串了。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="built_in">string</span> &amp;s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = start, j = end;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j &amp;&amp; s[i] == s[j]) &#123;</span><br><span class="line">        ++i, --j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i &gt;= j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s; <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> length = s.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (check(s, i, length - <span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">string</span> prefix = s.substr(<span class="number">0</span>, i);</span><br><span class="line">    reverse(prefix.begin(), prefix.end());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s + prefix &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="第二题-物品价值"><a href="#第二题-物品价值" class="headerlink" title="第二题 物品价值"></a>第二题 物品价值</h3><p>现在有n个物品，每个物品都有一个价值，现在想将这些物品分给两个人，要求这两个人分到的物品价值总和相同(个数可以不同，总价值相同即可)，剩下的物品就要扔掉，现在想知道最少需要扔多少价值的物品才能满足要求分给两个人。<br>输入：</p><ul><li>第一行输入一个整数T，代表有T组测试数据</li><li>对于每一组测试数据，一行输入一个整数n，代表物品的个数</li><li>接下来n个数，a[i]代表每一个物品的价值</li><li>1 &lt;= T &lt;= 10</li><li>1 &lt;= n &lt;= 15</li><li>1 &lt;= a[i] &lt;= 100000<br>输出：</li><li>每一行输出最少需要扔掉多少价值的物品</li></ul><p>示例：<br>输入<br>1<br>5<br>30 60 5 15 30<br>输出<br>20</p><p>说明<br>样例解释，扔掉第三个和第四个物品，然后将第一个物品和第五个物品给第一个人，第二个物品给第二个人，每个人分到的价值为60，扔掉的价值为20。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> siz=<span class="number">1500000</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">20</span>],dp[siz+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T, n, i, j, ans, sum;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">            sum += a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span> (j = sum; j &gt;= a[i]; --j)</span><br><span class="line">            dp[j] = dp[j] | dp[j-a[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        ans = sum;</span><br><span class="line">        <span class="keyword">for</span> (i = sum; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span>( i % <span class="number">2</span> != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] &amp;&amp; dp[i/<span class="number">2</span>]) &#123;</span><br><span class="line">                ans = sum - i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="第三题-排队买票"><a href="#第三题-排队买票" class="headerlink" title="第三题 排队买票"></a>第三题 排队买票</h3><p>题目描述<br>n(n&lt;=2000)个人排队买票，第i个人要么单独买票，要么和后面一个人一起买（反过来，就是可以和前面一个人买），单独买花费时间a[i]，一起买是b[i]，求所有人买完票的最短时间。开始时间是早上08:00:00 am，输出结束时间。</p><p>分析<br>动态规划，dp[i]表示第i个人买完票所需要的时间。对于每一个人他可以有两个选择，要么单独买票，那么需要的总的时间就是dp[i-1] + a[i]，要么和前一个人一起买票，需要的总的时间就是dp[i-2] + b[i]。最后输出的时候注意格式。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2222</span>], b[<span class="number">2222</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">2222</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n; <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; b[i];</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>, dp[<span class="number">1</span>] = a[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        dp[i] = min(dp[i - <span class="number">1</span>] + a[i], dp[i - <span class="number">2</span>] + b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> hour = dp[n] / <span class="number">3600</span> + <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">int</span> minutes = dp[n] % <span class="number">3600</span> / <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">int</span> seconds = dp[n] % <span class="number">3600</span> % <span class="number">60</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%02d:%02d:%02d "</span>, hour, minutes, seconds);</span><br><span class="line">    <span class="built_in">puts</span>(hour &lt;= <span class="number">12</span> ? <span class="string">"am"</span> : <span class="string">"pm"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="第四题-相互认可"><a href="#第四题-相互认可" class="headerlink" title="第四题 相互认可"></a>第四题 相互认可</h3><p>题目描述<br>a教授认可b教授，b教授认可c教授，那么a也认可c。现有n (小于50000)个教授，m（小于600000）个认可，可能自己认可自己，也可能重复。求互相认可的教授有多少对？<br>分析<br>学过强联通分量的应该可以一下子看出来这个就是要求强联通分量，每个强联通分量里的所有教授都是互相认可的。。没学过的话可以尝试暴力解解。 </p><p>思考如果改变下条件，只要a认可b，那么b就默认认可a，这个时候求互相认可的教授有多少对该怎么算呢？</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">555</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">int</span> low[maxn], num[maxn], dfn, cnt;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="keyword">int</span> sccno[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    st.push(u);</span><br><span class="line">    low[u] = num[u] = ++dfn;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = G[u][i];</span><br><span class="line">        <span class="keyword">if</span> (!num[v])&#123;</span><br><span class="line">            dfs(v);</span><br><span class="line">            low[u] = min(low[u], low[v]);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!sccno[v]) &#123;</span><br><span class="line">            low[u] = min(low[u], num[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (low[u] == num[u]) &#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = st.top();</span><br><span class="line">            st.pop();</span><br><span class="line">            tmp++;</span><br><span class="line">            sccno[v] = cnt;</span><br><span class="line">            <span class="keyword">if</span> (u == v) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ans += tmp * (tmp - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    cnt = dfn = <span class="number">0</span>;</span><br><span class="line">    ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(sccno, <span class="number">0</span>, <span class="keyword">sizeof</span>(sccno));</span><br><span class="line">    <span class="built_in">memset</span>(low, <span class="number">0</span>, <span class="keyword">sizeof</span>(low));</span><br><span class="line">    <span class="built_in">memset</span>(num, <span class="number">0</span>, <span class="keyword">sizeof</span>(num));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!num[i]) dfs(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> a, b; <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        G[a].push_back(b);</span><br><span class="line">    &#125;</span><br><span class="line">    tarjan(n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>可能还是得多花些时间在刷题上，在这参加的四五次笔试中,目标还是得冲击AC3.0 4AC可能有点难，   下次可能还是得自己找四道题，然后花2小时看看能做多少。</p><p>内容部分摘抄自公众号：<br><a href="https://mp.weixin.qq.com/s?__biz=MzI5MDA4ODczOA==&amp;mid=2648028133&amp;idx=1&amp;sn=4c819b2b17cb50aa40855468f7e2ef88&amp;chksm=f40421a8c373a8bed46bad37341a5c7b9c0f8c5a1d441774b3cfdfd6c5d9fe7bba213605c31c&amp;scene=158#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzI5MDA4ODczOA==&amp;mid=2648028133&amp;idx=1&amp;sn=4c819b2b17cb50aa40855468f7e2ef88&amp;chksm=f40421a8c373a8bed46bad37341a5c7b9c0f8c5a1d441774b3cfdfd6c5d9fe7bba213605c31c&amp;scene=158#rd</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;中午被麻辣香锅搞得死去活来，下午被网易笔试搞得死去活来。四道题AC1.25,第三题没看，第四题是强连通量，关于图的题目是我的薄弱，得去花些时
+      
+    
+    </summary>
+    
+    
+      <category term="招聘" scheme="https://shen-yu.gitee.io/categories/%E6%8B%9B%E8%81%98/"/>
+    
+    
+      <category term="笔试" scheme="https://shen-yu.gitee.io/tags/%E7%AC%94%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxo000a4l9kd56p8q1t/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxo000a4l9kd56p8q1t/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsh000och9k2dx8e6ll/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsh000och9k2dx8e6ll/</id>
     <published>2020-08-04T06:00:00.000Z</published>
     <updated>2020-08-05T04:42:26.562Z</updated>
     
@@ -46,8 +72,8 @@
   
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxg00044l9kauiufz33/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxg00044l9kauiufz33/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrs30005ch9k7yrm3z0o/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrs30005ch9k7yrm3z0o/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -72,8 +98,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxx000n4l9k107f25tl/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxx000n4l9k107f25tl/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsf000ich9kdi0pg9c1/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsf000ich9kdi0pg9c1/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -98,8 +124,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxl00064l9kfxlugf1o/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxl00064l9kfxlugf1o/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrs20004ch9kb4j9e38d/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrs20004ch9kb4j9e38d/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -125,8 +151,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy300154l9k9h324i9l/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhy300154l9k9h324i9l/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsm0011ch9kbuhs93an/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsm0011ch9kbuhs93an/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -151,8 +177,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy1000x4l9kh0wp0bdw/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhy1000x4l9kh0wp0bdw/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsk000wch9kb7x7cy6z/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsk000wch9kb7x7cy6z/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -178,8 +204,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxz000u4l9k34dj0j1k/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxz000u4l9k34dj0j1k/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrta001ych9k3b21frir/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrta001ych9k3b21frir/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -205,8 +231,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxu000h4l9k80pk557z/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxu000h4l9k80pk557z/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrs8000cch9k7c778tmv/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrs8000cch9k7c778tmv/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -231,8 +257,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxc00014l9k55wg1j6p/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxc00014l9k55wg1j6p/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrrz0001ch9kfw6lfby0/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrrz0001ch9kfw6lfby0/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -258,8 +284,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxv000i4l9kfk1vcdeh/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxv000i4l9kfk1vcdeh/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsg000mch9kbkn623zv/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsg000mch9kbkn623zv/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -285,8 +311,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy200124l9k9jlr3cam/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhy200124l9k9jlr3cam/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsn0014ch9k0ish23wd/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsn0014ch9k0ish23wd/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -314,8 +340,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxh00054l9k1ufbea7i/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxh00054l9k1ufbea7i/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrs40006ch9k5483etqj/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrs40006ch9k5483etqj/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -341,8 +367,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhyk001v4l9kcui4a8hj/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhyk001v4l9kcui4a8hj/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrtf0025ch9kduoz0652/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrtf0025ch9kduoz0652/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -367,8 +393,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhyn001x4l9kalt5cmi8/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhyn001x4l9kalt5cmi8/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrtd0021ch9kdp8l9ts1/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrtd0021ch9kdp8l9ts1/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -389,8 +415,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy5001d4l9kdz2b1rf0/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhy5001d4l9kdz2b1rf0/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrt9001vch9k1jsu1dh1/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrt9001vch9k1jsu1dh1/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -417,8 +443,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxy000p4l9kfvu28jib/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxy000p4l9kfvu28jib/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsj000tch9k65kqddua/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsj000tch9k65kqddua/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -446,8 +472,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhx800004l9khvv206w8/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhx800004l9khvv206w8/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrrv0000ch9kern1gm50/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrrv0000ch9kern1gm50/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -472,8 +498,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhy4001a4l9kcja04jzr/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhy4001a4l9kcja04jzr/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrt7001tch9kghashmk1/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrt7001tch9kghashmk1/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -501,8 +527,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdgvyhxs000c4l9k12r53ef3/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdgvyhxs000c4l9k12r53ef3/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdridrsa000hch9k9kbhg2b9/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdridrsa000hch9k9kbhg2b9/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     
