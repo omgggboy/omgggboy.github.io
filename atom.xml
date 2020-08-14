@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-08-12T15:07:29.851Z</updated>
+  <updated>2020-08-14T15:05:23.556Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>雷火引擎一面二面</title>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gi000r369kcl788349/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gi000r369kcl788349/</id>
+    <published>2020-08-13T06:00:00.000Z</published>
+    <updated>2020-08-14T15:05:23.556Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>参加完OpenDay热血澎湃。早上网易mini游戏展，堪比ChinaJoy的模式，就是比较小型。但是整个游戏来说大部分可能还是Demon的形式，但是总体制作还是比较精良的。有一种参加学校社团展示的感觉，每个人都很热血。下午，动作捕捉中心和lua编写AI脚本。体验拉满。第二天刚好面试，还沉浸OpenDay的欢乐之中。</p><h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><p>手写了五道题目<br>主要考察虚函数，数学知识和算法</p><ol><li>10个数二分查找失败查找几次</li><li>入射方向L, 法线N，求反射R</li><li>哪些可以是虚函数</li><li>虚函数</li><li>左值右值</li><li>排序算法有哪些</li><li>归并排序怎么实现，主要思想</li></ol><h4 id="反问面试官"><a href="#反问面试官" class="headerlink" title="反问面试官"></a>反问面试官</h4><ol><li>询问了雷火的主要产品和收益情况？主要收益来自逆水寒和倩女幽魂</li><li>询问了unity和unreal的学习问题？unity容易上手，unreal上手相对会难一点。</li></ol><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><p>是昨天mini项目的导师</p><ol><li>自我介绍</li><li>看到我也学了GAMES101，询问GAMES101学到了什么，和别的有什么不同</li><li>考察两个数学题 ，光线反射， 给定一个点和面求交点</li><li>询问项目，想查看项目的具体展示，项目的实际问题，解决方案</li><li>询问了笔试时小王打字那个题目</li><li>动态规划的基本思想</li><li>简单手写了前序遍历</li></ol><h4 id="反问面试官-1"><a href="#反问面试官-1" class="headerlink" title="反问面试官"></a>反问面试官</h4><ol><li>引擎的各种子系统会有哪些？推荐了《游戏引擎架构》，可以作为扫盲书。</li><li>举例了雷火主要使用unity，腾讯主要使用unreal,推荐去自己熟悉操作一下引擎，尝试跑一些例子。</li><li>好心建议就是离引擎的水平还是有一定差距，客户端还是可以继续三面，主要看你个人意愿。我现在做的就是我自己热爱的东西。所以。。。。公司相对会更愿意招一个能掌握最近资讯和技术的人，节约了培养成本。</li></ol><h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>整体感觉都很好，面试交流也比较融洽，在面试的过程中还是能学到很多东西，如果学习路线该怎么走，履历该怎么增加等等，面试官无疑是最好的学习指导，以为他知道他想要什么，你就从他想要的东西里看看自己缺少什么。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;参加完OpenDay热血澎湃。早上网易mini游戏展，堪比ChinaJoy的模式，就是比较小型。但是整个游戏来说大部分可能还是Demon的形
+      
+    
+    </summary>
+    
+    
+      <category term="招聘" scheme="https://shen-yu.gitee.io/categories/%E6%8B%9B%E8%81%98/"/>
+    
+    
+      <category term="面试" scheme="https://shen-yu.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网易互联网笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrs6000ach9kfi0o7r0z/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrs6000ach9kfi0o7r0z/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69ga000a369k7vpmfzdu/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69ga000a369k7vpmfzdu/</id>
     <published>2020-08-08T06:00:00.000Z</published>
     <updated>2020-08-12T15:07:29.851Z</updated>
     
@@ -44,8 +70,8 @@
   
   <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsh000och9k2dx8e6ll/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsh000och9k2dx8e6ll/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gg000n369kexao7x7c/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gg000n369kexao7x7c/</id>
     <published>2020-08-04T06:00:00.000Z</published>
     <updated>2020-08-05T04:42:26.562Z</updated>
     
@@ -72,8 +98,8 @@
   
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrs30005ch9k7yrm3z0o/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrs30005ch9k7yrm3z0o/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69g50005369k0fbz8gn3/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69g50005369k0fbz8gn3/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -98,8 +124,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsf000ich9kdi0pg9c1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsf000ich9kdi0pg9c1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gd000g369kd9mc272p/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gd000g369kd9mc272p/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -124,8 +150,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrs20004ch9kb4j9e38d/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrs20004ch9kb4j9e38d/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69g60006369kag2ieupt/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69g60006369kag2ieupt/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -151,8 +177,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsm0011ch9kbuhs93an/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsm0011ch9kbuhs93an/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gl0010369kg1fo9kfq/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gl0010369kg1fo9kfq/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -177,8 +203,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsk000wch9kb7x7cy6z/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsk000wch9kb7x7cy6z/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gj000t369k0x8958yf/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gj000t369k0x8958yf/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -204,8 +230,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrta001ych9k3b21frir/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrta001ych9k3b21frir/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gn0018369khc5u3t7f/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gn0018369khc5u3t7f/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -231,8 +257,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrs8000cch9k7c778tmv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrs8000cch9k7c778tmv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gb000b369kgg15d1h5/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gb000b369kgg15d1h5/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -257,8 +283,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrrz0001ch9kfw6lfby0/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrrz0001ch9kfw6lfby0/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69g40004369k0uzr6l98/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69g40004369k0uzr6l98/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -284,8 +310,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsg000mch9kbkn623zv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsg000mch9kbkn623zv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gf000m369k1g0hdrx2/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gf000m369k1g0hdrx2/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -311,8 +337,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsn0014ch9k0ish23wd/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsn0014ch9k0ish23wd/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gn0015369k2sn7d7ii/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gn0015369k2sn7d7ii/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -340,8 +366,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrs40006ch9k5483etqj/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrs40006ch9k5483etqj/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69g10001369kgrgrdraj/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69g10001369kgrgrdraj/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -367,8 +393,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrtf0025ch9kduoz0652/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrtf0025ch9kduoz0652/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69hc002e369k3pvdc6cq/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69hc002e369k3pvdc6cq/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -393,8 +419,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrtd0021ch9kdp8l9ts1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrtd0021ch9kdp8l9ts1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gr001k369khcv09dku/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gr001k369khcv09dku/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -415,8 +441,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrt9001vch9k1jsu1dh1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrt9001vch9k1jsu1dh1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gq001g369k1k590l4p/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gq001g369k1k590l4p/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -443,8 +469,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsj000tch9k65kqddua/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsj000tch9k65kqddua/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gk000x369kh8b29smv/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gk000x369kh8b29smv/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -472,8 +498,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrrv0000ch9kern1gm50/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrrv0000ch9kern1gm50/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69fx0000369khme1h06q/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69fx0000369khme1h06q/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -498,8 +524,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrt7001tch9kghashmk1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrt7001tch9kghashmk1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69gp001d369khtzqcm32/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69gp001d369khtzqcm32/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -527,8 +553,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdridrsa000hch9k9kbhg2b9/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdridrsa000hch9k9kbhg2b9/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckdud69ge000h369khsef703q/"/>
+    <id>https://shen-yu.gitee.io/2020/ckdud69ge000h369khsef703q/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     
