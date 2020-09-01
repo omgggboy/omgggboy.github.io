@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-08-14T15:05:23.556Z</updated>
+  <updated>2020-09-01T14:44:38.942Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>动态规划</title>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1a00041w9k8bzx7x2w/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1a00041w9k8bzx7x2w/</id>
+    <published>2020-08-17T06:00:00.000Z</published>
+    <updated>2020-09-01T14:44:38.942Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="动态规划与分治算法比较"><a href="#动态规划与分治算法比较" class="headerlink" title="动态规划与分治算法比较"></a>动态规划与分治算法比较</h3><p>分治算法将问题分为互不相交的子问题，递归地求解子问题，再将它们的解组合起来，求出原问题的解。与之相反，动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题（子问题的求解是递归进行的，将其分为更小的子子问题）。这种情况下，分治算法会做许多不必要的工作，它会反复求解那些公共子子问题。而动态规划算法对每个子子问题只求解一次，将其解保存在一个表格中，从而无需每次求解一个子子问题时都重新计算，避免了这种不必要的计算工作。</p><h3 id="求解问题类型"><a href="#求解问题类型" class="headerlink" title="求解问题类型"></a>求解问题类型</h3><p>动态规划方法通常用来求解最优化问题。这类问题可以有很多可行解，每个解都有一个值，我们希望找到寻找具有最优化（最大值或最小值）的解。我们称这样的解为问题的一个最优解，而不是最优解，因为可能有很多个解都能达到最优值。</p><h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ol><li>刻画一个最优解的结构特征</li><li>递归的定义最优解的值</li><li>计算最优解的值，通常采用自底向上的方法。</li><li>利用计算出的信息构造一个最优解</li></ol><p>步骤1~3是动态规划算法求解问题的基础。如果我们仅仅需要维护一个最优解的值，而非解本身，可以忽略步骤4。如果确实需要做步骤4，有时就需要在执行步骤3的过程中维护一些额外信息，以便用来构造一个最优解。</p><h3 id="动态规划例题"><a href="#动态规划例题" class="headerlink" title="动态规划例题"></a>动态规划例题</h3><p>背包问题：<a href="https://anivian.github.io/pack-master/V2.pdf" target="_blank" rel="noopener">https://anivian.github.io/pack-master/V2.pdf</a><br>寻路问题：<a href="https://www.cnblogs.com/hapjin/p/5705319.html" target="_blank" rel="noopener">https://www.cnblogs.com/hapjin/p/5705319.html</a><br>最优矩阵链乘：<a href="https://blog.csdn.net/zhangxb35/article/details/38959047" target="_blank" rel="noopener">https://blog.csdn.net/zhangxb35/article/details/38959047</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;动态规划与分治算法比较&quot;&gt;&lt;a href=&quot;#动态规划与分治算法比较&quot; class=&quot;headerlink&quot; title=&quot;动态规划与分治算法比较&quot;&gt;&lt;/a&gt;动态规划与分治算法比较&lt;/h3&gt;&lt;p&gt;分治算法将问题分为互不相交的子问题，递归地求解子问题，再将它们的解组
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="https://shen-yu.gitee.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="动态规划" scheme="https://shen-yu.gitee.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
     <title>雷火引擎一面二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gi000r369kcl788349/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gi000r369kcl788349/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1r000s1w9kcxs61edx/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1r000s1w9kcxs61edx/</id>
     <published>2020-08-13T06:00:00.000Z</published>
     <updated>2020-08-14T15:05:23.556Z</updated>
     
@@ -44,8 +70,8 @@
   
   <entry>
     <title>网易互联网笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69ga000a369k7vpmfzdu/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69ga000a369k7vpmfzdu/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1m000h1w9k4pdoef3x/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1m000h1w9k4pdoef3x/</id>
     <published>2020-08-08T06:00:00.000Z</published>
     <updated>2020-08-12T15:07:29.851Z</updated>
     
@@ -70,8 +96,8 @@
   
   <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gg000n369kexao7x7c/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gg000n369kexao7x7c/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2l001z1w9k0ob01d3f/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2l001z1w9k0ob01d3f/</id>
     <published>2020-08-04T06:00:00.000Z</published>
     <updated>2020-08-05T04:42:26.562Z</updated>
     
@@ -98,8 +124,8 @@
   
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69g50005369k0fbz8gn3/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69g50005369k0fbz8gn3/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1b00051w9k6vg21d3o/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1b00051w9k6vg21d3o/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -124,8 +150,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gd000g369kd9mc272p/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gd000g369kd9mc272p/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1n000i1w9k7hhybr5e/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1n000i1w9k7hhybr5e/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -150,8 +176,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69g60006369kag2ieupt/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69g60006369kag2ieupt/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1e000a1w9k3xd56mjo/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1e000a1w9k3xd56mjo/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -177,8 +203,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gl0010369kg1fo9kfq/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gl0010369kg1fo9kfq/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2n00221w9k3d84aj1s/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2n00221w9k3d84aj1s/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -203,8 +229,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gj000t369k0x8958yf/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gj000t369k0x8958yf/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1s000u1w9k82li4k8x/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1s000u1w9k82li4k8x/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -230,8 +256,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gn0018369khc5u3t7f/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gn0018369khc5u3t7f/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1t000y1w9k6sp97205/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1t000y1w9k6sp97205/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -257,8 +283,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gb000b369kgg15d1h5/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gb000b369kgg15d1h5/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1g000c1w9kcnymcowl/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1g000c1w9kcnymcowl/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -283,8 +309,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69g40004369k0uzr6l98/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69g40004369k0uzr6l98/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1700011w9k0lpv39lo/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1700011w9k0lpv39lo/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -310,8 +336,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gf000m369k1g0hdrx2/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gf000m369k1g0hdrx2/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1q000o1w9k0vwq1yyc/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1q000o1w9k0vwq1yyc/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -337,8 +363,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gn0015369k2sn7d7ii/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gn0015369k2sn7d7ii/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2i001v1w9k5sj14vzw/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2i001v1w9k5sj14vzw/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -366,8 +392,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69g10001369kgrgrdraj/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69g10001369kgrgrdraj/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1c00061w9k0n6r29dv/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1c00061w9k0n6r29dv/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -393,8 +419,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69hc002e369k3pvdc6cq/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69hc002e369k3pvdc6cq/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2t002b1w9kdpd162og/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2t002b1w9kdpd162og/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -419,8 +445,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gr001k369khcv09dku/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gr001k369khcv09dku/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2p00281w9k158gbaeu/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2p00281w9k158gbaeu/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -441,8 +467,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gq001g369k1k590l4p/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gq001g369k1k590l4p/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2o00251w9kaf1lgszk/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2o00251w9kaf1lgszk/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -469,8 +495,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gk000x369kh8b29smv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gk000x369kh8b29smv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2g001t1w9k6ycfgtxe/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2g001t1w9k6ycfgtxe/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -498,8 +524,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69fx0000369khme1h06q/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69fx0000369khme1h06q/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1200001w9kefve5pmb/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1200001w9kefve5pmb/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -524,8 +550,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69gp001d369khtzqcm32/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69gp001d369khtzqcm32/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn2v002d1w9k7mf9bu9v/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn2v002d1w9k7mf9bu9v/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -553,8 +579,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckdud69ge000h369khsef703q/"/>
-    <id>https://shen-yu.gitee.io/2020/ckdud69ge000h369khsef703q/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckek2fn1p000m1w9kgzc63ljo/"/>
+    <id>https://shen-yu.gitee.io/2020/ckek2fn1p000m1w9kgzc63ljo/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     
