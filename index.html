@@ -74,6 +74,85 @@
     
     
     
+    <article id="post-greedy" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckelim9z30008hr9kbm9k3ess/"
+    >贪心算法</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckelim9z30008hr9kbm9k3ess/" class="article-date">
+  <time datetime="2020-08-20T06:00:00.000Z" itemprop="datePublished">2020-08-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="贪心算法VS动态规划"><a href="#贪心算法VS动态规划" class="headerlink" title="贪心算法VS动态规划"></a>贪心算法VS动态规划</h3><p>由于贪心和动态规划都利用了最优子结构性质，你可能会对一个可用贪心求解的问题设计一个动态规划算法，或者相反，对于一个实际上需要动态规划求解的问题使用了贪心算法。为了说明两种方法之间的细微差别，我们研究一个经典最优化问题的变形。</p>
+<h5 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h5><p>一个正在抢劫商店的小偷发现了n个商品，第i个商品价值vi美元，重wi磅，vi和wi都是整数。这个小偷希望拿走价值尽量高的商品，但他的背包最多容纳W磅重的商品，W是一个整数。他应该拿哪些商品呢？（我们称这个问题是0-1背包问题，因为对每个商品，小偷要么把它完整拿走，要么把它留下；他不能只拿走一个商品的一部分。或者把一个商品拿走多次。）</p>
+<h5 id="分数背包"><a href="#分数背包" class="headerlink" title="分数背包"></a>分数背包</h5><p>设定与0-1背包问题是一样的，但对每个商品，小偷可以拿走其一部分，而不是作出二元（0-1）选择。你可以将0-1背包想象为金锭，而分数背包问题中的商品更像金砂。</p>
+<h5 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h5><p>两个问题都有最优子结构性质，对于0-1背包问题，考虑重量不超过W而价值最高的装包方案。如果我们将商品j从此方案中删除，则剩余商品必须是重量不超过W-wi的价值最高方案（小偷只能从不包括商品j的n-1个商品中选择拿走哪些）。虽然两个问题相似，但我们可以用贪心策略求解分数背包问题，而不能求解0-1背包问题。为了求解分数背包问题，我们首先计算每个商品的每磅价值vi/wi。遵循贪心策略，小偷尽可能地拿走每磅价值最高的商品。如果该商品已全部拿走而背包未装满，他继续选择拿走商品第二高的商品，依此类推，直到上限达到W。</p>
+<h3 id="贪心算法原理"><a href="#贪心算法原理" class="headerlink" title="贪心算法原理"></a>贪心算法原理</h3><p>贪心算法通过做出一系列选择来求解问题的最优解。在每个决策点，它做出在当时看来最佳的选择。这种启发式策略并不保证总能找到最优解，但对于有些问题确实有效，如活动选择问题。设计贪心步骤算法：<br>    1.将最优化问题转化为这样的形式：对其做出一次选择后，只剩下一个问题需要求解。<br>    2.证明做出贪心选择后，原问题存在最优解，即贪心选择总是安全的。<br>    3.证明做出贪心选择后，剩余的子问题满足性质：其最优解与贪心选择组合即可得到原问题的最优解，这样就得到了最优子结构。</p>
+<h3 id="贪心小技巧"><a href="#贪心小技巧" class="headerlink" title="贪心小技巧"></a>贪心小技巧</h3><p>1.通过对输入进行预处理或者使用适合的数据结构（通常是优先队列），我们通常可以使贪心选择更加快速，从而得到更高效的算法。<br>2.当应用贪心算法时，我们通常使用更为直接的最优子结构。如前所述，我们可以假定，通过对原问题应用贪心选择即可得到子问题。我们真正要做的全部工作就是论证：将子问题的最优解与贪心选择组合在一起就能生成原问题的最优解。这种方法隐含地对子问题使用了数学归纳法，证明了在每个步骤进行贪心选择会生成原问题的最优解。</p>
+<h3 id="贪心例题及参考"><a href="#贪心例题及参考" class="headerlink" title="贪心例题及参考"></a>贪心例题及参考</h3><p>活动安排，哈夫曼编码，小船过河，找零问题，最小完成时间调度，无环子图<br>例题合集：<a href="https://www.cnblogs.com/hust-chen/p/8646009.html" target="_blank" rel="noopener">https://www.cnblogs.com/hust-chen/p/8646009.html</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-dynamicProgramming" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +161,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1a00041w9k8bzx7x2w/"
+  <a class="article-title" href="/2020/ckelim9yx0003hr9k4hp2aj7c/"
     >动态规划</a
   >
 </h2>
@@ -93,7 +172,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1a00041w9k8bzx7x2w/" class="article-date">
+      <a href="/2020/ckelim9yx0003hr9k4hp2aj7c/" class="article-date">
   <time datetime="2020-08-17T06:00:00.000Z" itemprop="datePublished">2020-08-17</time>
 </a>
       
@@ -164,7 +243,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1r000s1w9kcxs61edx/"
+  <a class="article-title" href="/2020/ckelima07001bhr9kaqy1hrst/"
     >雷火引擎一面二面</a
   >
 </h2>
@@ -175,7 +254,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1r000s1w9kcxs61edx/" class="article-date">
+      <a href="/2020/ckelima07001bhr9kaqy1hrst/" class="article-date">
   <time datetime="2020-08-13T06:00:00.000Z" itemprop="datePublished">2020-08-13</time>
 </a>
       
@@ -267,7 +346,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1m000h1w9k4pdoef3x/"
+  <a class="article-title" href="/2020/ckelim9zz000xhr9kenco1lxc/"
     >网易互联网笔试</a
   >
 </h2>
@@ -278,7 +357,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1m000h1w9k4pdoef3x/" class="article-date">
+      <a href="/2020/ckelim9zz000xhr9kenco1lxc/" class="article-date">
   <time datetime="2020-08-08T06:00:00.000Z" itemprop="datePublished">2020-08-08</time>
 </a>
       
@@ -367,7 +446,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn2l001z1w9k0ob01d3f/"
+  <a class="article-title" href="/2020/ckelima020011hr9k5qdw71g4/"
     >网易互娱图形开发工程师sp</a
   >
 </h2>
@@ -378,7 +457,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn2l001z1w9k0ob01d3f/" class="article-date">
+      <a href="/2020/ckelima020011hr9k5qdw71g4/" class="article-date">
   <time datetime="2020-08-04T06:00:00.000Z" itemprop="datePublished">2020-08-04</time>
 </a>
       
@@ -483,7 +562,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1b00051w9k6vg21d3o/"
+  <a class="article-title" href="/2020/ckelima040014hr9kda7nbm2p/"
     >网易雷火游戏研发笔试</a
   >
 </h2>
@@ -494,7 +573,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1b00051w9k6vg21d3o/" class="article-date">
+      <a href="/2020/ckelima040014hr9kda7nbm2p/" class="article-date">
   <time datetime="2020-08-02T06:00:00.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
@@ -775,7 +854,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1n000i1w9k7hhybr5e/"
+  <a class="article-title" href="/2020/ckelima0c001jhr9k0cfx4h4b/"
     >拼多多ios客户端笔试</a
   >
 </h2>
@@ -786,7 +865,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1n000i1w9k7hhybr5e/" class="article-date">
+      <a href="/2020/ckelima0c001jhr9k0cfx4h4b/" class="article-date">
   <time datetime="2020-08-02T06:00:00.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
@@ -867,7 +946,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1e000a1w9k3xd56mjo/"
+  <a class="article-title" href="/2020/ckelima09001ghr9k7r66d7ni/"
     >7.31 阿里笔试</a
   >
 </h2>
@@ -878,7 +957,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1e000a1w9k3xd56mjo/" class="article-date">
+      <a href="/2020/ckelima09001ghr9k7r66d7ni/" class="article-date">
   <time datetime="2020-07-31T06:00:00.000Z" itemprop="datePublished">2020-07-31</time>
 </a>
       
@@ -961,7 +1040,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn2n00221w9k3d84aj1s/"
+  <a class="article-title" href="/2020/ckelima0f001shr9k486cfzp1/"
     >华为提前批综合面试</a
   >
 </h2>
@@ -972,7 +1051,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn2n00221w9k3d84aj1s/" class="article-date">
+      <a href="/2020/ckelima0f001shr9k486cfzp1/" class="article-date">
   <time datetime="2020-07-30T06:00:00.000Z" itemprop="datePublished">2020-07-30</time>
 </a>
       
@@ -1051,7 +1130,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1s000u1w9k82li4k8x/"
+  <a class="article-title" href="/2020/ckelima0h001yhr9kb6t1e41q/"
     >华为软件开发工程师提前批二面</a
   >
 </h2>
@@ -1062,7 +1141,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckek2fn1s000u1w9k82li4k8x/" class="article-date">
+      <a href="/2020/ckelima0h001yhr9kb6t1e41q/" class="article-date">
   <time datetime="2020-07-28T04:33:28.944Z" itemprop="datePublished">2020-07-28</time>
 </a>
       
@@ -1094,86 +1173,6 @@
 <h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.考察了设计模式<br>2.考察了面向对象的三个特点<br>3.考察了stl和红黑树<br>4.考察了C++虚函数<br>5.询问了项目相关<br>6.考察了模版类<br>7.考察了软件工程相关的整个流程<br>8.考察了类的六大特性<br>9.new和molloc的区别<br>10.构造函数和析构函数的调用过程<br>11.介绍一下继承的种类</p>
 <h3 id="我询问面试官软件工程的知识在实际开发过程中真的会用到么"><a href="#我询问面试官软件工程的知识在实际开发过程中真的会用到么" class="headerlink" title="我询问面试官软件工程的知识在实际开发过程中真的会用到么"></a>我询问面试官软件工程的知识在实际开发过程中真的会用到么</h3><p>会用到很多，对于整个过程管理会很严格，文档和单元测试，集成测试等环节。</p>
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>感觉整个面试还是很不错，但是不知道会不会有三面，好想拿到offer！</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-interview_HW_1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/ckek2fn1t000y1w9k6sp97205/"
-    >华为软件开发工程师提前批一面</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/ckek2fn1t000y1w9k6sp97205/" class="article-date">
-  <time datetime="2020-07-26T08:04:28.466Z" itemprop="datePublished">2020-07-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p>
-<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  test_HW</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 张嘉喜 on 2020/7/24.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 张嘉喜. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</span><br><span class="line">            ans.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.size() &amp;&amp; target - candidates[i] &gt;= <span class="number">0</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">//剪枝去重</span></span><br><span class="line">            <span class="comment">//这里i &gt; start 放在前面不然有些编译器会提示数组越界了</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; start &amp;&amp; candidates[i] == candidates[i - <span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            DFS(i + <span class="number">1</span>, target - candidates[i]);</span><br><span class="line">            <span class="comment">// 回溯</span></span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 排序后方便剪枝</span></span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        </span><br><span class="line">        DFS(<span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates ;</span><br><span class="line">    candidates.push_back(<span class="number">10</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">2</span>);</span><br><span class="line">    candidates.push_back(<span class="number">7</span>);</span><br><span class="line">    candidates.push_back(<span class="number">6</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    Solution s = Solution();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans = s.combinationSum2(candidates, <span class="number">8</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; ans.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; ans[i].size(); j++ ) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i][j] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于回溯和剪枝的题目还是作太少了。应该要加强练习。</p>
-<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.查看了我leetcode的刷题情况，询问我主要擅长什么类型的题目，能否独立完成困难题目。<br>2.询问了是否知道回溯。<br>3.考察了DFS和BFS，原理和实现，应用场景<br>4.考察了C++虚函数<br>5.能讲解一下类吗<br>6.询问了项目相关<br>7.询问是否对数据库底层原理了解<br>8.学习能力怎么样</p>
-<h3 id="我询问面试官准备秋招还有哪些方面"><a href="#我询问面试官准备秋招还有哪些方面" class="headerlink" title="我询问面试官准备秋招还有哪些方面"></a>我询问面试官准备秋招还有哪些方面</h3><p>1.继续刷题，笔试500分会重点关注。要了解更多的算法思想，并查集，回溯，递归，递推，归并，贪心，动态规划，模拟，枚举<br>2.熟悉操作系统，因为杭研所主要还是做底层开发的，所以对整个CPU执行程序的过程，汇编等需要用到<br>3.如果有兴趣来做数据库的话，也要需要了解数据库相关的底层原理</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>和面试官整个沟通过程，感觉整个状态很好，所以也如愿以偿收到二面通知，明天就要二面了。加油～</p>
 
       
       <!-- reward -->
