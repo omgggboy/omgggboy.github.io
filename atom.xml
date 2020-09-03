@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-09-02T15:06:50.189Z</updated>
+  <updated>2020-09-03T13:56:55.767Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>点和矢量</title>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2ed001t7k9k6hwnb5y4/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2ed001t7k9k6hwnb5y4/</id>
+    <published>2020-08-23T06:00:00.000Z</published>
+    <updated>2020-09-03T13:56:55.767Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大部分现代3D游戏都是由虚拟世界里的三位物体组成的。游戏引擎的位置（position)、定向(orientation)和比例(scale)，不断改变这些属性以产生动画，并把这些属性变换(transform)至屏幕空间,使物体能被渲染到屏幕上。在游戏中，三维物体几乎都是由三角形组成的，其中三角形的顶点（vertex）则以点(point)表示。所以学习怎样表示游戏的整个对象之前，我们先来了解一下点，以及与之关系密切的矢量。</p><h4 id="1-点与笛卡儿坐标"><a href="#1-点与笛卡儿坐标" class="headerlink" title="1 点与笛卡儿坐标"></a>1 点与笛卡儿坐标</h4><p>严格地说，点是n维空间的一个位置(在游戏中，n通常等于2或3)。笛卡儿坐标系（Cartesian coordinate system) 是游戏程序员最常用的坐标系，它使用2个或3个相互垂直的轴来描述二维或三维空间的位置。因此，可以由2个或3个实数表示一个点P，即（Px，Py）或（Px，Py， Pz）。</p><p>除了笛卡儿坐标系之外，还有圆柱坐标系(cylindrical coordinate system),球坐标系（spherical coordinate system)。Crack the Weasal中就为了使得类似漩涡的效果更好实现就是用了圆柱坐标系。</p><h4 id="2-左手坐标系和右手坐标系的比较"><a href="#2-左手坐标系和右手坐标系的比较" class="headerlink" title="2 左手坐标系和右手坐标系的比较"></a>2 左手坐标系和右手坐标系的比较</h4><p>在三维笛卡儿坐标中，要安排3个相互垂直的轴，我们有两种选择，右手（right-handed RH)和左手(left_handed LH)。要掌握右手坐标系3个轴的方向，可把右手握拳，伸出拇指指向x轴，食指指向y轴，中指指向z轴。左手系则使用左手。<br>左手坐标与右手坐标的区别在于3个轴其中一个轴的方向不同。左手和右手坐标系相互转换十分容易。只需把其中一个轴反转，并保留另外两个轴不变即可。非常重要的是，数学法则在左手和右手坐标系里并不会改变，改变的只是我们如何把这些数学在脑海里诠释为三维空间。</p><h4 id="3-矢量"><a href="#3-矢量" class="headerlink" title="3 矢量"></a>3 矢量</h4><p>矢量(vector)是指n维空间中包含模（magnitude）和方向的量，矢量可绘制成有向线段，线段自一点（尾）延伸至另一点（头）。矢量和标量(scalar)（即普通的实数数值）比较，标量有模但没有方向。</p><p>三维矢量可以用3个标量(x,y,z)表示，如同点一样。点和矢量的区别实际上是很细微的。严格地说，矢量是相对于某已知点的偏移。一个矢量可移至三维空间中的任何位置，只要该矢量的方向和大小保持不变，无论在哪个位置，皆为同一个矢量。</p><p>矢量也可以用来表示点，只要把其尾固定在坐标系的原点（origin)。这些矢量有时候被称为位置矢量（position vector）或矢径（radius vector）。对我们来说，可以把3个标量视为点或矢量，只要记住，位置矢量的尾固定于已选坐标系的原点便可。这意味着，数学上点和矢量在使用时有微妙区别。或者说，点时绝对的，而矢量是相对的。</p><h4 id="4-矢量运算"><a href="#4-矢量运算" class="headerlink" title="4 矢量运算"></a>4 矢量运算</h4><h5 id="4-1-矢量和标量的乘法"><a href="#4-1-矢量和标量的乘法" class="headerlink" title="4.1 矢量和标量的乘法"></a>4.1 矢量和标量的乘法</h5><p>矢量<strong>a</strong>和标量s相乘，等于<strong>a</strong>的每个分量和s相乘：<br>s<strong>a</strong> = (sax, say, saz)</p><h5 id="4-2-矢量加减法"><a href="#4-2-矢量加减法" class="headerlink" title="4.2 矢量加减法"></a>4.2 矢量加减法</h5><p><strong>a</strong> + <strong>b</strong> = [(ax + bx),(ay + by),(az + bz)]<br><strong>a</strong> - <strong>b</strong> = [(ax - bx),(ay - by),(az - bz)]</p><h5 id="4-3-矢量模"><a href="#4-3-矢量模" class="headerlink" title="4.3 矢量模"></a>4.3 矢量模</h5><p>|<strong>a</strong>| = (ax^2 + ay^2 + az^2)^(1/2)</p><h5 id="4-4-矢量运算的简单应用"><a href="#4-4-矢量运算的简单应用" class="headerlink" title="4.4 矢量运算的简单应用"></a>4.4 矢量运算的简单应用</h5><p>矢量加法，应用于角色或物体移动，初始位置加偏移量得到现在位置。显示欧拉法求解弹簧质点系统就是使用这个。<br>矢量减法，判断两球体是否相交，两球心的位置矢量相减得到的矢量的模与两球半径之和进行比较。<br>tips:开方的操作比较费时，模的平方有时候十分有效。</p><h5 id="4-5-归一化和单位矢量"><a href="#4-5-归一化和单位矢量" class="headerlink" title="4.5 归一化和单位矢量"></a>4.5 归一化和单位矢量</h5><p>单位矢量(unit vector)是模（长度）为1的矢量。</p><p>给定任意矢量<strong>v</strong>的长度v=|<strong>v</strong>|,可以把该矢量转换为单位矢量<strong>u</strong>，使其保持<strong>v</strong>的方向不变，长度为单位长度。用<strong>v</strong>乘以其模的倒数（reciprocal）。此过程叫做归一化(normalization)。</p><h5 id="4-6-法矢量"><a href="#4-6-法矢量" class="headerlink" title="4.6 法矢量"></a>4.6 法矢量</h5><p>某表面（surface)的法矢量（normal vector)是指某矢量垂直于该表面。法矢量在游戏和计算机图形学中非常有用。例如，一个平面(plane)可用一个点和一个法矢量来定义。在三维图形中，经常大量使用法矢量计算光线和材质表面之间的夹角。</p><h5 id="4-7-点积和投影"><a href="#4-7-点积和投影" class="headerlink" title="4.7 点积和投影"></a>4.7 点积和投影</h5><p>矢量间可以相乘，但和标量不同，矢量有多种乘法。在游戏编程中，最常用的有两种：</p><ul><li>点积(dot product)， 又称为标量积(scalar product)或内积(inner product)。</li><li>叉积(cross product),又称为矢量积(vector product)或外积(outer product).</li></ul><p>两个矢量的点积结果是一个标量，此标量定义为两个矢量中每对分量乘积之和：<br><strong>a</strong> <strong>·</strong> <strong>b</strong> = axbx + ayby + azbz = d(一个标量)</p><p>点积也可以写成两个矢量的模相乘后，在乘以两个矢量间夹角的余弦值：<br><strong>a</strong> <strong>·</strong> <strong>b</strong> =|<strong>a</strong>||<strong>b</strong>|cos&lt;a,b&gt;</p><p>点积可进行交换律(communitative)运算，以及在加法上也可进行分配律(distributive)运算，也可结合标量乘法。</p><p>点积的主要用法：<br>1.矢量投影，任意向量<strong>a</strong>与单位向量<strong>u</strong>点乘，得到向量<strong>a</strong>在<strong>u</strong>上的投影<br>2.点积求模，两个相同向量点积，得到模的平方<br>3.点积判定，用来判断两矢量是否共线，是否同向，是否反向，是否垂直。<br>4.在游戏里，或用点积来判断敌人是否在你的前面，敌人位置减玩家位置与玩家的前向方向相乘</p><h5 id="4-7-叉积"><a href="#4-7-叉积" class="headerlink" title="4.7 叉积"></a>4.7 叉积</h5><p>向量积，数学中又称外积、叉积，物理中称矢积、叉乘，是一种在向量空间中向量的二元运算。与点积不同，它的运算结果是一个向量而不是一个标量。并且两个向量的叉积与这两个向量和垂直。其应用也十分广泛，通常应用于物理学光学和计算机图形学中。</p><p>模长：（在这里θ表示两向量之间的夹角（共起点的前提下）（0°≤θ≤180°），它位于这两个矢量所定义的平面上。）<br>方向：a向量与b向量的向量积的方向与这两个向量所在平面垂直，且遵守右手定则。（一个简单的确定满足“右手定则”的结果向量的方向的方法是这样的：若坐标系是满足右手定则的，当右手的四指从a以不超过180度的转角转向b时，竖起的大拇指指向是c的方向。）也可以这样定义（等效）：<br>向量积|c|=|a×b|=|a||b|sin&lt;a，b&gt;<br>即c的长度在数值上等于以a，b，夹角为θ组成的平行四边形的面积。<br>而c的方向垂直于a与b所决定的平面，c的指向按右手定则从a转向b来确定。<br>*运算结果c是一个伪向量。这是因为在不同的坐标系中c可能不同</p><p>叉积的主要用法：<br>1.求解平面法矢量，用平面内三点构成两个不平行的矢量，叉积得到法矢量。<br>2.在物理模拟中要来求解力矩<br>3.求解三角形面积<br>4.判断点是否在三角形内<br>5.判断两个矢量的左右关系和是否共线</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GAMES101 判断点是否在三角形内</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">insideTriangle</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">const</span> Vector3f* _v)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="comment">// TODO : Implement this function to check if the point (x, y) is inside the triangle represented by _v[0], _v[1], _v[2]</span></span><br><span class="line">    <span class="function">Eigen::Vector2f <span class="title">v1</span><span class="params">(_v[<span class="number">0</span>].x(),_v[<span class="number">0</span>].y())</span></span>;</span><br><span class="line">    <span class="function">Eigen::Vector2f <span class="title">v2</span><span class="params">( _v[<span class="number">1</span>].x(),_v[<span class="number">1</span>].y())</span></span>;</span><br><span class="line">    <span class="function">Eigen::Vector2f <span class="title">v3</span><span class="params">(_v[<span class="number">2</span>].x(),_v[<span class="number">2</span>].y())</span></span>;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> s  = (v2.x() - v1.x()) * (v3.y() - v1.y()) - (v2.y() - v1.y()) * (v3.x() - v1.x());</span><br><span class="line">    <span class="keyword">float</span> s1 = (v2.x() - v1.x()) * (y    - v1.y()) - (v2.y() - v1.y()) * (x - v1.x());</span><br><span class="line">    <span class="keyword">float</span> s2 = (v1.x() - v3.x()) * (y    - v3.y()) - (v1.y() - v3.y()) * (x - v3.x());</span><br><span class="line">    <span class="keyword">float</span> s3 = (v3.x() - v2.x()) * (y    - v3.y()) - (v3.y() - v2.y()) * (x - v3.x());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ((s*s1) &gt; <span class="number">0</span>&amp;&amp;(s*s2)&gt;<span class="number">0</span>&amp;&amp;(s*s3)&gt;<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="5-点和矢量的线性插值"><a href="#5-点和矢量的线性插值" class="headerlink" title="5 点和矢量的线性插值"></a>5 点和矢量的线性插值</h4><p>游戏中，时常要找出两个已知矢量之间的矢量。例如，要在两秒内，以每秒30帧的速度，用动画形式顺滑地把物体从A点移动到B点，那么须计算A和B之间60个中间点（intermediate point）。</p><p>线性插值（liear interpolation) 是一个简单的数学运算，用来计算两个已知点点中间点。此运算的名称通常简写成LERP。此运算定义如下，其中b介于并包含0～1:<br>L = LERP(A,B,b) = (1 - b)A + bB<br>从几何上看，L=LERP(A,B,b)为AB线段间一点的位置矢量，该点距A点b百分比的位置。数学上，LERP函数只是两矢量的加权平均（weighted average)。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;大部分现代3D游戏都是由虚拟世界里的三位物体组成的。游戏引擎的位置（position)、定向(orientation)和比例(scale)，
+      
+    
+    </summary>
+    
+    
+      <category term="计算机图形学" scheme="https://shen-yu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="数学基础" scheme="https://shen-yu.gitee.io/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>贪心算法</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9z30008hr9kbm9k3ess/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9z30008hr9kbm9k3ess/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2e2001a7k9katf8e2eb/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2e2001a7k9katf8e2eb/</id>
     <published>2020-08-20T06:00:00.000Z</published>
     <updated>2020-09-02T15:06:50.189Z</updated>
     
@@ -44,8 +70,8 @@
   
   <entry>
     <title>动态规划</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9yx0003hr9k4hp2aj7c/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9yx0003hr9k4hp2aj7c/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2cp00007k9k16v9dpxl/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2cp00007k9k16v9dpxl/</id>
     <published>2020-08-17T06:00:00.000Z</published>
     <updated>2020-09-01T14:44:38.942Z</updated>
     
@@ -70,8 +96,8 @@
   
   <entry>
     <title>雷火引擎一面二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima07001bhr9kaqy1hrst/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima07001bhr9kaqy1hrst/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2e6001f7k9k9h4x93px/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2e6001f7k9k9h4x93px/</id>
     <published>2020-08-13T06:00:00.000Z</published>
     <updated>2020-08-14T15:05:23.556Z</updated>
     
@@ -96,8 +122,8 @@
   
   <entry>
     <title>网易互联网笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9zz000xhr9kenco1lxc/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9zz000xhr9kenco1lxc/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2e000167k9kex7y3esw/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2e000167k9kex7y3esw/</id>
     <published>2020-08-08T06:00:00.000Z</published>
     <updated>2020-08-12T15:07:29.851Z</updated>
     
@@ -122,8 +148,8 @@
   
   <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima020011hr9k5qdw71g4/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima020011hr9k5qdw71g4/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2eb001n7k9k3k0kgbn6/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2eb001n7k9k3k0kgbn6/</id>
     <published>2020-08-04T06:00:00.000Z</published>
     <updated>2020-08-05T04:42:26.562Z</updated>
     
@@ -150,8 +176,8 @@
   
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima040014hr9kda7nbm2p/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima040014hr9kda7nbm2p/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2d2000a7k9k8oyi220u/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2d2000a7k9k8oyi220u/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -176,8 +202,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0c001jhr9k0cfx4h4b/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0c001jhr9k0cfx4h4b/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2e8001k7k9kb2h86nm3/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2e8001k7k9kb2h86nm3/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -202,8 +228,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima09001ghr9k7r66d7ni/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima09001ghr9k7r66d7ni/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2d000067k9khp7i2z1f/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2d000067k9khp7i2z1f/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -229,8 +255,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0f001shr9k486cfzp1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0f001shr9k486cfzp1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2ek00277k9k6kfsbr0z/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2ek00277k9k6kfsbr0z/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -255,8 +281,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0h001yhr9kb6t1e41q/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0h001yhr9kb6t1e41q/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2ef00217k9k2gbv6u3v/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2ef00217k9k2gbv6u3v/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -282,8 +308,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0j0021hr9kgoij83fb/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0j0021hr9kgoij83fb/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2el002a7k9k1gqo9i1i/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2el002a7k9k1gqo9i1i/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -309,8 +335,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9z4000chr9k6a208pfa/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9z4000chr9k6a208pfa/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2d3000b7k9kc2y7ex7m/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2d3000b7k9kc2y7ex7m/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -335,8 +361,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9z20007hr9kbtdzbkh5/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9z20007hr9kbtdzbkh5/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2cv00017k9kcvji3uex/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2cv00017k9kcvji3uex/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -362,8 +388,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima030013hr9k3kqy0h6b/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima030013hr9k3kqy0h6b/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2d5000f7k9khgdfhxss/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2d5000f7k9khgdfhxss/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -389,8 +415,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0d001mhr9k4vgl28ts/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0d001mhr9k4vgl28ts/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2ec001q7k9k0lqehzst/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2ec001q7k9k0lqehzst/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -418,8 +444,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9z00006hr9kb7fah4hi/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9z00006hr9kb7fah4hi/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2cy00047k9k6yp6cf0c/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2cy00047k9k6yp6cf0c/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -445,8 +471,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0l0024hr9kh11i7fsb/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0l0024hr9kh11i7fsb/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2eo002g7k9kduev2kyi/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2eo002g7k9kduev2kyi/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -471,8 +497,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0n0027hr9keui31d34/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0n0027hr9keui31d34/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2en002d7k9k5dwr9ot5/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2en002d7k9k5dwr9ot5/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -493,8 +519,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0e001phr9kf8dmf4sf/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0e001phr9kf8dmf4sf/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2ee001w7k9k5g6nd612/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2ee001w7k9k5g6nd612/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -521,8 +547,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima060018hr9kbsngb6ok/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima060018hr9kbsngb6ok/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2e4001d7k9k6jq03pg2/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2e4001d7k9k6jq03pg2/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -550,8 +576,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9yv0001hr9kbecg0ttt/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9yv0001hr9kbecg0ttt/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2cz00057k9k9buu4xce/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2cz00057k9k9buu4xce/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -576,8 +602,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelima0g001vhr9kf4kh4db6/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelima0g001vhr9kf4kh4db6/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2ei00247k9kcaf87dyy/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2ei00247k9kcaf87dyy/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -605,8 +631,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckelim9zx000vhr9k2jclf1yc/"/>
-    <id>https://shen-yu.gitee.io/2020/ckelim9zx000vhr9k2jclf1yc/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckemvj2dy00147k9kgyw4dhyz/"/>
+    <id>https://shen-yu.gitee.io/2020/ckemvj2dy00147k9kgyw4dhyz/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     

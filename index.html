@@ -74,6 +74,107 @@
     
     
     
+    <article id="post-pointAndVecotr" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckemvj2ed001t7k9k6hwnb5y4/"
+    >点和矢量</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckemvj2ed001t7k9k6hwnb5y4/" class="article-date">
+  <time datetime="2020-08-23T06:00:00.000Z" itemprop="datePublished">2020-08-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大部分现代3D游戏都是由虚拟世界里的三位物体组成的。游戏引擎的位置（position)、定向(orientation)和比例(scale)，不断改变这些属性以产生动画，并把这些属性变换(transform)至屏幕空间,使物体能被渲染到屏幕上。在游戏中，三维物体几乎都是由三角形组成的，其中三角形的顶点（vertex）则以点(point)表示。所以学习怎样表示游戏的整个对象之前，我们先来了解一下点，以及与之关系密切的矢量。</p>
+<h4 id="1-点与笛卡儿坐标"><a href="#1-点与笛卡儿坐标" class="headerlink" title="1 点与笛卡儿坐标"></a>1 点与笛卡儿坐标</h4><p>严格地说，点是n维空间的一个位置(在游戏中，n通常等于2或3)。笛卡儿坐标系（Cartesian coordinate system) 是游戏程序员最常用的坐标系，它使用2个或3个相互垂直的轴来描述二维或三维空间的位置。因此，可以由2个或3个实数表示一个点P，即（Px，Py）或（Px，Py， Pz）。</p>
+<p>除了笛卡儿坐标系之外，还有圆柱坐标系(cylindrical coordinate system),球坐标系（spherical coordinate system)。Crack the Weasal中就为了使得类似漩涡的效果更好实现就是用了圆柱坐标系。</p>
+<h4 id="2-左手坐标系和右手坐标系的比较"><a href="#2-左手坐标系和右手坐标系的比较" class="headerlink" title="2 左手坐标系和右手坐标系的比较"></a>2 左手坐标系和右手坐标系的比较</h4><p>在三维笛卡儿坐标中，要安排3个相互垂直的轴，我们有两种选择，右手（right-handed RH)和左手(left_handed LH)。要掌握右手坐标系3个轴的方向，可把右手握拳，伸出拇指指向x轴，食指指向y轴，中指指向z轴。左手系则使用左手。<br>左手坐标与右手坐标的区别在于3个轴其中一个轴的方向不同。左手和右手坐标系相互转换十分容易。只需把其中一个轴反转，并保留另外两个轴不变即可。非常重要的是，数学法则在左手和右手坐标系里并不会改变，改变的只是我们如何把这些数学在脑海里诠释为三维空间。</p>
+<h4 id="3-矢量"><a href="#3-矢量" class="headerlink" title="3 矢量"></a>3 矢量</h4><p>矢量(vector)是指n维空间中包含模（magnitude）和方向的量，矢量可绘制成有向线段，线段自一点（尾）延伸至另一点（头）。矢量和标量(scalar)（即普通的实数数值）比较，标量有模但没有方向。</p>
+<p>三维矢量可以用3个标量(x,y,z)表示，如同点一样。点和矢量的区别实际上是很细微的。严格地说，矢量是相对于某已知点的偏移。一个矢量可移至三维空间中的任何位置，只要该矢量的方向和大小保持不变，无论在哪个位置，皆为同一个矢量。</p>
+<p>矢量也可以用来表示点，只要把其尾固定在坐标系的原点（origin)。这些矢量有时候被称为位置矢量（position vector）或矢径（radius vector）。对我们来说，可以把3个标量视为点或矢量，只要记住，位置矢量的尾固定于已选坐标系的原点便可。这意味着，数学上点和矢量在使用时有微妙区别。或者说，点时绝对的，而矢量是相对的。</p>
+<h4 id="4-矢量运算"><a href="#4-矢量运算" class="headerlink" title="4 矢量运算"></a>4 矢量运算</h4><h5 id="4-1-矢量和标量的乘法"><a href="#4-1-矢量和标量的乘法" class="headerlink" title="4.1 矢量和标量的乘法"></a>4.1 矢量和标量的乘法</h5><p>矢量<strong>a</strong>和标量s相乘，等于<strong>a</strong>的每个分量和s相乘：<br>s<strong>a</strong> = (sax, say, saz)</p>
+<h5 id="4-2-矢量加减法"><a href="#4-2-矢量加减法" class="headerlink" title="4.2 矢量加减法"></a>4.2 矢量加减法</h5><p><strong>a</strong> + <strong>b</strong> = [(ax + bx),(ay + by),(az + bz)]<br><strong>a</strong> - <strong>b</strong> = [(ax - bx),(ay - by),(az - bz)]</p>
+<h5 id="4-3-矢量模"><a href="#4-3-矢量模" class="headerlink" title="4.3 矢量模"></a>4.3 矢量模</h5><p>|<strong>a</strong>| = (ax^2 + ay^2 + az^2)^(1/2)</p>
+<h5 id="4-4-矢量运算的简单应用"><a href="#4-4-矢量运算的简单应用" class="headerlink" title="4.4 矢量运算的简单应用"></a>4.4 矢量运算的简单应用</h5><p>矢量加法，应用于角色或物体移动，初始位置加偏移量得到现在位置。显示欧拉法求解弹簧质点系统就是使用这个。<br>矢量减法，判断两球体是否相交，两球心的位置矢量相减得到的矢量的模与两球半径之和进行比较。<br>tips:开方的操作比较费时，模的平方有时候十分有效。</p>
+<h5 id="4-5-归一化和单位矢量"><a href="#4-5-归一化和单位矢量" class="headerlink" title="4.5 归一化和单位矢量"></a>4.5 归一化和单位矢量</h5><p>单位矢量(unit vector)是模（长度）为1的矢量。</p>
+<p>给定任意矢量<strong>v</strong>的长度v=|<strong>v</strong>|,可以把该矢量转换为单位矢量<strong>u</strong>，使其保持<strong>v</strong>的方向不变，长度为单位长度。用<strong>v</strong>乘以其模的倒数（reciprocal）。此过程叫做归一化(normalization)。</p>
+<h5 id="4-6-法矢量"><a href="#4-6-法矢量" class="headerlink" title="4.6 法矢量"></a>4.6 法矢量</h5><p>某表面（surface)的法矢量（normal vector)是指某矢量垂直于该表面。法矢量在游戏和计算机图形学中非常有用。例如，一个平面(plane)可用一个点和一个法矢量来定义。在三维图形中，经常大量使用法矢量计算光线和材质表面之间的夹角。</p>
+<h5 id="4-7-点积和投影"><a href="#4-7-点积和投影" class="headerlink" title="4.7 点积和投影"></a>4.7 点积和投影</h5><p>矢量间可以相乘，但和标量不同，矢量有多种乘法。在游戏编程中，最常用的有两种：</p>
+<ul>
+<li>点积(dot product)， 又称为标量积(scalar product)或内积(inner product)。</li>
+<li>叉积(cross product),又称为矢量积(vector product)或外积(outer product).</li>
+</ul>
+<p>两个矢量的点积结果是一个标量，此标量定义为两个矢量中每对分量乘积之和：<br><strong>a</strong> <strong>·</strong> <strong>b</strong> = axbx + ayby + azbz = d(一个标量)</p>
+<p>点积也可以写成两个矢量的模相乘后，在乘以两个矢量间夹角的余弦值：<br><strong>a</strong> <strong>·</strong> <strong>b</strong> =|<strong>a</strong>||<strong>b</strong>|cos&lt;a,b&gt;</p>
+<p>点积可进行交换律(communitative)运算，以及在加法上也可进行分配律(distributive)运算，也可结合标量乘法。</p>
+<p>点积的主要用法：<br>1.矢量投影，任意向量<strong>a</strong>与单位向量<strong>u</strong>点乘，得到向量<strong>a</strong>在<strong>u</strong>上的投影<br>2.点积求模，两个相同向量点积，得到模的平方<br>3.点积判定，用来判断两矢量是否共线，是否同向，是否反向，是否垂直。<br>4.在游戏里，或用点积来判断敌人是否在你的前面，敌人位置减玩家位置与玩家的前向方向相乘</p>
+<h5 id="4-7-叉积"><a href="#4-7-叉积" class="headerlink" title="4.7 叉积"></a>4.7 叉积</h5><p>向量积，数学中又称外积、叉积，物理中称矢积、叉乘，是一种在向量空间中向量的二元运算。与点积不同，它的运算结果是一个向量而不是一个标量。并且两个向量的叉积与这两个向量和垂直。其应用也十分广泛，通常应用于物理学光学和计算机图形学中。</p>
+<p>模长：（在这里θ表示两向量之间的夹角（共起点的前提下）（0°≤θ≤180°），它位于这两个矢量所定义的平面上。）<br>方向：a向量与b向量的向量积的方向与这两个向量所在平面垂直，且遵守右手定则。（一个简单的确定满足“右手定则”的结果向量的方向的方法是这样的：若坐标系是满足右手定则的，当右手的四指从a以不超过180度的转角转向b时，竖起的大拇指指向是c的方向。）也可以这样定义（等效）：<br>向量积|c|=|a×b|=|a||b|sin&lt;a，b&gt;<br>即c的长度在数值上等于以a，b，夹角为θ组成的平行四边形的面积。<br>而c的方向垂直于a与b所决定的平面，c的指向按右手定则从a转向b来确定。<br>*运算结果c是一个伪向量。这是因为在不同的坐标系中c可能不同</p>
+<p>叉积的主要用法：<br>1.求解平面法矢量，用平面内三点构成两个不平行的矢量，叉积得到法矢量。<br>2.在物理模拟中要来求解力矩<br>3.求解三角形面积<br>4.判断点是否在三角形内<br>5.判断两个矢量的左右关系和是否共线</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GAMES101 判断点是否在三角形内</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">insideTriangle</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">const</span> Vector3f* _v)</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="comment">// TODO : Implement this function to check if the point (x, y) is inside the triangle represented by _v[0], _v[1], _v[2]</span></span><br><span class="line">    <span class="function">Eigen::Vector2f <span class="title">v1</span><span class="params">(_v[<span class="number">0</span>].x(),_v[<span class="number">0</span>].y())</span></span>;</span><br><span class="line">    <span class="function">Eigen::Vector2f <span class="title">v2</span><span class="params">( _v[<span class="number">1</span>].x(),_v[<span class="number">1</span>].y())</span></span>;</span><br><span class="line">    <span class="function">Eigen::Vector2f <span class="title">v3</span><span class="params">(_v[<span class="number">2</span>].x(),_v[<span class="number">2</span>].y())</span></span>;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> s  = (v2.x() - v1.x()) * (v3.y() - v1.y()) - (v2.y() - v1.y()) * (v3.x() - v1.x());</span><br><span class="line">    <span class="keyword">float</span> s1 = (v2.x() - v1.x()) * (y    - v1.y()) - (v2.y() - v1.y()) * (x - v1.x());</span><br><span class="line">    <span class="keyword">float</span> s2 = (v1.x() - v3.x()) * (y    - v3.y()) - (v1.y() - v3.y()) * (x - v3.x());</span><br><span class="line">    <span class="keyword">float</span> s3 = (v3.x() - v2.x()) * (y    - v3.y()) - (v3.y() - v2.y()) * (x - v3.x());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ((s*s1) &gt; <span class="number">0</span>&amp;&amp;(s*s2)&gt;<span class="number">0</span>&amp;&amp;(s*s3)&gt;<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-点和矢量的线性插值"><a href="#5-点和矢量的线性插值" class="headerlink" title="5 点和矢量的线性插值"></a>5 点和矢量的线性插值</h4><p>游戏中，时常要找出两个已知矢量之间的矢量。例如，要在两秒内，以每秒30帧的速度，用动画形式顺滑地把物体从A点移动到B点，那么须计算A和B之间60个中间点（intermediate point）。</p>
+<p>线性插值（liear interpolation) 是一个简单的数学运算，用来计算两个已知点点中间点。此运算的名称通常简写成LERP。此运算定义如下，其中b介于并包含0～1:<br>L = LERP(A,B,b) = (1 - b)A + bB<br>从几何上看，L=LERP(A,B,b)为AB线段间一点的位置矢量，该点距A点b百分比的位置。数学上，LERP函数只是两矢量的加权平均（weighted average)。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">数学基础</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-greedy" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +183,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelim9z30008hr9kbm9k3ess/"
+  <a class="article-title" href="/2020/ckemvj2e2001a7k9katf8e2eb/"
     >贪心算法</a
   >
 </h2>
@@ -93,7 +194,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelim9z30008hr9kbm9k3ess/" class="article-date">
+      <a href="/2020/ckemvj2e2001a7k9katf8e2eb/" class="article-date">
   <time datetime="2020-08-20T06:00:00.000Z" itemprop="datePublished">2020-08-20</time>
 </a>
       
@@ -161,7 +262,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelim9yx0003hr9k4hp2aj7c/"
+  <a class="article-title" href="/2020/ckemvj2cp00007k9k16v9dpxl/"
     >动态规划</a
   >
 </h2>
@@ -172,7 +273,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelim9yx0003hr9k4hp2aj7c/" class="article-date">
+      <a href="/2020/ckemvj2cp00007k9k16v9dpxl/" class="article-date">
   <time datetime="2020-08-17T06:00:00.000Z" itemprop="datePublished">2020-08-17</time>
 </a>
       
@@ -243,7 +344,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima07001bhr9kaqy1hrst/"
+  <a class="article-title" href="/2020/ckemvj2e6001f7k9k9h4x93px/"
     >雷火引擎一面二面</a
   >
 </h2>
@@ -254,7 +355,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelima07001bhr9kaqy1hrst/" class="article-date">
+      <a href="/2020/ckemvj2e6001f7k9k9h4x93px/" class="article-date">
   <time datetime="2020-08-13T06:00:00.000Z" itemprop="datePublished">2020-08-13</time>
 </a>
       
@@ -346,7 +447,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelim9zz000xhr9kenco1lxc/"
+  <a class="article-title" href="/2020/ckemvj2e000167k9kex7y3esw/"
     >网易互联网笔试</a
   >
 </h2>
@@ -357,7 +458,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelim9zz000xhr9kenco1lxc/" class="article-date">
+      <a href="/2020/ckemvj2e000167k9kex7y3esw/" class="article-date">
   <time datetime="2020-08-08T06:00:00.000Z" itemprop="datePublished">2020-08-08</time>
 </a>
       
@@ -446,7 +547,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima020011hr9k5qdw71g4/"
+  <a class="article-title" href="/2020/ckemvj2eb001n7k9k3k0kgbn6/"
     >网易互娱图形开发工程师sp</a
   >
 </h2>
@@ -457,7 +558,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelima020011hr9k5qdw71g4/" class="article-date">
+      <a href="/2020/ckemvj2eb001n7k9k3k0kgbn6/" class="article-date">
   <time datetime="2020-08-04T06:00:00.000Z" itemprop="datePublished">2020-08-04</time>
 </a>
       
@@ -562,7 +663,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima040014hr9kda7nbm2p/"
+  <a class="article-title" href="/2020/ckemvj2d2000a7k9k8oyi220u/"
     >网易雷火游戏研发笔试</a
   >
 </h2>
@@ -573,7 +674,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelima040014hr9kda7nbm2p/" class="article-date">
+      <a href="/2020/ckemvj2d2000a7k9k8oyi220u/" class="article-date">
   <time datetime="2020-08-02T06:00:00.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
@@ -854,7 +955,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima0c001jhr9k0cfx4h4b/"
+  <a class="article-title" href="/2020/ckemvj2e8001k7k9kb2h86nm3/"
     >拼多多ios客户端笔试</a
   >
 </h2>
@@ -865,7 +966,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelima0c001jhr9k0cfx4h4b/" class="article-date">
+      <a href="/2020/ckemvj2e8001k7k9kb2h86nm3/" class="article-date">
   <time datetime="2020-08-02T06:00:00.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
@@ -946,7 +1047,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima09001ghr9k7r66d7ni/"
+  <a class="article-title" href="/2020/ckemvj2d000067k9khp7i2z1f/"
     >7.31 阿里笔试</a
   >
 </h2>
@@ -957,7 +1058,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelima09001ghr9k7r66d7ni/" class="article-date">
+      <a href="/2020/ckemvj2d000067k9khp7i2z1f/" class="article-date">
   <time datetime="2020-07-31T06:00:00.000Z" itemprop="datePublished">2020-07-31</time>
 </a>
       
@@ -1040,7 +1141,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima0f001shr9k486cfzp1/"
+  <a class="article-title" href="/2020/ckemvj2ek00277k9k6kfsbr0z/"
     >华为提前批综合面试</a
   >
 </h2>
@@ -1051,7 +1152,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckelima0f001shr9k486cfzp1/" class="article-date">
+      <a href="/2020/ckemvj2ek00277k9k6kfsbr0z/" class="article-date">
   <time datetime="2020-07-30T06:00:00.000Z" itemprop="datePublished">2020-07-30</time>
 </a>
       
@@ -1093,86 +1194,6 @@
 <li>如果我进入计算产品线，需要具备哪些计算栈？主要强力推荐了《计算机体系结构》。</li>
 </ol>
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>隔天，查看官网的招聘进度，已经显示通过，并且询问了在职学长，说明已经进入池子了。等待被打捞，收获第一个offer。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-interview_HW2" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/ckelima0h001yhr9kb6t1e41q/"
-    >华为软件开发工程师提前批二面</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/ckelima0h001yhr9kb6t1e41q/" class="article-date">
-  <time datetime="2020-07-28T04:33:28.944Z" itemprop="datePublished">2020-07-28</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一个电话没接着，打不回去，就好怕改时间还是自己错过了。打校招电话回去咨询。还请教了一面的面试官。不过最后还是完美收尾了</p>
-<h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode316原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.find(s[i]) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!str.empty() &amp;&amp; str.back() &gt; s[i] &amp;&amp; s.find(str.back(), i)!=<span class="built_in">string</span>::npos)</span><br><span class="line">                str.pop_back();</span><br><span class="line">            str.push_back(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>贪心加栈，同时，当根据条件去掉一个栈顶元素时，新的栈顶元素可能也大于当前元素，所以应该继续判断新的栈顶元素和当前元素的关系，用一个while循环，直到出现一个不满足循环条件的栈顶元素（要么小于当前元素，要么大于当前元素但后续又无与之相同的元素来替代）。</p>
-<h3 id="剩下进去问答环节"><a href="#剩下进去问答环节" class="headerlink" title="剩下进去问答环节"></a>剩下进去问答环节</h3><p>1.考察了设计模式<br>2.考察了面向对象的三个特点<br>3.考察了stl和红黑树<br>4.考察了C++虚函数<br>5.询问了项目相关<br>6.考察了模版类<br>7.考察了软件工程相关的整个流程<br>8.考察了类的六大特性<br>9.new和molloc的区别<br>10.构造函数和析构函数的调用过程<br>11.介绍一下继承的种类</p>
-<h3 id="我询问面试官软件工程的知识在实际开发过程中真的会用到么"><a href="#我询问面试官软件工程的知识在实际开发过程中真的会用到么" class="headerlink" title="我询问面试官软件工程的知识在实际开发过程中真的会用到么"></a>我询问面试官软件工程的知识在实际开发过程中真的会用到么</h3><p>会用到很多，对于整个过程管理会很严格，文档和单元测试，集成测试等环节。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>感觉整个面试还是很不错，但是不知道会不会有三面，好想拿到offer！</p>
 
       
       <!-- reward -->
