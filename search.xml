@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>数据链路层</title>
-    <url>/2020/ckep1k1b800017f9k9iwh2139/</url>
+    <url>/2020/ckf2bit620001c79kc55o0hf9/</url>
     <content><![CDATA[<h2 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h2><h3 id="点对点信道的数据链路层在进行通信时的主要步骤如下"><a href="#点对点信道的数据链路层在进行通信时的主要步骤如下" class="headerlink" title="点对点信道的数据链路层在进行通信时的主要步骤如下"></a>点对点信道的数据链路层在进行通信时的主要步骤如下</h3><ul>
 <li>1.结点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成帧</li>
 <li>2.结点A把封装好的帧发生发生给结点B的数据链路层</li>
@@ -245,7 +245,7 @@
   </entry>
   <entry>
     <title>进程间通信</title>
-    <url>/2020/ckep1k1bb00037f9k3eyqewlf/</url>
+    <url>/2020/ckf2bit640003c79k5nrw37lv/</url>
     <content><![CDATA[<h3 id="进程协作的目的"><a href="#进程协作的目的" class="headerlink" title="进程协作的目的"></a>进程协作的目的</h3><ul>
 <li><strong>信息共享</strong>： 由于多用户可能对同样的信息感兴趣（例如共享文件），所以应提供环境以允许并发访问这些信息。</li>
 <li><strong>计算加速</strong>： 如果希望一个特定快速运行，那么应将系统功能划分成子任务，而每个子任务可以与其他子任务一起并行执行。注意，如果要实现这样的加速，那么计算机需要有多个处理核。</li>
@@ -324,7 +324,7 @@
   </entry>
   <entry>
     <title>矩阵</title>
-    <url>/2020/ckep1k1bf00077f9k3p862hmg/</url>
+    <url>/2020/ckf2bit690007c79k1imq8op3/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>矩阵(matrix)是由$n \ times m$个标量组成的长方形数组。矩阵便于表示线性变换（transformation)，如平移(translation)、旋转(rotation)和缩放(scaling)。在某些条件下，$4 \times 4$矩阵可以表示任意三维变换，包括平移、旋转和缩放。这种矩阵称为变换矩阵。利用矩阵乘法可以将表示为矩阵的变换，施于点或矢量。仿射矩阵（affine matrix）是种$4 \times 4$的变换矩阵，他能维持直线在变换前后的平行性以及相对的距离比，但是不一定维持直线在变换前后的相对长度和角度。由平移、旋转、缩放及/或切变(shear)所组合而成的变换都是仿射矩阵。</p>
 <h3 id="1-矩阵乘法"><a href="#1-矩阵乘法" class="headerlink" title="1. 矩阵乘法"></a>1. 矩阵乘法</h3><p>两矩阵$A$和$B$的积写作$P = AB$。若$A$和$B$为变换矩阵，其积$P$也是变换矩阵，而且以$P$进行变换时，等同于进行$A$和$B$两者的变换。此特性对游戏编程特别有用，因为我们可以把一连串变换预先计算为单一矩阵，在用该矩阵高效地变换大批矢量。</p>
 <script type="math/tex; mode=display">AB=\begin{bmatrix} A_{11}&A_{12}&A_{13}\\A_{21}&A_{22}&A_{23}\\A_{31}&A_{32}&A_{33}\end{bmatrix}\begin{bmatrix} B_{11}&B_{12}&B_{13}\\B_{21}&B_{22}&B_{23}\\B_{31}&B_{32}&B_{33}\end{bmatrix} = \begin{bmatrix} A_{row1}B_{col1}&A_{row1}B_{col2}&A_{row1}B_{col3}\\A_{row2}B_{col1}&A_{row2}B_{col2}&A_{row2}B_{col3}\\A_{row3}B_{col1}&A_{row3}B_{col2}&A_{row3}B_{col3}\end{bmatrix}</script><p>tips：完美世界笔试题，编写矩阵乘法函数，并进行优化。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 最朴素的矩阵乘法</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE_M 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE_N 3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE_S 4</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">int</span> matrix_a[SIZE_M] [SIZE_N]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125;;<span class="comment">//a矩阵2X3</span></span><br><span class="line">	<span class="keyword">int</span> matrix_b[SIZE_N] [SIZE_S]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;,&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;<span class="comment">//b矩阵3X4</span></span><br><span class="line">	<span class="keyword">int</span> matrix_result[SIZE_M][SIZE_S];<span class="comment">//结果矩阵2X4</span></span><br><span class="line">	</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;SIZE_M;m++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">0</span>;s&lt;SIZE_S;s++)&#123;</span><br><span class="line">			matrix_result[m][s]=<span class="number">0</span>;<span class="comment">//变量使用前记得初始化,否则结果具有不确定性</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">0</span>;n&lt;SIZE_N;n++)&#123;</span><br><span class="line">				matrix_result[m][s]+=matrix_a[m][n]*matrix_b[n][s];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;SIZE_M;m++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">0</span>;s&lt;SIZE_S;s++)&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;matrix_result[m][s]&lt;&lt;<span class="string">&quot;\t&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>// Stressen算法（算法导论分治策略提及）<br>c++分析和具体实现参照一下网站<br><a href="https://blog.csdn.net/qq_31567335/article/details/52695144">https://blog.csdn.net/qq_31567335/article/details/52695144</a><br><a href="https://www.cnblogs.com/hdk1993/p/4552534.html">https://www.cnblogs.com/hdk1993/p/4552534.html</a></p>
@@ -376,8 +376,56 @@
       </tags>
   </entry>
   <entry>
+    <title>投影矩阵</title>
+    <url>/2020/ckf2bit6a0009c79k6nkpcyo9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>显示器是2D的表面。一个3D场景必须通过投影成2D图形才能被显示。GL_PROJECTION矩阵就是用来做投影变换的。首先，我们必须把所有顶点数据从视点坐标转换到裁剪坐标，然后把裁剪坐标转换到NDC(normalized device corordinates)通过除以裁剪坐标的$w$分量。</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_frustumclip.png" alt=""></p>
+<p>所以，我们必须清楚裁剪和NDC转换是怎么转变成GL_PROJECTION矩阵。接下来会介绍怎么通过left,right,top,buttom, near,far六个边界值来构建矩阵的。</p>
+<p>裁剪视锥体定义在裁剪坐标还未除以$w$之前。裁剪坐标$x_s$,$y_c$和$z_c$分别和$w_c$对比，如果大于$w_c$都会被舍弃。</p>
+<script type="math/tex; mode=display">-w_c < x_c, y_c, z_c < w_c</script><p>当裁剪发生时，OpenGL会重构边缘的多边形。</p>
+<h3 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h3><p>在透视投影中，一个3D的点在截平头体（视点坐标）被映射到一个立方体（NDC);$x$的范围从$[l, r]$ 到 $[-1, 1]$,$y$的范围从$[b, t]$ 到 $[-1, 1]$,$z$的范围从$[-n, -f]$ 到 $[-1, 1]$。</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix01.png" alt=""></p>
+<p>视点坐标是定义在右手系的，但是NDC使用的是左手系。换句话说，在视点空间，相机在原点看向-z方向，在NDC,看向+z方向。因为glFrustum()只接受near和far的距离，我们需要消除他们在构建GL_PROJECTION矩阵。</p>
+<p>在OpenGL中，一个3D的点会被投影到近平面。下面两幅图，展示了在视点空间里的点$(x_e, y_e, z_e)$怎么投影到近平面上$(x_p, y_p, z_p)$。<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix03.png" alt="Top View of Frustum"></p>
+<p>从视锥体的上方看，视点空间的x坐标，$x_e$被映射到$x_p$，可以通过相似三角形计算得到。</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq01.png" alt=""></p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix04.png" alt="Side View of Frustum"><br>从视锥体的侧面看，$y_p$也是通过相同的方式映射得到：</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq02.png" alt=""></p>
+<p>由此可以看出$x_p$和$y_p$都取决于$z_e$，他们于$-z_e$成反比例关系。换句话说，他们都除以$-z_e$。这给我们构建GL_PROJECTION矩阵提供了帮助。在视点坐标通过GL_PROJECTION矩阵变换之后，裁剪坐标依然是齐次坐标。裁剪坐标通过除以$w_c$转换到NDC。</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_transform08.png" alt=""></p>
+<p><img src="http://www.songho.ca/opengl/files/gl_transform12.png" alt=""><br>所以，我们设$w_c$为$-z_e$,GL_PROJECTION矩阵第四行变成$\begin{pmatrix}0&amp;0&amp;-1&amp;0 \end{pmatrix}$</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq03.png" alt=""></p>
+<p>下一步，我们需要把$x_p$和$y_p$映射到NDC的$x_n$和$y_n$通过线性关系；</p>
+<script type="math/tex; mode=display">[l,r]\Rightarrow [-1, 1]</script><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix05.png" alt=""></p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq04.png" alt=""></p>
+<script type="math/tex; mode=display">[b,t]\Rightarrow [-1, 1]</script><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix06.png" alt=""></p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq05.png" alt=""></p>
+<p>接着我们替换$x_p$和$y_p$为上方的等式。</p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq06.png" alt=""></p>
+<p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq07.png" alt=""></p>
+<p>因为透视除法$(x_c / w_c, y_c /w_c)$我们让上面两个方程都除以$-z_e$。之前我们把$w_c$设置成$-z_e$，括号里的参数就变成了裁剪坐标的$x_c$和$y_c$。</p>
+<p>根据以上等式，我们可以得到GL_PROJECTION矩阵的第一行和第二行。<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq08.png" alt=""></p>
+<p>现在我们只需要求解GL_PROJECTION矩阵的第三行了。发现$z_n$和别的参数不同，因为在视点空间的$z_e$总是被投影到近平面的$-n$。但是我需要$z$来裁剪和深度测试。除此之外，我们可以将其逆变换。我们知道$z$与$x$和$y$无关。那么，借助$w$<br>就可以发现$z_n$和$z_e$的关系。所以我们可以简化解GL_PROJECTION矩阵的第三行像这。<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq10.png" alt=""></p>
+<p>在视点空间，$w_e$等于1.于是方程变为<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq11.png" alt=""></p>
+<p>为了求解$A$和$B$，我们代入$(z_e, z_n)$关系，$(-n, -1)$和$(-f, 1)$<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq12.png" alt=""></p>
+<p>解得A<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq13.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq14.png" alt=""></p>
+<p>解得B<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq15.png" alt=""></p>
+<p>最后我们得到的GL_PROJECTION矩阵<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq16.png" alt=""></p>
+<p>对于一个正截平头体的矩阵，宽高相等且对称：<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq20.png" alt=""></p>
+<p>通过观察$(z_e, z_n)$关系，深度转换时非线性的，在接近远平面精度会小，造成z-fighting<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix07.png" alt=""></p>
+<h3 id="正交投影"><a href="#正交投影" class="headerlink" title="正交投影"></a>正交投影</h3><p>将长方体压缩成正方体，<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix02.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix08.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq21.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix09.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq22.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix10.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq23.png" alt=""><br>正交投影的投影矩阵$w$没必要，<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq24.png" alt=""></p>
+<p>视锥体是对称的，可以简化为<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq25.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>数学基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <url>/2020/ckep1k1bg00097f9k1jvfaoqm/</url>
+    <url>/2020/ckf2bit6b000ac79key0nczk1/</url>
     <content><![CDATA[<p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p>
 <p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
 <ul>
@@ -404,8 +452,118 @@
       </tags>
   </entry>
   <entry>
+    <title>unigine cantainers</title>
+    <url>/2020/ckf2bit6e000ec79k9bcp8y6y/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>containers用于组织和分组单个wieights。</p>
+<h3 id="公共参数"><a href="#公共参数" class="headerlink" title="公共参数"></a>公共参数</h3><p>除了常规参数外，还有一组特定于容器的参数，任何容器都可以具有：</p>
+<ul>
+<li>space 整体间距（像素）。</li>
+<li>space_x 水平间距（像素）。</li>
+<li>space_y 垂直间距（像素）。</li>
+</ul>
+<h3 id="vbox"><a href="#vbox" class="headerlink" title="vbox"></a>vbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/vbox.png" alt=""></p>
+<p>参数：</p>
+<ul>
+<li>parameters: 容器是否有背景。 默认值为0（布尔值）。<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::vbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 1<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 2<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="hbox"><a href="#hbox" class="headerlink" title="hbox"></a>hbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/hbox.png" alt=""></p>
+<p>参数：</p>
+<ul>
+<li>parameters: 容器是否有背景。 默认值为0（布尔值）。<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::hbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 1<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 2<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="vpaned"><a href="#vpaned" class="headerlink" title="vpaned"></a>vpaned</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/vpaned.png" alt=""><br>该小部件应恰好包含两个孩子。</p>
+<p>参数:</p>
+<ul>
+<li>value 范围内的值[-32767; 32767]。 -32767表示在调整大小时，上层子级将保持固定。 32767表示在调整大小时，较低的子级将保持固定。 0表示两个子元素的大小均相等。 其他值指定比例，在比例中调整子项的大小。 默认值为0。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vpaned</span> <span class="attr">name</span>=<span class="string">&quot;Test::vpaned&quot;</span> <span class="attr">align</span>=<span class="string">&quot;expand&quot;</span> <span class="attr">value</span>=<span class="string">&quot;-32767&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">hbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">hbox</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">hbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vpaned</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="hpaned"><a href="#hpaned" class="headerlink" title="hpaned"></a>hpaned</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/hpaned.png" alt=""><br>该小部件应恰好包含两个孩子。</p>
+<p>参数:</p>
+<ul>
+<li>value 范围内的值[-32767; 32767]。 -32767表示在调整大小时，上层子级将保持固定。 32767表示在调整大小时，较低的子级将保持固定。 0表示两个子元素的大小均相等。 其他值指定比例，在比例中调整子项的大小。 默认值为0。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hpaned</span> <span class="attr">name</span>=<span class="string">&quot;Test::hpaned&quot;</span> <span class="attr">align</span>=<span class="string">&quot;expand&quot;</span> <span class="attr">value</span>=<span class="string">&quot;-32767&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">vbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">vbox</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">vbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">vbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hpaned</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="gridbox"><a href="#gridbox" class="headerlink" title="gridbox"></a>gridbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/gridbox.png" alt=""></p>
+<p>参数：</p>
+<ul>
+<li>background 容器是否有背景。 默认值为1（布尔值）。</li>
+<li>columns 列数（整数）。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gridbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::gridbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">columns</span>=<span class="string">&quot;2&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label1<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label2<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label3<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gridbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="groupbox"><a href="#groupbox" class="headerlink" title="groupbox"></a>groupbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/groupbox.png" alt=""></p>
+<p>参数：</p>
+<ul>
+<li>background 容器是否有背景。 默认值为1（布尔值）。</li>
+</ul>
+<p>特定孩子：</p>
+<ul>
+<li>text 可操作的标题文字</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::groupbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span>&gt;</span>Group<span class="tag">&lt;/<span class="name">text</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">groupbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="tabbox"><a href="#tabbox" class="headerlink" title="tabbox"></a>tabbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/tabbox.png" alt=""></p>
+<p>特定的孩子：</p>
+<ul>
+<li>tab 一个标签。支持多个标签。 每个选项卡还可以有一个特殊的子代：<ul>
+<li>text 标签标题</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tabbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::tabbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;1&quot;</span> <span class="attr">space</span>=<span class="string">&quot;20&quot;</span> <span class="attr">align</span>=<span class="string">&quot;expand&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 0<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>TabBox content<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 1<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 2<span class="tag">&lt;/<span class="name">text</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 3<span class="tag">&lt;/<span class="name">text</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tabbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="scrollbox"><a href="#scrollbox" class="headerlink" title="scrollbox"></a>scrollbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/scrollbox.png" alt=""></p>
+<p>参数：</p>
+<ul>
+<li>width 容器宽度（以像素为单位）。</li>
+<li>height 容器高度（以像素为单位）。</li>
+<li>henabled 是否启用水平滚动（布尔）。</li>
+<li>venabled 是否启用垂直滚动（布尔）。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">scrollbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::scrollbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span> <span class="attr">hscroll</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>LabelLabelLabelLabelLabelLabelLabelLabelLabel<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">scrollbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/window.png" alt=""><br>参数：</p>
+<ul>
+<li>moveable 窗口是否可移动。 默认值为1（布尔值）。</li>
+<li>sizeable 窗口是否可调整大小。 默认值为0（布尔值）。</li>
+<li>titleable 窗口是否可以有标题。 默认值为0（布尔值）。</li>
+<li>blendable 窗口不聚焦时是否变灰。 默认值为0（布尔值）。</li>
+<li>floatable 窗口最小化是否具有动画效果。 默认值为0（布尔值）。</li>
+<li>snap_distance 将小部件捕捉到应用程序窗口边界的最大距离。 默认值为0（像素）。</li>
+<li>width 窗口宽度（以像素为单位）。</li>
+<li>height 窗口高度（以像素为单位）。</li>
+</ul>
+<p>特定的孩子:</p>
+<ul>
+<li>text 窗口标题。align 可以接受的参数center，left,right。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">window</span> <span class="attr">name</span>=<span class="string">&quot;Test::window&quot;</span> <span class="attr">export</span>=<span class="string">&quot;1&quot;</span> <span class="attr">snap_distance</span>=<span class="string">&quot;16&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>Window title<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">window</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="dialog"><a href="#dialog" class="headerlink" title="dialog"></a>dialog</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/dialog.png" alt=""><br>参数：</p>
+<ul>
+<li>moveable 窗口是否可移动。 默认值为1（布尔值）。</li>
+<li>sizeable 窗口是否可调整大小。 默认值为0（布尔值）。</li>
+<li>titleable 窗口是否可以有标题。 默认值为0（布尔值）。</li>
+<li>blendable 窗口不聚焦时是否变灰。 默认值为0（布尔值）。</li>
+<li>floatable 窗口最小化是否具有动画效果。 默认值为0（布尔值）。</li>
+<li>snap_distance 将小部件捕捉到应用程序窗口边界的最大距离。 默认值为0（像素）。</li>
+<li>width 提示框宽度（以像素为单位）。</li>
+<li>height 提示框高度（以像素为单位）。</li>
+</ul>
+<p>特定的孩子:</p>
+<ul>
+<li>text 提示框标题。align 可以接受的参数center，left,right。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dialog</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>Dialog title<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dialog</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>以上内容均翻译自unigine官方文档。如有错误欢迎批评指正。</p>
+]]></content>
+      <categories>
+        <category>unigine引擎</category>
+      </categories>
+      <tags>
+        <tag>containers</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>动态规划</title>
-    <url>/2020/ckep1k1bh000a7f9kfso55lms/</url>
+    <url>/2020/ckf2bit6f000gc79k6i7t4fb4/</url>
     <content><![CDATA[<h3 id="动态规划与分治算法比较"><a href="#动态规划与分治算法比较" class="headerlink" title="动态规划与分治算法比较"></a>动态规划与分治算法比较</h3><p>分治算法将问题分为互不相交的子问题，递归地求解子问题，再将它们的解组合起来，求出原问题的解。与之相反，动态规划应用于子问题重叠的情况，即不同的子问题具有公共的子子问题（子问题的求解是递归进行的，将其分为更小的子子问题）。这种情况下，分治算法会做许多不必要的工作，它会反复求解那些公共子子问题。而动态规划算法对每个子子问题只求解一次，将其解保存在一个表格中，从而无需每次求解一个子子问题时都重新计算，避免了这种不必要的计算工作。</p>
 <h3 id="求解问题类型"><a href="#求解问题类型" class="headerlink" title="求解问题类型"></a>求解问题类型</h3><p>动态规划方法通常用来求解最优化问题。这类问题可以有很多可行解，每个解都有一个值，我们希望找到寻找具有最优化（最大值或最小值）的解。我们称这样的解为问题的一个最优解，而不是最优解，因为可能有很多个解都能达到最优值。</p>
 <h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ol>
@@ -426,7 +584,7 @@
   </entry>
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <url>/2020/ckep1k1bl000e7f9kb42z5tni/</url>
+    <url>/2020/ckf2bit6g000lc79k01hpcdu1/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近，可能是投的岗位有点多，所以就收到各种笔试和面试通知，静下心来准备面试的时间开始变得琐碎了。对于具体的职业发展方向开始有点踌躇。无论选择哪个方向都是还有一堆的东西等着你去补。对于网易3个小时的笔试，4道编程题，时间依旧是十分紧张。在上次阿里笔试看了别的大佬AC的代码简洁清晰，这可能就是和那些ACMer的差距，比较人家的代码量是你的几十倍。网易还有一个特别的地方就是不允许使用本地IDE。四道题的题目分值不同，分别是10，20，30，40。总分100。</p>
 <h3 id="第一题-完全二叉树的翻转-10分"><a href="#第一题-完全二叉树的翻转-10分" class="headerlink" title="第一题 完全二叉树的翻转 10分"></a>第一题 完全二叉树的翻转 10分</h3><p>输入n, m<br>n表示完全二叉树的层数<br>m表示需要进行翻转的节点<br>翻转：该节点的左右子树进行交换</p>
 <div class="table-container">
@@ -672,7 +830,7 @@
   </entry>
   <entry>
     <title>网易互联网笔试</title>
-    <url>/2020/ckep1k1bm000g7f9kg54d0f9m/</url>
+    <url>/2020/ckf2bit6h000mc79kccxz5a76/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>中午被麻辣香锅搞得死去活来，下午被网易笔试搞得死去活来。四道题AC1.25,第三题没看，第四题是强连通量，关于图的题目是我的薄弱，得去花些时间看看。</p>
 <h3 id="第一题-回文串"><a href="#第一题-回文串" class="headerlink" title="第一题 回文串"></a>第一题 回文串</h3><p>给定一个长度为n(n&lt;=1e3)的字符串，可以在后面加无限多的字母，问能组成的最短回文串是多长？<br>解法一：注意到n比较小，直接暴力<br>解法二：可以用manachar算法，算出原串最长回文后缀的长度，然后就可以得到最短的字符串了。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="built_in">string</span> &amp;s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = start, j = end;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j &amp;&amp; s[i] == s[j]) &#123;</span><br><span class="line">        ++i, --j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i &gt;= j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s; <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> length = s.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (check(s, i, length - <span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">string</span> prefix = s.substr(<span class="number">0</span>, i);</span><br><span class="line">    reverse(prefix.begin(), prefix.end());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s + prefix &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -707,7 +865,7 @@
   </entry>
   <entry>
     <title>7.31 阿里笔试</title>
-    <url>/2020/ckep1k1bo000l7f9kgdhygp4j/</url>
+    <url>/2020/ckf2bit6j000qc79k6m5gg0bv/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一小时两道题， 吃完晚饭就整装待发准备做了，还是有点紧张的。想要做出一道就勉强混过去。</p>
 <h3 id="第一题-带牛去吃草多少种组合方式"><a href="#第一题-带牛去吃草多少种组合方式" class="headerlink" title="第一题 带牛去吃草多少种组合方式"></a>第一题 带牛去吃草多少种组合方式</h3><p>小明带着n头牛 有m种颜色，每头牛都是互异的。<br>小明带任意头牛出去吃草。<br>请问有多少种组合？<br>种类太多 取模 1e9+7<br>1&lt;= n &lt;= 1e9, 1&lt;= m &lt;= 1e9</p>
 <p>例：<br>输入：<br>3， 2</p>
@@ -735,7 +893,7 @@
   </entry>
   <entry>
     <title>华为笔试总结</title>
-    <url>/2020/ckep1k1bp000m7f9k7kmt3jfh/</url>
+    <url>/2020/ckf2bit6k000sc79ka0ld2t13/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>中午预约的机考时间，记错成了第二天晚上才开始。结果，晚上7点多和朋友过生日的时候，收到了短信，提醒考试已经开始快半小时了。赶紧跑了回来。内心一百只草泥马飞过。总体而言就算给我更多的时间不一定思路就清晰了。</p>
 <h3 id="1-求余数"><a href="#1-求余数" class="headerlink" title="1.求余数"></a>1.求余数</h3><p>给定两个数，将两个数的各位求和在求余数。<br>例如：<br>输入：<br>123 11</p>
 <p>输出：<br>0</p>
@@ -759,7 +917,7 @@
   </entry>
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <url>/2020/ckep1k1br000q7f9k1vj9ajvy/</url>
+    <url>/2020/ckf2bit6l000wc79ket8f2c2i/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这半年一直再做客户端，但是我们的客户端与实际大厂的客户端，又不尽相同。客户端可以分为ios，Android，windows，mac等，ios主要要求Object-C和Swift, Android主要用Java。Windows和Mac可能要求C++。所以就项目基础来说去做Windows下的客户端可能会有一定优势，看了这多岗位，感觉字节的C++ 客户端研发工程师-抖音/火山直播这个是比较接近的。当然还有游戏客户端，游戏客户端往往还要求你熟悉一门脚本语言，因为纯c++的游戏，马上就会被外挂搞得毫无游戏体验，脚本的加密，让外挂的制作难度提升了一个档次。除此之外，还会要求你有主流游戏引擎的操作经验，图形学接口的熟悉，shader的编写能力等等。相比华为的宽泛要求，这些细致的要求让你忘而却步。现在的主流市场已经往移动端发展，那么在主机上制作客户端的岗位又会渐渐缩水。ios客户端和Android客户端相比较而言更加吃香。</p>
 <p>如果继续学习C++，去华为阿里这样的地方做底层开发，操作系统内核，数据库可能是比较好的处理。还有就是做游戏，计算机图形学的相关内容。现在准备java去达到一个面试水平，应该是比较难的。所以现阶段，应该还是好好看看操作系统，数据库相关内容的书籍。图形学和游戏引擎的熟悉可能稍微滞后一些，感觉相对而言会比较没那么快上手。简单做个fps游戏，作为简历上的闪光点，当然也是一个值得考虑的事情。</p>
 <p>前一段时间已经投了五六家大厂，接下来的半个月应该稍微静下心来，继续准备，先不投一段时间，因为接踵而至的笔试和面试，会让你喘不过气，每天都处于这个没面好，那个没考好的焦虑当中。</p>
@@ -788,7 +946,7 @@
   </entry>
   <entry>
     <title>贪心算法</title>
-    <url>/2020/ckep1k1bs000s7f9k3ed15wye/</url>
+    <url>/2020/ckf2bit6m000yc79k1g650u0m/</url>
     <content><![CDATA[<h3 id="贪心算法VS动态规划"><a href="#贪心算法VS动态规划" class="headerlink" title="贪心算法VS动态规划"></a>贪心算法VS动态规划</h3><p>由于贪心和动态规划都利用了最优子结构性质，你可能会对一个可用贪心求解的问题设计一个动态规划算法，或者相反，对于一个实际上需要动态规划求解的问题使用了贪心算法。为了说明两种方法之间的细微差别，我们研究一个经典最优化问题的变形。</p>
 <h5 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h5><p>一个正在抢劫商店的小偷发现了n个商品，第i个商品价值vi美元，重wi磅，vi和wi都是整数。这个小偷希望拿走价值尽量高的商品，但他的背包最多容纳W磅重的商品，W是一个整数。他应该拿哪些商品呢？（我们称这个问题是0-1背包问题，因为对每个商品，小偷要么把它完整拿走，要么把它留下；他不能只拿走一个商品的一部分。或者把一个商品拿走多次。）</p>
 <h5 id="分数背包"><a href="#分数背包" class="headerlink" title="分数背包"></a>分数背包</h5><p>设定与0-1背包问题是一样的，但对每个商品，小偷可以拿走其一部分，而不是作出二元（0-1）选择。你可以将0-1背包想象为金锭，而分数背包问题中的商品更像金砂。</p>
@@ -806,7 +964,7 @@
   </entry>
   <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <url>/2020/ckep1k1bt000w7f9kb2lzchxk/</url>
+    <url>/2020/ckf2bit6n0012c79kdan65jwc/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在面试之前，特地去网易互娱校招官网查看了图形开发工程师的职位描述和要求。</p>
 <p>以下复制一下 职位要求<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">您可以：</span><br><span class="line">- 负责游戏产品的视觉效果，实现各种酷炫的效果，让所有平台和设备的玩家都有同样震撼的游戏体验；</span><br><span class="line">- 负责游戏产品的图形部分相关开发； </span><br><span class="line">- 与美术协作实现各种高级视觉效果，并优化content pipeline。</span><br><span class="line">任职资格</span><br><span class="line">我们希望您具备以下条件：</span><br><span class="line">- 计算机视觉或图形学等相关研究方向；</span><br><span class="line">- 有扎实的c++基础；</span><br><span class="line">- 有良好的图形学和数学基础；</span><br><span class="line">- 至少熟悉DirectX、OpenGL、Metal或者Vulkan中的一种图形API，并有很强的shader编写能力；</span><br><span class="line">- 熟悉AAA级游戏中常见的渲染技术，并对某一领域有深入理解，比如全局光照、粒子、材质表现、性能优化；</span><br><span class="line">- 有一定debug和性能分析能力。</span><br><span class="line"></span><br><span class="line">备注：广州需求80，杭州需求15，上海需求25。</span><br></pre></td></tr></table></figure></p>
 <p>当看到熟悉AAA级游戏中的渲染技术，对某一领域有深入理解。内心就频频发虚。看了看杭州需求15人，基本也没有我的什么机会了。<br>但是，面试就是抱试试水的心态，一探虚实。</p>
@@ -855,28 +1013,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/ckep1k1bu000y7f9k138u6aa4/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>实践记录</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>雷火引擎一面二面</title>
-    <url>/2020/ckep1k1bv00127f9k3lvpgcxz/</url>
+    <url>/2020/ckf2bit6o0014c79k742sa98x/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>参加完OpenDay热血澎湃。早上网易mini游戏展，堪比ChinaJoy的模式，就是比较小型。但是整个游戏来说大部分可能还是Demon的形式，但是总体制作还是比较精良的。有一种参加学校社团展示的感觉，每个人都很热血。下午，动作捕捉中心和lua编写AI脚本。体验拉满。第二天刚好面试，还沉浸OpenDay的欢乐之中。</p>
 <h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><p>手写了五道题目<br>主要考察虚函数，数学知识和算法</p>
 <ol>
@@ -917,8 +1055,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2020/ckf2bit6q0018c79k8ydvabno/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>实践记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <url>/2020/ckep1k1bw00147f9k8o8uhlj7/</url>
+    <url>/2020/ckf2bit6r001ac79k9np5dn8r/</url>
     <content><![CDATA[<h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
 <h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
 <li>简短的自我介绍</li>
@@ -942,7 +1100,7 @@
   </entry>
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <url>/2020/ckep1k1bx00177f9k3ef5hhxm/</url>
+    <url>/2020/ckf2bit6s001cc79kbzfb9o1a/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一个电话没接着，打不回去，就好怕改时间还是自己错过了。打校招电话回去咨询。还请教了一面的面试官。不过最后还是完美收尾了</p>
 <h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode316原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.find(s[i]) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!str.empty() &amp;&amp; str.back() &gt; s[i] &amp;&amp; s.find(str.back(), i)!=<span class="built_in">string</span>::npos)</span><br><span class="line">                str.pop_back();</span><br><span class="line">            str.push_back(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>贪心加栈，同时，当根据条件去掉一个栈顶元素时，新的栈顶元素可能也大于当前元素，所以应该继续判断新的栈顶元素和当前元素的关系，用一个while循环，直到出现一个不满足循环条件的栈顶元素（要么小于当前元素，要么大于当前元素但后续又无与之相同的元素来替代）。</p>
@@ -959,7 +1117,7 @@
   </entry>
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <url>/2020/ckep1k1c0001a7f9k4ywp83qx/</url>
+    <url>/2020/ckf2bit6t001gc79kazfc9xvo/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>紧张激动，不知所措。面对一个大黑幕，但是看着自己就好像没有看着字节面试官那时候紧张了。</p>
 <h3 id="手写代码"><a href="#手写代码" class="headerlink" title="手写代码"></a>手写代码</h3><p>进来先考察代码能力，这次题目是leetcode40原题，因为没刷到过，而且本身对回溯的算法还不是很熟，所以没能在规定时间内，完成这道题目。<br>后面参考答案后写出的解题：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  test_HW</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 张嘉喜 on 2020/7/24.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 张嘉喜. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</span><br><span class="line">            ans.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; candidates.size() &amp;&amp; target - candidates[i] &gt;= <span class="number">0</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">//剪枝去重</span></span><br><span class="line">            <span class="comment">//这里i &gt; start 放在前面不然有些编译器会提示数组越界了</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; start &amp;&amp; candidates[i] == candidates[i - <span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            DFS(i + <span class="number">1</span>, target - candidates[i]);</span><br><span class="line">            <span class="comment">// 回溯</span></span><br><span class="line">            path.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">combinationSum2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 排序后方便剪枝</span></span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        </span><br><span class="line">        DFS(<span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates ;</span><br><span class="line">    candidates.push_back(<span class="number">10</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">2</span>);</span><br><span class="line">    candidates.push_back(<span class="number">7</span>);</span><br><span class="line">    candidates.push_back(<span class="number">6</span>);</span><br><span class="line">    candidates.push_back(<span class="number">1</span>);</span><br><span class="line">    candidates.push_back(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    Solution s = Solution();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans = s.combinationSum2(candidates, <span class="number">8</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; ans.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt; ans[i].size(); j++ ) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i][j] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>对于回溯和剪枝的题目还是作太少了。应该要加强练习。</p>
@@ -976,7 +1134,7 @@
   </entry>
   <entry>
     <title>华为提前批综合面试</title>
-    <url>/2020/ckep1k1c1001c7f9kd8a66khb/</url>
+    <url>/2020/ckf2bit6u001hc79kbazad94q/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>开始很紧张，面试前巨害怕。会不会和自己昨晚在网上搜索的内容一样有相似的经历。然后，又不得不请个假。面试前面试官不能录屏。然后又反复进入，留我一个人在视频里。这次面试没有像前两次一样一上来就手撕代码。（我前两次都没能撕出来）。主要的面试内容就是看着你的简历向你提问。</p>
 <h3 id="面试要点"><a href="#面试要点" class="headerlink" title="面试要点"></a>面试要点</h3><ol>
 <li>询问了本科和研究生的绩点</li>
@@ -1005,7 +1163,7 @@
   </entry>
   <entry>
     <title>java的基本程序设计结构</title>
-    <url>/2020/ckep1k1c3001g7f9k2w7sh1of/</url>
+    <url>/2020/ckf2bit6v001mc79k0z2m0h5w/</url>
     <content><![CDATA[<h2 id="最简单的Java程序"><a href="#最简单的Java程序" class="headerlink" title="最简单的Java程序"></a>最简单的Java程序</h2><ul>
 <li><p>java区分大小写</p>
 </li>
@@ -1149,7 +1307,7 @@
   </entry>
   <entry>
     <title>动态库与静态库的区别</title>
-    <url>/2020/ckep1k1c4001j7f9k47224kil/</url>
+    <url>/2020/ckf2bit6w001nc79k8ket55id/</url>
     <content><![CDATA[<ul>
 <li>区别：静态库和动态库最本质的区别就是：该库是否被编译进目标（程序）内部。</li>
 </ul>
@@ -1169,7 +1327,7 @@
   </entry>
   <entry>
     <title>我的博客诞生了</title>
-    <url>/2020/ckep1k1c6001n7f9kd7vabf0n/</url>
+    <url>/2020/ckf2bit6x001sc79kbsxkgxds/</url>
     <content><![CDATA[<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
 <li>macbook pro 2019 </li>
 </ul>
@@ -1197,12 +1355,12 @@
   </entry>
   <entry>
     <title>new与malloc的区别</title>
-    <url>/2020/ckep1k1c7001r7f9k7vgla8nf/</url>
+    <url>/2020/ckf2bit6y001vc79kfj590u6e/</url>
     <content><![CDATA[<h4 id="1-molloc与free是C-c语言的标准函数，-new-delete是c-的运算符。"><a href="#1-molloc与free是C-c语言的标准函数，-new-delete是c-的运算符。" class="headerlink" title="1. molloc与free是C++/c语言的标准函数， new/delete是c++的运算符。"></a>1. molloc与free是C++/c语言的标准函数， new/delete是c++的运算符。</h4><h4 id="2-他们都可以用于申请动态内存和释放内存。new-delete比molloc-free更加智能，其实底层也是执行的malloc-free。为啥说new-delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。"><a href="#2-他们都可以用于申请动态内存和释放内存。new-delete比molloc-free更加智能，其实底层也是执行的malloc-free。为啥说new-delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。" class="headerlink" title="2.他们都可以用于申请动态内存和释放内存。new/delete比molloc/free更加智能，其实底层也是执行的malloc/free。为啥说new/delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。"></a>2.他们都可以用于申请动态内存和释放内存。new/delete比molloc/free更加智能，其实底层也是执行的malloc/free。为啥说new/delete更加的智能？因为new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。</h4><h5 id="既然new-delete的功能完全覆盖了malloc和free，-为什么c-中不把malloc-free淘汰出局呢？"><a href="#既然new-delete的功能完全覆盖了malloc和free，-为什么c-中不把malloc-free淘汰出局呢？" class="headerlink" title="既然new/delete的功能完全覆盖了malloc和free， 为什么c++中不把malloc/free淘汰出局呢？"></a>既然new/delete的功能完全覆盖了malloc和free， 为什么c++中不把malloc/free淘汰出局呢？</h5><h5 id="因为c-程序经常要调用c语言，而c语言只能用malloc-free管理动态内存。"><a href="#因为c-程序经常要调用c语言，而c语言只能用malloc-free管理动态内存。" class="headerlink" title="因为c++程序经常要调用c语言，而c语言只能用malloc/free管理动态内存。"></a>因为c++程序经常要调用c语言，而c语言只能用malloc/free管理动态内存。</h5><h4 id="3-new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void-，-必须强制转换为实际类型的指针。"><a href="#3-new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void-，-必须强制转换为实际类型的指针。" class="headerlink" title="3. new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void*， 必须强制转换为实际类型的指针。"></a>3. new返回指定类型的指针，并且可以自动计算出所需要的大小。malloc必须用户指定大小，并且默认返回类型为void*， 必须强制转换为实际类型的指针。</h4>]]></content>
   </entry>
   <entry>
     <title>点和矢量</title>
-    <url>/2020/ckep1k1c8001v7f9kfl6cd8q4/</url>
+    <url>/2020/ckf2bit700020c79kgk2mf6z5/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大部分现代3D游戏都是由虚拟世界里的三位物体组成的。游戏引擎的位置（position)、定向(orientation)和比例(scale)，不断改变这些属性以产生动画，并把这些属性变换(transform)至屏幕空间,使物体能被渲染到屏幕上。在游戏中，三维物体几乎都是由三角形组成的，其中三角形的顶点（vertex）则以点(point)表示。所以学习怎样表示游戏的整个对象之前，我们先来了解一下点，以及与之关系密切的矢量。</p>
 <h4 id="1-点与笛卡儿坐标"><a href="#1-点与笛卡儿坐标" class="headerlink" title="1 点与笛卡儿坐标"></a>1 点与笛卡儿坐标</h4><p>严格地说，点是n维空间的一个位置(在游戏中，n通常等于2或3)。笛卡儿坐标系（Cartesian coordinate system) 是游戏程序员最常用的坐标系，它使用2个或3个相互垂直的轴来描述二维或三维空间的位置。因此，可以由2个或3个实数表示一个点P，即$（P_x，P_y）$或$（P_x，P_y， P_z）$。</p>
 <p>除了笛卡儿坐标系之外，还有圆柱坐标系(cylindrical coordinate system),球坐标系（spherical coordinate system)。Crack the Weasal中就为了使得类似漩涡的效果更好实现就是用了圆柱坐标系。</p>
@@ -1241,7 +1399,7 @@
   </entry>
   <entry>
     <title>进程和线程</title>
-    <url>/2020/ckep1k1c9001y7f9kdxqf3q5k/</url>
+    <url>/2020/ckf2bit710023c79k5p4obm7u/</url>
     <content><![CDATA[<h3 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h3><ul>
 <li>进程是正在运行的一个应用程序，程序一旦运行就是进程。</li>
 <li>进程是系统进行资源分配的最小单位，每个进程拥有独立的地址空间。</li>
@@ -1264,8 +1422,98 @@
       </tags>
   </entry>
   <entry>
+    <title>unigine UI</title>
+    <url>/2020/ckf2bit720028c79kdzm57vxk/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Unigine中的所有GUI元素都是通过XML格式的UI文件即时生成的。 这些文件描述了Unigine提供的容器和小部件。 它们中的每一个都由UI文件中的XML标记描述。</p>
+<h3 id="UI文件语法"><a href="#UI文件语法" class="headerlink" title="UI文件语法"></a>UI文件语法</h3><p>作为正确的XML文件，UI文件必须以标准声明开头。 第二个元素必需是根标签ui。 该根元素可以包含零个或多个指定该接口的其他元素（标签）。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ui</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br></pre></td></tr></table></figure><br>如果UI文件在语法上不正确，Unigine的控制台和主日志文件中会报错。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">所有UI文件被视为UTF-8编码即使您在声明中指定了另一种编码。并非所有可用的GUI元素都可以使用XML定义。 其中一些（例如操纵器和专用对话框）仅通过脚本设置。</span><br></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>几乎所有的UI文件标记都具有参数，并且最好了解以下一般规则：</p>
+<ul>
+<li>作为参数值提供的所有尺寸均以像素为单位。</li>
+<li>文件名是相对于根数据目录的。</li>
+<li>颜色采用Web格式，即#RRGGBB或#RRGGBBAA格式。 RR，GG，BB和AA分别对应于十六进制颜色分量值-红色，绿色，蓝色和alpha； 值范围从00到FF。</li>
+<li>布尔值可以以不同的形式设置。 对于FALSE，请使用：0，false，no。 对于TRUE，使用：1，true，yes。</li>
+</ul>
+<p>这是带有参数的示例元素：<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sprite</span> <span class="attr">align</span>=<span class="string">&quot;overlap,top,right&quot;</span> <span class="attr">pos_x</span>=<span class="string">&quot;10&quot;</span> <span class="attr">pos_y</span>=<span class="string">&quot;-42&quot;</span> <span class="attr">texture</span>=<span class="string">&quot;data/core/gui/unigine.png&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>您可以使用标准的XML注释语法。 在处理UI文件期间，将跳过注释块。 注释示例：<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- This section will be omitted--&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="共有参数"><a href="#共有参数" class="headerlink" title="共有参数"></a>共有参数</h3><p>所有GUI元素（容器和窗口小部件）都可以具有以下参数。</p>
+<h4 id="name"><a href="#name" class="headerlink" title="name"></a>name</h4><p>小部件的唯一名称。 如果将export标志设置为yes，则在脚本中将使用该名称来引用小部件。 该名称可以包含名称空间规范和/或数组索引。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- The following widget will be accessible via scripts as foo::bar --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;foo::bar&quot;</span> <span class="attr">export</span>=<span class="string">&quot;yes&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- This widget will be accessible via scripts as fooArray[2] --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;fooArray[2]&quot;</span> <span class="attr">export</span>=<span class="string">&quot;yes&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="next"><a href="#next" class="headerlink" title="next"></a>next</h4><p>小部件的名称，如果用户按下TAB键，它将在接下来获得焦点。 如果省略此参数，则紧随当前参数的窗口小部件将获得焦点。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Custom focus order: button_0 → button_2 → button_1 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;button_0&quot;</span> <span class="attr">next</span>=<span class="string">&quot;button_2&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;button_1&quot;</span> <span class="attr">next</span>=<span class="string">&quot;button_0&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;button_2&quot;</span> <span class="attr">next</span>=<span class="string">&quot;button_1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="align"><a href="#align" class="headerlink" title="align"></a>align</h4><p>窗口小部件的一组对齐标志。 标志以逗号分隔。 可用的标志是：</p>
+<ul>
+<li>center</li>
+<li>left</li>
+<li>right</li>
+<li>top</li>
+<li>bottom</li>
+<li>expend 在可用空间中对齐文本。</li>
+<li>overlop 将小部件放在父容器的内容上。</li>
+<li>background 将小部件放置在同一容器中其他小部件的下面。 将此重叠标签与重叠标签一起使用。</li>
+<li>fixed 将窗口小部件放在背景或前景上（取决于其创建位置）。 仅当还设置了重叠标志时，此标志才有效。非固定的重叠窗口可以弹出固定的窗口，而后者则不能。</li>
+</ul>
+<h4 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h4><p>指定是否启用窗口小部件。 启用的小部件会接收键盘和鼠标事件； 禁用的小部件则不会。 某些小部件在禁用时通常会以不同的方式显示（通常是灰色的）。 如果禁用了容器，则其内容也将被禁用。 可接受的值：</p>
+<ul>
+<li>0 or no</li>
+<li>1 or yes</li>
+</ul>
+<h4 id="hidden"><a href="#hidden" class="headerlink" title="hidden"></a>hidden</h4><p>指定小部件是否隐藏。 隐藏窗口小部件时，不会渲染该窗口小部件，但是它将占据的空间保留为空，并且不会重新布置同一容器中的其他窗口小部件。 可接受的值：</p>
+<ul>
+<li>0 or no</li>
+<li>1 or yes</li>
+</ul>
+<h4 id="pos-x"><a href="#pos-x" class="headerlink" title="pos_x"></a>pos_x</h4><p>小部件相对于其父容器的x坐标。 仅当设置了重叠对齐标记时，此选项才生效。</p>
+<h4 id="pox-y"><a href="#pox-y" class="headerlink" title="pox_y"></a>pox_y</h4><p>小部件相对于其父容器的y坐标。 仅当设置了重叠对齐标记时，此选项才生效。</p>
+<h4 id="export"><a href="#export" class="headerlink" title="export"></a>export</h4><p>指定是否导出对窗口小部件的引用。 如果是，则将使用使用name参数设置的名称导出小部件。 默认值为0。可接受的值：</p>
+<ul>
+<li>0 or no</li>
+<li>1 or yes</li>
+</ul>
+<h3 id="文字标签和表格"><a href="#文字标签和表格" class="headerlink" title="文字标签和表格"></a>文字标签和表格</h3><p>有几个标签允许输出和格式化文本。</p>
+<h4 id="font"><a href="#font" class="headerlink" title="font"></a>font</h4><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/font.png" alt=""><br>字体标签可以嵌套，在这种情况下，所有字体属性都是继承的。</p>
+<p>参数：</p>
+<ul>
+<li>face    —TrueType字体文件的路径。</li>
+<li>size  字体大小（像素）</li>
+<li>color 字体颜色</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">rich</span>=<span class="string">&quot;1&quot;</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;20&quot;</span> <span class="attr">color</span>=<span class="string">&quot;#ff0000&quot;</span>&gt;</span>Big red text<span class="tag">&lt;/<span class="name">font</span>&gt;</span> and text of default style.<span class="tag">&lt;<span class="name">br</span>/&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;font_other.ttf&quot;</span> <span class="attr">size</span>=<span class="string">&quot;20&quot;</span>&gt;</span>You can also change font face.<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;#00ff00&quot;</span>&gt;</span>Here is green text with <span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;10&quot;</span>&gt;</span>small tail.<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>下面这种格式也是可以的<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;+10&quot;</span>&gt;</span>Larger<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;-4&quot;</span>&gt;</span>Smaller<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;%200&quot;</span>&gt;</span>Same or smaller<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure><br>大小将相对于当前字体大小进行计算。</p>
+<h4 id="text"><a href="#text" class="headerlink" title="text"></a>text</h4><p>许多小部件和容器都有一个文本子代，该子代提供了一些格式化功能。<br>参数：</p>
+<ul>
+<li>rich 标签内的文本是格式化的还是纯文本的。 默认值为0（布尔值），它对应于plain。</li>
+<li>face TrueType字体文件的路径，默认情况下将使用。</li>
+<li>size 默认字体大小（像素）。</li>
+<li>color 默认字体颜色。</li>
+<li>outline 是否应概述文字。 默认值为0（布尔值），对应于没有轮廓。</li>
+<li>wrap 如果文本不适合容器的宽度，是否应该将文本环绕。 默认值为0（布尔值），它对应于无换行。</li>
+<li>translate 文本是否可以翻译。 默认值为1（布尔值），这意味着文本取决于所选的语言。</li>
+</ul>
+<p>如果rich参数等于1，是或是，则可以使用以下标记和实体来设置文本格式：</p>
+<ul>
+<li>br 划线</li>
+<li>p 段。 aline可接受的参数：center, left, right, justify.</li>
+<li>cneter 居中对齐。 等效于<p align =“ center”>文本&lt;/ center&gt;。</li>
+<li>font 文字选项。</li>
+<li>sub 下标文字。</li>
+<li>sup 上标文字。</li>
+<li>&amp;gt &gt;标志。</li>
+<li>&amp;lt &lt;标志。</li>
+<li>&amp;amp &amp;标志。</li>
+<li>&amp;quot “标志。</li>
+<li>&amp;apos ‘标志。</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>以上内容均翻译自unigine官方文档。如有错误欢迎批评指正。</p>
+]]></content>
+      <categories>
+        <category>unigine引擎</category>
+      </categories>
+      <tags>
+        <tag>ui</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚函数</title>
-    <url>/2020/ckep1k1cb00237f9k19q488lv/</url>
+    <url>/2020/ckf2bit73002bc79k792h3m0b/</url>
     <content><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在c++中，基类必须指出派生类重定义哪些函数，定义为virtual的函数是基类期待派生类重新定义的，基类希望派生类继承的函数不能定义为虚函数。（c++ primer）</p>
 <h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>在C++中，通过基类的引用（或指针）调用虚函数时，发生动态绑定。引用（或指针）即可以指向基类对象也可以指向派生类对象，这一事实是动态绑定的关键。用引用（或指针）调用虚函数在<u><strong>运行</strong></u>时确定，被调用的函数是引用（或指针）所指对象的实际类型所定义的。</p>
 <p>保留字virtual的目的是启用动态绑定。成员默认是非虚函数，对非虚函数的调用在<u><strong>编译</strong></u>时确定。为了指明函数为虚函数，在其返回类型类型前面加上保留字virtual。除了构造函数外，任何非static成员函数都可以是虚函数。保留字virtual只能在类内部的成员函数声明中出现，不能在类定义体外部出现的函数定义上。</p>

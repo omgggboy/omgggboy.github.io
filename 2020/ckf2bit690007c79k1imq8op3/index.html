@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="生活,旅行,思考,代码,博客" />
+   
+  <meta name="description" content="一个猪窝" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    矩阵 |  猪猪侠
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="猪猪侠" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Matrix" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  矩阵
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckf2bit690007c79k1imq8op3/" class="article-date">
+  <time datetime="2020-08-27T06:00:00.000Z" itemprop="datePublished">2020-08-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>矩阵(matrix)是由$n \ times m$个标量组成的长方形数组。矩阵便于表示线性变换（transformation)，如平移(translation)、旋转(rotation)和缩放(scaling)。在某些条件下，$4 \times 4$矩阵可以表示任意三维变换，包括平移、旋转和缩放。这种矩阵称为变换矩阵。利用矩阵乘法可以将表示为矩阵的变换，施于点或矢量。仿射矩阵（affine matrix）是种$4 \times 4$的变换矩阵，他能维持直线在变换前后的平行性以及相对的距离比，但是不一定维持直线在变换前后的相对长度和角度。由平移、旋转、缩放及/或切变(shear)所组合而成的变换都是仿射矩阵。</p>
+<h3 id="1-矩阵乘法"><a href="#1-矩阵乘法" class="headerlink" title="1. 矩阵乘法"></a>1. 矩阵乘法</h3><p>两矩阵$A$和$B$的积写作$P = AB$。若$A$和$B$为变换矩阵，其积$P$也是变换矩阵，而且以$P$进行变换时，等同于进行$A$和$B$两者的变换。此特性对游戏编程特别有用，因为我们可以把一连串变换预先计算为单一矩阵，在用该矩阵高效地变换大批矢量。</p>
+<script type="math/tex; mode=display">AB=\begin{bmatrix} A_{11}&A_{12}&A_{13}\\A_{21}&A_{22}&A_{23}\\A_{31}&A_{32}&A_{33}\end{bmatrix}\begin{bmatrix} B_{11}&B_{12}&B_{13}\\B_{21}&B_{22}&B_{23}\\B_{31}&B_{32}&B_{33}\end{bmatrix} = \begin{bmatrix} A_{row1}B_{col1}&A_{row1}B_{col2}&A_{row1}B_{col3}\\A_{row2}B_{col1}&A_{row2}B_{col2}&A_{row2}B_{col3}\\A_{row3}B_{col1}&A_{row3}B_{col2}&A_{row3}B_{col3}\end{bmatrix}</script><p>tips：完美世界笔试题，编写矩阵乘法函数，并进行优化。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最朴素的矩阵乘法</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE_M 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE_N 3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SIZE_S 4</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">int</span> matrix_a[SIZE_M] [SIZE_N]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125;;<span class="comment">//a矩阵2X3</span></span><br><span class="line">	<span class="keyword">int</span> matrix_b[SIZE_N] [SIZE_S]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;,&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;<span class="comment">//b矩阵3X4</span></span><br><span class="line">	<span class="keyword">int</span> matrix_result[SIZE_M][SIZE_S];<span class="comment">//结果矩阵2X4</span></span><br><span class="line">	</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;SIZE_M;m++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">0</span>;s&lt;SIZE_S;s++)&#123;</span><br><span class="line">			matrix_result[m][s]=<span class="number">0</span>;<span class="comment">//变量使用前记得初始化,否则结果具有不确定性</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">0</span>;n&lt;SIZE_N;n++)&#123;</span><br><span class="line">				matrix_result[m][s]+=matrix_a[m][n]*matrix_b[n][s];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;SIZE_M;m++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">0</span>;s&lt;SIZE_S;s++)&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;matrix_result[m][s]&lt;&lt;<span class="string">&quot;\t&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>// Stressen算法（算法导论分治策略提及）<br>c++分析和具体实现参照一下网站<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31567335/article/details/52695144">https://blog.csdn.net/qq_31567335/article/details/52695144</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hdk1993/p/4552534.html">https://www.cnblogs.com/hdk1993/p/4552534.html</a></p>
+<h3 id="2-矩阵表示点和矢量"><a href="#2-矩阵表示点和矢量" class="headerlink" title="2. 矩阵表示点和矢量"></a>2. 矩阵表示点和矢量</h3><p>点和矢量都可以被表示为行矩阵（row matrix)$(1 \times n)$或列矩阵(column matrix)$(n \times 1)$，其中n表示空维度。本来可以任意选择行矢量和列矢量，但此会影响书写次序。最容易的记忆方法是，最接近矢量的矩阵会被最先进行变换。</p>
+<h3 id="3-单位矩阵"><a href="#3-单位矩阵" class="headerlink" title="3. 单位矩阵"></a>3. 单位矩阵</h3><p>单位矩阵(identity matrix)是指，它乘以任何其他矩阵，都会得到和原来一样的矩阵。单位矩阵写作$I$。单位矩阵是正方形矩阵，对角线上的元素皆为1，其他元素为0：<br><img src="https://wiki.mbalib.com/w/images/math/a/a/b/aab94f3654099a22bbf9aedfe99324e2.png" alt="单位矩阵"></p>
+<h3 id="4-逆矩阵"><a href="#4-逆矩阵" class="headerlink" title="4. 逆矩阵"></a>4. 逆矩阵</h3><p>矩阵<strong><em>A</em></strong>的逆矩阵(inverse matrix)(写作$A^{-1}$)能还原矩阵$A$的变换。一个矩阵乘以它的逆矩阵，结果必然是单位矩阵，因此$A(A^{-1}) = (A^{-1})A = I$。并非所有的矩阵都有逆矩阵。然而，所以仿射矩阵(纯平移，选择，缩放及切变的组合)都有逆矩阵。若矩阵的逆矩阵存在，可以高斯消去法(Gaussian eliminaton)或LU分解(LU decomposition)求之。</p>
+<h3 id="5-转置矩阵"><a href="#5-转置矩阵" class="headerlink" title="5. 转置矩阵"></a>5. 转置矩阵</h3><p>矩阵$M$的转置(transpose)写作$M^{T}$。转置矩阵就是把原来的矩阵以主对角线(diagonal)为对称轴做反射。<br>原矩阵：<br><img src="https://pic2.zhimg.com/80/v2-be3ee7cd7c1f4bfd544ebd72083ac75c_720w.jpg?source=1940ef5c" alt="原矩阵"><br>转置后：<br><img src="https://pic2.zhimg.com/80/v2-1818ee965177eca20540577df77b910b_720w.jpg?source=1940ef5c" alt="转置矩阵"></p>
+<p>基于以下两个原因，转置矩阵很实用。首先，标准正交矩阵(纯旋转)的逆矩阵和转置矩阵是一样的—此特性非常好，因为计算转置矩阵比计算一般逆矩阵快很多；其次，当把数据从一个数学程序库送到另一个程序库时，转置矩阵也十分重要，因为有些库使用行矢量，有些则使用列矢量</p>
+<h3 id="6-齐次坐标-homogeneous-coordinates）"><a href="#6-齐次坐标-homogeneous-coordinates）" class="headerlink" title="6. 齐次坐标(homogeneous coordinates）"></a>6. 齐次坐标(homogeneous coordinates）</h3><p>由于3维种旋转是由3X3矩阵表示，但是平移无法由3X3矩阵表示，那么我们则无法将仿射变换通过矩阵乘法叠加，但是我们可以将平移使用4X4矩阵来表示。齐次坐标的作用，把各种变换都统一了起来，即 把缩放，旋转，平移等变换都统一起来，都表示成一连串的矩阵相乘的形式。保证了形式上的线性一致性。</p>
+<p>除此之外，在数学上，点（位置矢量）和方向矢量的处理方法有细微差异，当用矩阵变换一个点时，平移，旋转，缩放，都会施加于该点上。但是，当用矩阵变换一个方向矢量时，就要忽略矩阵的平移效果。因为方向矢量本身并无平移，加上平移会改变其模，这并非我们想要的。在齐次坐标中，可以将点的w分量设为1，而把方向矢量的w分量设为0。以下的例子显示，矢量v中的w = 0, 因此乘以矩阵的t矢量后，可在结果中消去平移的作用:<br><img src="http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7Dv%260%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7DU%260%20%5C%5C%20t%261%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%28vU%20&plus;%200t%29%260%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7DvU%260%5Cend%7Bbmatrix%7D" alt=""></p>
+<p>严格来说，（四维的）齐次坐标转换成（三维的）非齐次坐标的方法是，把x, y ,z分量除以w分量：<br><img src="http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7Dx%26y%26z%26w%5Cend%7Bbmatrix%7D%20%5Cequiv%20%5Cbegin%7Bbmatrix%7D%5Cfrac%7Bx%7D%7Bw%7D%26%5Cfrac%7By%7D%7Bw%7D%26%5Cfrac%7Bz%7D%7Bw%7D%5Cend%7Bbmatrix%7D" alt=""><br>此公式表明，可设点的w分量为1，方向矢量为0。矢量除以w=1,并不影响点的坐标，但是矢量除以w=0则会产生无穷大(infinity)。四维中位于无穷远的一点，可以旋转但不可以平移，因为无论怎么平移，该点还是位于无穷远。所以事实上，三维空间的纯方向矢量在四维齐次空间中则是无穷远的点。</p>
+<h3 id="7-基础变换坐标"><a href="#7-基础变换坐标" class="headerlink" title="7. 基础变换坐标"></a>7. 基础变换坐标</h3><p>任何仿射变换矩阵都能由一连串表示纯平移，纯旋转，纯缩放及/或纯切变的4X4矩阵串接而成。4X4变换矩阵可切割成4个组成部分：<br><img src="http://latex.codecogs.com/gif.latex?M_%7Baffine%7D%3D%5Cbegin%7Bbmatrix%7DU_%7B3%5Ctimes3%20%7D%20%26%200_%7B3%5Ctimes%201%7D%20%5C%5C%20t_%7B1%5Ctimes%203%7D%26%201%5Cend%7Bbmatrix%7D" alt=""></p>
+<ul>
+<li>左上角的3 X 3矩阵U，代表旋转及/或缩放。</li>
+<li>1 X 3平移矢量t</li>
+<li>3 X 1零矢量$0 = [ 0 0 0]^{T}$。</li>
+<li>矩阵右下角的标量1。</li>
+<li>当一点乘如此切割的矩阵时，结果会是：<br><img src="http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7Dr_%7B1%20%5Ctimes%203%7D%20%5E%7B%7B%7D%27%7D%261%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7Dr_%7B1%20%5Ctimes%203%7D%261%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7DU_%7B3%20%5Ctimes%203%7D%260_%7B3%20%5Ctimes%201%7D%5C%5Ct_%7B1%20%5Ctimes%203%7D%261%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%28rU%20&plus;%20t%29%26%201%20%5Cend%7B%7D" alt=""></li>
+</ul>
+<h4 id="7-1-平移"><a href="#7-1-平移" class="headerlink" title="7.1 平移"></a>7.1 平移</h4><p><img src="http://latex.codecogs.com/gif.latex?r%20&plus;%20t%20%3D%5Cbegin%7Bbmatrix%7Dr_%7Bx%7D%26r_%7By%7D%26r_%7Bz%7D%261%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D1%260%260%260%5C%5C%200%261%260%260%5C%5C0%260%261%260%5C%5Ct_%7Bx%7D%26t_%7By%7D%26t_%7Bz%7D%261%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7Dr_%7Bx%7D%20&plus;%20t_%7Bx%7D%26r_%7By%7D%20&plus;%20t_%7By%7D%26r_%7Bz%7D%20&plus;%20t_%7Bz%7D%26%201%20%5Cend%7B%7D" alt=""><br>或可写成切割后的缩写：<br><img src="http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7Dr%261%20%5Cend%7B%7D%20%5Cbegin%7Bbmatrix%7DI%260%20%5C%5C%20t%20%261%20%5Cend%7B%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%28r&plus;t%29%261%20%5Cend%7B%7D" alt=""></p>
+<p>为求纯平移变换矩阵的逆矩阵，只需要t求反(negate)。</p>
+<h4 id="7-2旋转"><a href="#7-2旋转" class="headerlink" title="7.2旋转"></a>7.2旋转</h4><p>所有4 X 4纯旋转变换矩阵都是如下形式：<br><img src="http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7Dr%261%20%5Cend%7B%7D%20%5Cbegin%7Bbmatrix%7DR%260%20%5C%5C%200%20%261%20%5Cend%7B%7D%20%3D%20%5Cbegin%7Bbmatrix%7DrR%261%20%5Cend%7B%7D" alt=""><br>矢量t为0，而左上角的3 X 3矩阵R则包含旋转角度（弧度单位）的余弦和正弦。</p>
+<h4 id="7-3-缩放"><a href="#7-3-缩放" class="headerlink" title="7.3 缩放"></a>7.3 缩放</h4><p>以下的矩阵缩放点r,向x轴的缩放因子为$s_x$，向y轴的为$s_y$，向z轴为$s_z$：<br><img src="http://latex.codecogs.com/gif.latex?rS%20%3D%20%5Cbegin%7Bbmatrix%7Dr_x%26r_y%26r_z%261%20%5Cend%7B%7D%20%5Cbegin%7Bbmatrix%7Ds_x%20%260%260%260%5C%5C0%26s_y%260%260%20%5C%5C%200%260%26s_z%260%5C%5C0%260%260%261%20%5Cend%7B%7D%20%3D%20%5Cbegin%7Bbmatrix%7Ds_xr_x%26s_yr_y%26s_zr_z%261%20%5Cend%7B%7D" alt=""><br>或可写成切割后的缩写：</p>
+<script type="math/tex; mode=display">\begin{bmatrix} r&1\end{bmatrix} \begin{bmatrix} S_{3 \times 3}&0\\0&1\end{bmatrix} = \begin{bmatrix} rS_{3 \times 3}&1\end{bmatrix}</script><h3 id="8-4-X-3矩阵"><a href="#8-4-X-3矩阵" class="headerlink" title="8. 4 X 3矩阵"></a>8. 4 X 3矩阵</h3><p>4 X 4仿射矩阵的最右侧必然是一列[0 0 0 1]T的矢量。因此，游戏程序员可略去第4列，以节省内存。在游戏数学库里经常会遇到4X3仿射矩阵。在使用GPU做蒙皮(skinning)时，要向顶点着色器(vertex shader)传递大量的变换，所以为节省空间、时间，通常会使用4X3的矩阵。</p>
+<h3 id="9-坐标空间"><a href="#9-坐标空间" class="headerlink" title="9. 坐标空间"></a>9. 坐标空间</h3><p>在物理学中，一组坐标轴代表参考系（frame of reference），所以有时候又会称一组坐标轴为坐标系(coordinate frame，简称为frame)。游戏业界会使用坐标空间(coordinate space)一词，或简称空间(space)，来表示一组坐标轴。以下讨论游戏和计算机图形学中几个较为常用的空间坐标。</p>
+<h4 id="9-1-模型空间"><a href="#9-1-模型空间" class="headerlink" title="9.1 模型空间"></a>9.1 模型空间</h4><p>当使用Maya或3ds Max之类的工具去建立三角形网格时，三角形顶点的位置是相对于一个笛卡儿坐标系的，我们称此坐标系为模型空间(model space)，也可以称之为物体空间(object space)或局部空间(local space)。模型空间的原点可置于物体的中心位置，如物体的质心(center of mass)，对于人形及动物着色，可把模型空间的原点置于足部和地面之间。</p>
+<h4 id="9-2-世界空间"><a href="#9-2-世界空间" class="headerlink" title="9.2 世界空间"></a>9.2 世界空间</h4><p>世界空间(world space)是一个固定的坐标空间。游戏世界中所以物体的位置、定向和缩放都会用此空间表示。此坐标空间把所有单个物体联系在一起，形成一个内聚的虚拟世界。</p>
+<h4 id="9-3-观察空间"><a href="#9-3-观察空间" class="headerlink" title="9.3 观察空间"></a>9.3 观察空间</h4><p>观察空间(view space)又称为摄像机空间(camera space),是固定在摄像机的坐标系。观察空间原点置于摄像机的焦点（focal point)。而且，观察空间也可采用不同的轴定向方案。但是，y轴向上、z轴顺着摄像机面对方向，是最典型的，因为+z轴代表着屏幕的深度。其他引擎和API(如OpenGL)做用右手系定义观察空间，使摄像机朝向的方向为-z轴，z坐标代表负深度。</p>
+<h3 id="10-基的更变"><a href="#10-基的更变" class="headerlink" title="10. 基的更变"></a>10. 基的更变</h3><p>在游戏和计算机图形学里，经常把物体的位置、定向和缩放从某个坐标系转换为另一个坐标系。我们称此为基的变更(change of basis)。</p>
+<h4 id="10-1-坐标空间的层次结构"><a href="#10-1-坐标空间的层次结构" class="headerlink" title="10.1 坐标空间的层次结构"></a>10.1 坐标空间的层次结构</h4><p>坐标系是相对的。即若想在三维空间中定义一组轴，必须指明其位置、定向和缩放的数值是相对于另外一组轴的（否则那些数值是没意义的）。这意味着，坐标空间会形成一个层阶结构—每个坐标空间都是某个坐标空间之子，而那个坐标空间则是父的角色。世界空间并无父，因为他是坐标空间树的根，其他坐标空间则直接或间接地相对于世界空间。</p>
+<h4 id="10-2-构建改变基的矩阵"><a href="#10-2-构建改变基的矩阵" class="headerlink" title="10.2 构建改变基的矩阵"></a>10.2 构建改变基的矩阵</h4><p>把点和方向从任何子坐标系C变换至其父坐标系P的矩阵，可写作$M_{C \rightarrow P}$ 。此下标表示矩阵把点和方向从子空间变换至父空间。以下等式可把任何子空间位置矢量$P_C$变换至父空间位置矢量$P_C$:</p>
+<script type="math/tex; mode=display">P_P = P_CM_{C \rightarrow P}</script><p><img src="http://latex.codecogs.com/gif.latex?M_%7BC%5Crightarrow%20P%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20i_C%26%200%5C%5C%20j_C%20%26%200%20%5C%5C%20k_C%260%20%5C%5C%20t_C%26%201%20%5Cend%7B%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20i_%7BC_x%7D%26%20i_%7BC_y%7D%26i_%7BC_z%7D%260%5C%5Cj_%7BC_x%7D%26%20j_%7BC_y%7D%26j_%7BC_z%7D%260%5C%5Ck_%7BC_x%7D%26%20k_%7BC_y%7D%26k_%7BC_z%7D%260%5C%5Ct_%7BC_x%7D%26%20t_%7BC_y%7D%26t_%7BC_z%7D%261%5Cend%7B%7D" alt=""><br>以上等式中：</p>
+<ul>
+<li>$i_C$为子空间x轴的单位基矢量，此矢量以父空间坐标来表示。</li>
+<li>$j_C$为子空间y轴的单位基矢量，此矢量以父空间坐标来表示。</li>
+<li>$k_C$为子空间z轴的单位基矢量，此矢量以父空间坐标来表示。</li>
+<li>$t_C$为子坐标系相对于父坐标系的平移。</li>
+</ul>
+<p><strong>缩放子轴</strong>  通过简单且恰当的缩放单位基矢量，便可以缩放子坐标系统。例如，若子空间放大两倍，则基矢量$i_C, j_C, k_C$就由单位长度变为长度为2。 </p>
+<h4 id="10-3-从矩阵中获取单位基矢量"><a href="#10-3-从矩阵中获取单位基矢量" class="headerlink" title="10.3 从矩阵中获取单位基矢量"></a>10.3 从矩阵中获取单位基矢量</h4><p>由于基变更矩阵是由平移及三个笛卡儿基矢量组成的，此事实可带来一个强大工具：给定任何4X4仿射矩阵，都可以用反向思维，从恰当的矩阵行(若是由列矢量则为矩阵列)中获取子空间基矢量$i_C,j_C,k_C$。</p>
+<h4 id="10-4-变换坐标系还是矢量"><a href="#10-4-变换坐标系还是矢量" class="headerlink" title="10.4 变换坐标系还是矢量"></a>10.4 变换坐标系还是矢量</h4><p>若基于坐标轴来思考，变换会是某一个方向；若基于点和坐标来思考，变换则是另一个方向！</p>
+<h3 id="11-变换法矢量"><a href="#11-变换法矢量" class="headerlink" title="11. 变换法矢量"></a>11. 变换法矢量</h3><p>法矢量是一种特殊的矢量，因为它除了是单位矢量（通常情况是）外，法矢量还有附加要求—维持与对应的表面或平面垂直。变换法矢量必须特别留心，以确保维持其长度和垂直性。<br>一般情况下，为了保证即使变换里含非统一缩放或切变；变换后的法矢量仍然垂直于其对应表面，需要对方矢量做仿射矩阵的逆转置矩阵做变换$(M_{A \rightarrow B}^{-1})^T$。从另一个角度看，这里需要逆转置是因为表面矢量是赝矢量，不是普通矢量。</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckf2bit690007c79k1imq8op3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">数学基础</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/ckf2bit6a0009c79k6nkpcyo9/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            投影矩阵
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/ckf2bit700020c79kgk2mf6z5/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">点和矢量</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2019-2020
+        Jiaxi Zhang
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="猪猪侠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://zhuzhuxia32662.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+
+    
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+
+</html>

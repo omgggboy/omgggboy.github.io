@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-09-05T02:19:45.089Z</updated>
+  <updated>2020-09-14T09:17:37.260Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,88 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>unigine cantainers</title>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6e000ec79k9bcp8y6y/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6e000ec79k9bcp8y6y/</id>
+    <published>2020-09-05T06:00:00.000Z</published>
+    <updated>2020-09-14T09:17:37.260Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>containers用于组织和分组单个wieights。</p><h3 id="公共参数"><a href="#公共参数" class="headerlink" title="公共参数"></a>公共参数</h3><p>除了常规参数外，还有一组特定于容器的参数，任何容器都可以具有：</p><ul><li>space 整体间距（像素）。</li><li>space_x 水平间距（像素）。</li><li>space_y 垂直间距（像素）。</li></ul><h3 id="vbox"><a href="#vbox" class="headerlink" title="vbox"></a>vbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/vbox.png" alt=""></p><p>参数：</p><ul><li>parameters: 容器是否有背景。 默认值为0（布尔值）。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::vbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 1<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 2<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vbox</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="hbox"><a href="#hbox" class="headerlink" title="hbox"></a>hbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/hbox.png" alt=""></p><p>参数：</p><ul><li>parameters: 容器是否有背景。 默认值为0（布尔值）。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::hbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 1<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label 2<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hbox</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="vpaned"><a href="#vpaned" class="headerlink" title="vpaned"></a>vpaned</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/vpaned.png" alt=""><br>该小部件应恰好包含两个孩子。</p><p>参数:</p><ul><li>value 范围内的值[-32767; 32767]。 -32767表示在调整大小时，上层子级将保持固定。 32767表示在调整大小时，较低的子级将保持固定。 0表示两个子元素的大小均相等。 其他值指定比例，在比例中调整子项的大小。 默认值为0。</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vpaned</span> <span class="attr">name</span>=<span class="string">&quot;Test::vpaned&quot;</span> <span class="attr">align</span>=<span class="string">&quot;expand&quot;</span> <span class="attr">value</span>=<span class="string">&quot;-32767&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">hbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">hbox</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">hbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vpaned</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="hpaned"><a href="#hpaned" class="headerlink" title="hpaned"></a>hpaned</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/hpaned.png" alt=""><br>该小部件应恰好包含两个孩子。</p><p>参数:</p><ul><li>value 范围内的值[-32767; 32767]。 -32767表示在调整大小时，上层子级将保持固定。 32767表示在调整大小时，较低的子级将保持固定。 0表示两个子元素的大小均相等。 其他值指定比例，在比例中调整子项的大小。 默认值为0。</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hpaned</span> <span class="attr">name</span>=<span class="string">&quot;Test::hpaned&quot;</span> <span class="attr">align</span>=<span class="string">&quot;expand&quot;</span> <span class="attr">value</span>=<span class="string">&quot;-32767&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">vbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">vbox</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">vbox</span>&gt;</span>…<span class="tag">&lt;/<span class="name">vbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hpaned</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="gridbox"><a href="#gridbox" class="headerlink" title="gridbox"></a>gridbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/gridbox.png" alt=""></p><p>参数：</p><ul><li>background 容器是否有背景。 默认值为1（布尔值）。</li><li>columns 列数（整数）。</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gridbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::gridbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">columns</span>=<span class="string">&quot;2&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label1<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label2<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label3<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gridbox</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="groupbox"><a href="#groupbox" class="headerlink" title="groupbox"></a>groupbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/groupbox.png" alt=""></p><p>参数：</p><ul><li>background 容器是否有背景。 默认值为1（布尔值）。</li></ul><p>特定孩子：</p><ul><li>text 可操作的标题文字</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::groupbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span>&gt;</span>Group<span class="tag">&lt;/<span class="name">text</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Label0<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">groupbox</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="tabbox"><a href="#tabbox" class="headerlink" title="tabbox"></a>tabbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/tabbox.png" alt=""></p><p>特定的孩子：</p><ul><li>tab 一个标签。支持多个标签。 每个选项卡还可以有一个特殊的子代：<ul><li>text 标签标题</li></ul></li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tabbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::tabbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;1&quot;</span> <span class="attr">space</span>=<span class="string">&quot;20&quot;</span> <span class="attr">align</span>=<span class="string">&quot;expand&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 0<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>TabBox content<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 1<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 2<span class="tag">&lt;/<span class="name">text</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">tab</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>Tab 3<span class="tag">&lt;/<span class="name">text</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;/<span class="name">tab</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tabbox</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="scrollbox"><a href="#scrollbox" class="headerlink" title="scrollbox"></a>scrollbox</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/scrollbox.png" alt=""></p><p>参数：</p><ul><li>width 容器宽度（以像素为单位）。</li><li>height 容器高度（以像素为单位）。</li><li>henabled 是否启用水平滚动（布尔）。</li><li>venabled 是否启用垂直滚动（布尔）。</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">scrollbox</span> <span class="attr">name</span>=<span class="string">&quot;Test::scrollbox&quot;</span> <span class="attr">export</span>=<span class="string">&quot;0&quot;</span> <span class="attr">space</span>=<span class="string">&quot;8&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span> <span class="attr">hscroll</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>LabelLabelLabelLabelLabelLabelLabelLabelLabel<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">scrollbox</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/window.png" alt=""><br>参数：</p><ul><li>moveable 窗口是否可移动。 默认值为1（布尔值）。</li><li>sizeable 窗口是否可调整大小。 默认值为0（布尔值）。</li><li>titleable 窗口是否可以有标题。 默认值为0（布尔值）。</li><li>blendable 窗口不聚焦时是否变灰。 默认值为0（布尔值）。</li><li>floatable 窗口最小化是否具有动画效果。 默认值为0（布尔值）。</li><li>snap_distance 将小部件捕捉到应用程序窗口边界的最大距离。 默认值为0（像素）。</li><li>width 窗口宽度（以像素为单位）。</li><li>height 窗口高度（以像素为单位）。</li></ul><p>特定的孩子:</p><ul><li>text 窗口标题。align 可以接受的参数center，left,right。</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">window</span> <span class="attr">name</span>=<span class="string">&quot;Test::window&quot;</span> <span class="attr">export</span>=<span class="string">&quot;1&quot;</span> <span class="attr">snap_distance</span>=<span class="string">&quot;16&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>Window title<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">window</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="dialog"><a href="#dialog" class="headerlink" title="dialog"></a>dialog</h3><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/dialog.png" alt=""><br>参数：</p><ul><li>moveable 窗口是否可移动。 默认值为1（布尔值）。</li><li>sizeable 窗口是否可调整大小。 默认值为0（布尔值）。</li><li>titleable 窗口是否可以有标题。 默认值为0（布尔值）。</li><li>blendable 窗口不聚焦时是否变灰。 默认值为0（布尔值）。</li><li>floatable 窗口最小化是否具有动画效果。 默认值为0（布尔值）。</li><li>snap_distance 将小部件捕捉到应用程序窗口边界的最大距离。 默认值为0（像素）。</li><li>width 提示框宽度（以像素为单位）。</li><li>height 提示框高度（以像素为单位）。</li></ul><p>特定的孩子:</p><ul><li>text 提示框标题。align 可以接受的参数center，left,right。</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dialog</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>Dialog title<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dialog</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>以上内容均翻译自unigine官方文档。如有错误欢迎批评指正。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;containers用于组织和分组单个wieights。&lt;/p&gt;
+&lt;h3 id=&quot;公共参数&quot;&gt;&lt;a href=&quot;#公共参数&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="unigine引擎" scheme="https://shen-yu.gitee.io/categories/unigine%E5%BC%95%E6%93%8E/"/>
+    
+    
+      <category term="containers" scheme="https://shen-yu.gitee.io/tags/containers/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>unigine UI</title>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit720028c79kdzm57vxk/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit720028c79kdzm57vxk/</id>
+    <published>2020-09-02T06:00:00.000Z</published>
+    <updated>2020-09-14T09:17:35.797Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Unigine中的所有GUI元素都是通过XML格式的UI文件即时生成的。 这些文件描述了Unigine提供的容器和小部件。 它们中的每一个都由UI文件中的XML标记描述。</p><h3 id="UI文件语法"><a href="#UI文件语法" class="headerlink" title="UI文件语法"></a>UI文件语法</h3><p>作为正确的XML文件，UI文件必须以标准声明开头。 第二个元素必需是根标签ui。 该根元素可以包含零个或多个指定该接口的其他元素（标签）。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ui</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br></pre></td></tr></table></figure><br>如果UI文件在语法上不正确，Unigine的控制台和主日志文件中会报错。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所有UI文件被视为UTF-8编码即使您在声明中指定了另一种编码。并非所有可用的GUI元素都可以使用XML定义。 其中一些（例如操纵器和专用对话框）仅通过脚本设置。</span><br></pre></td></tr></table></figure><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>几乎所有的UI文件标记都具有参数，并且最好了解以下一般规则：</p><ul><li>作为参数值提供的所有尺寸均以像素为单位。</li><li>文件名是相对于根数据目录的。</li><li>颜色采用Web格式，即#RRGGBB或#RRGGBBAA格式。 RR，GG，BB和AA分别对应于十六进制颜色分量值-红色，绿色，蓝色和alpha； 值范围从00到FF。</li><li>布尔值可以以不同的形式设置。 对于FALSE，请使用：0，false，no。 对于TRUE，使用：1，true，yes。</li></ul><p>这是带有参数的示例元素：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sprite</span> <span class="attr">align</span>=<span class="string">&quot;overlap,top,right&quot;</span> <span class="attr">pos_x</span>=<span class="string">&quot;10&quot;</span> <span class="attr">pos_y</span>=<span class="string">&quot;-42&quot;</span> <span class="attr">texture</span>=<span class="string">&quot;data/core/gui/unigine.png&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>您可以使用标准的XML注释语法。 在处理UI文件期间，将跳过注释块。 注释示例：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- This section will be omitted--&gt;</span></span><br></pre></td></tr></table></figure></p><h3 id="共有参数"><a href="#共有参数" class="headerlink" title="共有参数"></a>共有参数</h3><p>所有GUI元素（容器和窗口小部件）都可以具有以下参数。</p><h4 id="name"><a href="#name" class="headerlink" title="name"></a>name</h4><p>小部件的唯一名称。 如果将export标志设置为yes，则在脚本中将使用该名称来引用小部件。 该名称可以包含名称空间规范和/或数组索引。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- The following widget will be accessible via scripts as foo::bar --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;foo::bar&quot;</span> <span class="attr">export</span>=<span class="string">&quot;yes&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- This widget will be accessible via scripts as fooArray[2] --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;fooArray[2]&quot;</span> <span class="attr">export</span>=<span class="string">&quot;yes&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p><h4 id="next"><a href="#next" class="headerlink" title="next"></a>next</h4><p>小部件的名称，如果用户按下TAB键，它将在接下来获得焦点。 如果省略此参数，则紧随当前参数的窗口小部件将获得焦点。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Custom focus order: button_0 → button_2 → button_1 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;button_0&quot;</span> <span class="attr">next</span>=<span class="string">&quot;button_2&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;button_1&quot;</span> <span class="attr">next</span>=<span class="string">&quot;button_0&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">&quot;button_2&quot;</span> <span class="attr">next</span>=<span class="string">&quot;button_1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p><h4 id="align"><a href="#align" class="headerlink" title="align"></a>align</h4><p>窗口小部件的一组对齐标志。 标志以逗号分隔。 可用的标志是：</p><ul><li>center</li><li>left</li><li>right</li><li>top</li><li>bottom</li><li>expend 在可用空间中对齐文本。</li><li>overlop 将小部件放在父容器的内容上。</li><li>background 将小部件放置在同一容器中其他小部件的下面。 将此重叠标签与重叠标签一起使用。</li><li>fixed 将窗口小部件放在背景或前景上（取决于其创建位置）。 仅当还设置了重叠标志时，此标志才有效。非固定的重叠窗口可以弹出固定的窗口，而后者则不能。</li></ul><h4 id="enable"><a href="#enable" class="headerlink" title="enable"></a>enable</h4><p>指定是否启用窗口小部件。 启用的小部件会接收键盘和鼠标事件； 禁用的小部件则不会。 某些小部件在禁用时通常会以不同的方式显示（通常是灰色的）。 如果禁用了容器，则其内容也将被禁用。 可接受的值：</p><ul><li>0 or no</li><li>1 or yes</li></ul><h4 id="hidden"><a href="#hidden" class="headerlink" title="hidden"></a>hidden</h4><p>指定小部件是否隐藏。 隐藏窗口小部件时，不会渲染该窗口小部件，但是它将占据的空间保留为空，并且不会重新布置同一容器中的其他窗口小部件。 可接受的值：</p><ul><li>0 or no</li><li>1 or yes</li></ul><h4 id="pos-x"><a href="#pos-x" class="headerlink" title="pos_x"></a>pos_x</h4><p>小部件相对于其父容器的x坐标。 仅当设置了重叠对齐标记时，此选项才生效。</p><h4 id="pox-y"><a href="#pox-y" class="headerlink" title="pox_y"></a>pox_y</h4><p>小部件相对于其父容器的y坐标。 仅当设置了重叠对齐标记时，此选项才生效。</p><h4 id="export"><a href="#export" class="headerlink" title="export"></a>export</h4><p>指定是否导出对窗口小部件的引用。 如果是，则将使用使用name参数设置的名称导出小部件。 默认值为0。可接受的值：</p><ul><li>0 or no</li><li>1 or yes</li></ul><h3 id="文字标签和表格"><a href="#文字标签和表格" class="headerlink" title="文字标签和表格"></a>文字标签和表格</h3><p>有几个标签允许输出和格式化文本。</p><h4 id="font"><a href="#font" class="headerlink" title="font"></a>font</h4><p><img src="https://developer.unigine.com/ch/docs/2.12/code/gui/ui/widgets/font.png" alt=""><br>字体标签可以嵌套，在这种情况下，所有字体属性都是继承的。</p><p>参数：</p><ul><li>face    —TrueType字体文件的路径。</li><li>size  字体大小（像素）</li><li>color 字体颜色</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">rich</span>=<span class="string">&quot;1&quot;</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;20&quot;</span> <span class="attr">color</span>=<span class="string">&quot;#ff0000&quot;</span>&gt;</span>Big red text<span class="tag">&lt;/<span class="name">font</span>&gt;</span> and text of default style.<span class="tag">&lt;<span class="name">br</span>/&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;font_other.ttf&quot;</span> <span class="attr">size</span>=<span class="string">&quot;20&quot;</span>&gt;</span>You can also change font face.<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;#00ff00&quot;</span>&gt;</span>Here is green text with <span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;10&quot;</span>&gt;</span>small tail.<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure><p>下面这种格式也是可以的<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;+10&quot;</span>&gt;</span>Larger<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;-4&quot;</span>&gt;</span>Smaller<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;%200&quot;</span>&gt;</span>Same or smaller<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure><br>大小将相对于当前字体大小进行计算。</p><h4 id="text"><a href="#text" class="headerlink" title="text"></a>text</h4><p>许多小部件和容器都有一个文本子代，该子代提供了一些格式化功能。<br>参数：</p><ul><li>rich 标签内的文本是格式化的还是纯文本的。 默认值为0（布尔值），它对应于plain。</li><li>face TrueType字体文件的路径，默认情况下将使用。</li><li>size 默认字体大小（像素）。</li><li>color 默认字体颜色。</li><li>outline 是否应概述文字。 默认值为0（布尔值），对应于没有轮廓。</li><li>wrap 如果文本不适合容器的宽度，是否应该将文本环绕。 默认值为0（布尔值），它对应于无换行。</li><li>translate 文本是否可以翻译。 默认值为1（布尔值），这意味着文本取决于所选的语言。</li></ul><p>如果rich参数等于1，是或是，则可以使用以下标记和实体来设置文本格式：</p><ul><li>br 划线</li><li>p 段。 aline可接受的参数：center, left, right, justify.</li><li>cneter 居中对齐。 等效于<p align =“ center”>文本&lt;/ center&gt;。</li><li>font 文字选项。</li><li>sub 下标文字。</li><li>sup 上标文字。</li><li>&amp;gt &gt;标志。</li><li>&amp;lt &lt;标志。</li><li>&amp;amp &amp;标志。</li><li>&amp;quot “标志。</li><li>&amp;apos ‘标志。</li></ul><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>以上内容均翻译自unigine官方文档。如有错误欢迎批评指正。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Unigine中的所有GUI元素都是通过XML格式的UI文件即时生成的。 这些文件描述了Unigine提供的容器和小部件。 它们中的每一个都
+      
+    
+    </summary>
+    
+    
+      <category term="unigine引擎" scheme="https://shen-yu.gitee.io/categories/unigine%E5%BC%95%E6%93%8E/"/>
+    
+    
+      <category term="ui" scheme="https://shen-yu.gitee.io/tags/ui/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>投影矩阵</title>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6a0009c79k6nkpcyo9/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6a0009c79k6nkpcyo9/</id>
+    <published>2020-08-30T06:00:00.000Z</published>
+    <updated>2020-09-14T09:17:34.998Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>显示器是2D的表面。一个3D场景必须通过投影成2D图形才能被显示。GL_PROJECTION矩阵就是用来做投影变换的。首先，我们必须把所有顶点数据从视点坐标转换到裁剪坐标，然后把裁剪坐标转换到NDC(normalized device corordinates)通过除以裁剪坐标的$w$分量。</p><p><img src="http://www.songho.ca/opengl/files/gl_frustumclip.png" alt=""></p><p>所以，我们必须清楚裁剪和NDC转换是怎么转变成GL_PROJECTION矩阵。接下来会介绍怎么通过left,right,top,buttom, near,far六个边界值来构建矩阵的。</p><p>裁剪视锥体定义在裁剪坐标还未除以$w$之前。裁剪坐标$x_s$,$y_c$和$z_c$分别和$w_c$对比，如果大于$w_c$都会被舍弃。</p><script type="math/tex; mode=display">-w_c < x_c, y_c, z_c < w_c</script><p>当裁剪发生时，OpenGL会重构边缘的多边形。</p><h3 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h3><p>在透视投影中，一个3D的点在截平头体（视点坐标）被映射到一个立方体（NDC);$x$的范围从$[l, r]$ 到 $[-1, 1]$,$y$的范围从$[b, t]$ 到 $[-1, 1]$,$z$的范围从$[-n, -f]$ 到 $[-1, 1]$。</p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix01.png" alt=""></p><p>视点坐标是定义在右手系的，但是NDC使用的是左手系。换句话说，在视点空间，相机在原点看向-z方向，在NDC,看向+z方向。因为glFrustum()只接受near和far的距离，我们需要消除他们在构建GL_PROJECTION矩阵。</p><p>在OpenGL中，一个3D的点会被投影到近平面。下面两幅图，展示了在视点空间里的点$(x_e, y_e, z_e)$怎么投影到近平面上$(x_p, y_p, z_p)$。<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix03.png" alt="Top View of Frustum"></p><p>从视锥体的上方看，视点空间的x坐标，$x_e$被映射到$x_p$，可以通过相似三角形计算得到。</p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq01.png" alt=""></p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix04.png" alt="Side View of Frustum"><br>从视锥体的侧面看，$y_p$也是通过相同的方式映射得到：</p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq02.png" alt=""></p><p>由此可以看出$x_p$和$y_p$都取决于$z_e$，他们于$-z_e$成反比例关系。换句话说，他们都除以$-z_e$。这给我们构建GL_PROJECTION矩阵提供了帮助。在视点坐标通过GL_PROJECTION矩阵变换之后，裁剪坐标依然是齐次坐标。裁剪坐标通过除以$w_c$转换到NDC。</p><p><img src="http://www.songho.ca/opengl/files/gl_transform08.png" alt=""></p><p><img src="http://www.songho.ca/opengl/files/gl_transform12.png" alt=""><br>所以，我们设$w_c$为$-z_e$,GL_PROJECTION矩阵第四行变成$\begin{pmatrix}0&amp;0&amp;-1&amp;0 \end{pmatrix}$</p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq03.png" alt=""></p><p>下一步，我们需要把$x_p$和$y_p$映射到NDC的$x_n$和$y_n$通过线性关系；</p><script type="math/tex; mode=display">[l,r]\Rightarrow [-1, 1]</script><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix05.png" alt=""></p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq04.png" alt=""></p><script type="math/tex; mode=display">[b,t]\Rightarrow [-1, 1]</script><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix06.png" alt=""></p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq05.png" alt=""></p><p>接着我们替换$x_p$和$y_p$为上方的等式。</p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq06.png" alt=""></p><p><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq07.png" alt=""></p><p>因为透视除法$(x_c / w_c, y_c /w_c)$我们让上面两个方程都除以$-z_e$。之前我们把$w_c$设置成$-z_e$，括号里的参数就变成了裁剪坐标的$x_c$和$y_c$。</p><p>根据以上等式，我们可以得到GL_PROJECTION矩阵的第一行和第二行。<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq08.png" alt=""></p><p>现在我们只需要求解GL_PROJECTION矩阵的第三行了。发现$z_n$和别的参数不同，因为在视点空间的$z_e$总是被投影到近平面的$-n$。但是我需要$z$来裁剪和深度测试。除此之外，我们可以将其逆变换。我们知道$z$与$x$和$y$无关。那么，借助$w$<br>就可以发现$z_n$和$z_e$的关系。所以我们可以简化解GL_PROJECTION矩阵的第三行像这。<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq10.png" alt=""></p><p>在视点空间，$w_e$等于1.于是方程变为<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq11.png" alt=""></p><p>为了求解$A$和$B$，我们代入$(z_e, z_n)$关系，$(-n, -1)$和$(-f, 1)$<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq12.png" alt=""></p><p>解得A<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq13.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq14.png" alt=""></p><p>解得B<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq15.png" alt=""></p><p>最后我们得到的GL_PROJECTION矩阵<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq16.png" alt=""></p><p>对于一个正截平头体的矩阵，宽高相等且对称：<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq20.png" alt=""></p><p>通过观察$(z_e, z_n)$关系，深度转换时非线性的，在接近远平面精度会小，造成z-fighting<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix07.png" alt=""></p><h3 id="正交投影"><a href="#正交投影" class="headerlink" title="正交投影"></a>正交投影</h3><p>将长方体压缩成正方体，<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix02.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix08.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq21.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix09.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq22.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix10.png" alt=""><br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq23.png" alt=""><br>正交投影的投影矩阵$w$没必要，<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq24.png" alt=""></p><p>视锥体是对称的，可以简化为<br><img src="http://www.songho.ca/opengl/files/gl_projectionmatrix_eq25.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;显示器是2D的表面。一个3D场景必须通过投影成2D图形才能被显示。GL_PROJECTION矩阵就是用来做投影变换的。首先，我们必须把所有顶
+      
+    
+    </summary>
+    
+    
+      <category term="计算机图形学" scheme="https://shen-yu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="数学基础" scheme="https://shen-yu.gitee.io/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>矩阵</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bf00077f9k3p862hmg/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bf00077f9k3p862hmg/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit690007c79k1imq8op3/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit690007c79k1imq8op3/</id>
     <published>2020-08-27T06:00:00.000Z</published>
     <updated>2020-09-05T02:19:45.089Z</updated>
     
@@ -44,8 +123,8 @@
   
   <entry>
     <title>点和矢量</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c8001v7f9kfl6cd8q4/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c8001v7f9kfl6cd8q4/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit700020c79kgk2mf6z5/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit700020c79kgk2mf6z5/</id>
     <published>2020-08-23T06:00:00.000Z</published>
     <updated>2020-09-05T01:17:06.923Z</updated>
     
@@ -70,8 +149,8 @@
   
   <entry>
     <title>贪心算法</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bs000s7f9k3ed15wye/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bs000s7f9k3ed15wye/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6m000yc79k1g650u0m/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6m000yc79k1g650u0m/</id>
     <published>2020-08-20T06:00:00.000Z</published>
     <updated>2020-09-02T15:06:50.189Z</updated>
     
@@ -96,8 +175,8 @@
   
   <entry>
     <title>动态规划</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bh000a7f9kfso55lms/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bh000a7f9kfso55lms/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6f000gc79k6i7t4fb4/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6f000gc79k6i7t4fb4/</id>
     <published>2020-08-17T06:00:00.000Z</published>
     <updated>2020-09-01T14:44:38.942Z</updated>
     
@@ -122,8 +201,8 @@
   
   <entry>
     <title>雷火引擎一面二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bv00127f9k3lvpgcxz/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bv00127f9k3lvpgcxz/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6o0014c79k742sa98x/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6o0014c79k742sa98x/</id>
     <published>2020-08-13T06:00:00.000Z</published>
     <updated>2020-08-14T15:05:23.556Z</updated>
     
@@ -148,8 +227,8 @@
   
   <entry>
     <title>网易互联网笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bm000g7f9kg54d0f9m/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bm000g7f9kg54d0f9m/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6h000mc79kccxz5a76/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6h000mc79kccxz5a76/</id>
     <published>2020-08-08T06:00:00.000Z</published>
     <updated>2020-08-12T15:07:29.851Z</updated>
     
@@ -174,8 +253,8 @@
   
   <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bt000w7f9kb2lzchxk/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bt000w7f9kb2lzchxk/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6n0012c79kdan65jwc/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6n0012c79kdan65jwc/</id>
     <published>2020-08-04T06:00:00.000Z</published>
     <updated>2020-08-05T04:42:26.562Z</updated>
     
@@ -201,8 +280,8 @@
   
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bl000e7f9kb42z5tni/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bl000e7f9kb42z5tni/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6g000lc79k01hpcdu1/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6g000lc79k01hpcdu1/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -227,8 +306,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1br000q7f9k1vj9ajvy/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1br000q7f9k1vj9ajvy/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6l000wc79ket8f2c2i/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6l000wc79ket8f2c2i/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -253,8 +332,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bo000l7f9kgdhygp4j/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bo000l7f9kgdhygp4j/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6j000qc79k6m5gg0bv/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6j000qc79k6m5gg0bv/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -280,8 +359,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c1001c7f9kd8a66khb/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c1001c7f9kd8a66khb/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6u001hc79kbazad94q/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6u001hc79kbazad94q/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -306,8 +385,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bx00177f9k3ef5hhxm/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bx00177f9k3ef5hhxm/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6s001cc79kbzfb9o1a/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6s001cc79kbzfb9o1a/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -333,8 +412,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c0001a7f9k4ywp83qx/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c0001a7f9k4ywp83qx/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6t001gc79kazfc9xvo/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6t001gc79kazfc9xvo/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -360,8 +439,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bp000m7f9k7kmt3jfh/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bp000m7f9k7kmt3jfh/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6k000sc79ka0ld2t13/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6k000sc79ka0ld2t13/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -386,8 +465,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bb00037f9k3eyqewlf/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bb00037f9k3eyqewlf/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit640003c79k5nrw37lv/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit640003c79k5nrw37lv/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -413,8 +492,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bw00147f9k8o8uhlj7/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bw00147f9k8o8uhlj7/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6r001ac79k9np5dn8r/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6r001ac79k9np5dn8r/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -440,8 +519,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c4001j7f9k47224kil/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c4001j7f9k47224kil/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6w001nc79k8ket55id/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6w001nc79k8ket55id/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -469,8 +548,8 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bg00097f9k1jvfaoqm/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bg00097f9k1jvfaoqm/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6b000ac79key0nczk1/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6b000ac79key0nczk1/</id>
     <published>2020-06-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:20:12.901Z</updated>
     
@@ -496,8 +575,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1cb00237f9k19q488lv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1cb00237f9k19q488lv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit73002bc79k792h3m0b/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit73002bc79k792h3m0b/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -522,8 +601,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c7001r7f9k7vgla8nf/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c7001r7f9k7vgla8nf/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6y001vc79kfj590u6e/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6y001vc79kfj590u6e/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -544,8 +623,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c9001y7f9kdxqf3q5k/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c9001y7f9kdxqf3q5k/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit710023c79k5p4obm7u/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit710023c79k5p4obm7u/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -572,8 +651,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c3001g7f9k2w7sh1of/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c3001g7f9k2w7sh1of/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6v001mc79k0z2m0h5w/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6v001mc79k0z2m0h5w/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -601,8 +680,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1b800017f9k9iwh2139/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1b800017f9k9iwh2139/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit620001c79kc55o0hf9/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit620001c79kc55o0hf9/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -627,8 +706,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1c6001n7f9kd7vabf0n/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1c6001n7f9kd7vabf0n/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6x001sc79kbsxkgxds/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6x001sc79kbsxkgxds/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -656,8 +735,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckep1k1bu000y7f9k138u6aa4/"/>
-    <id>https://shen-yu.gitee.io/2020/ckep1k1bu000y7f9k138u6aa4/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckf2bit6q0018c79k8ydvabno/"/>
+    <id>https://shen-yu.gitee.io/2020/ckf2bit6q0018c79k8ydvabno/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     
