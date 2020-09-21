@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shen-yu.gitee.io/"/>
-  <updated>2020-09-14T09:17:37.260Z</updated>
+  <updated>2020-09-21T14:50:04.947Z</updated>
   <id>https://shen-yu.gitee.io/</id>
   
   <author>
@@ -17,9 +17,63 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>用户数据报协议UDP</title>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc966000aaq9khl8xdi6b/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc966000aaq9khl8xdi6b/</id>
+    <published>2020-09-11T06:00:00.000Z</published>
+    <updated>2020-09-21T14:50:04.947Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>用户数据报协议UDP只在IP的数据报服务之上增加了很少一点的功能，这就是复用和分用的功能以及差错检测的功能。UDP的主要特点是：</p><ol><li>UDP是无连接的，即发送数据之前不需要建立连接（当然，发送数据结束时也没有连接可释放），因此减少了开销和发送数据之前的时延。</li><li>UDP是尽最大努力交付，即不保证可靠交付，因此主机不需要维护复杂的连接状态表（这里面有许多参数）。</li><li>UDP是面向报文的。发送方的UDP对应用程序交下来的报文，在添加首部后就向下交付IP层。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这就是说，应用层交给UDP过长的报文，UDP就照样发送，即一次发送一个报文。如下图所示。在接收方的UDP，对IP层交上来的UDP用户数据报，在去除首部后就原封不动地交付上层的应用进程。也就是说，UDP一次交付一个完整的报文。因此，应用程序必须选择合适大小的报文。若报文太长，UDP把它交付给IP层后，IP层在传送时可能要进行分片，这降低IP效率。反之，若报文太短，UDP把它交给IP层后，会使IP数据报的首部的相对长度太大，这也降低了IP层的效率。</li></ol><p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNt9c7ro4ta7Mk1GU4dH5vRNrUAOeagnQYfA&amp;usqp=CAU" alt=""></p><ol><li>UDP没有拥塞控制，因此网络出现的拥塞不会使源主机的发送效率降低。这对某些实时应用是很重要的。很多的实时应用（如IP电话、实时视频会议等）要求源主机以恒定的速率发送数据，并且运行在网络发送拥塞时丢失一些数据，但却不允许数据有太大的时延。UDP正好合适这种要求。</li><li>UDP支持一对一、一对多、多对一和多对多的交互通信。</li><li>UDP的首部开销小，只有8字节，比TCP的20个字节的首部要短。</li></ol><h3 id="UDP的首部格式"><a href="#UDP的首部格式" class="headerlink" title="UDP的首部格式"></a>UDP的首部格式</h3><p>用户数据报UDP有两个字段：数据字段和首部字段。首部字段很简单，只有8个字节，由四个字段组成，每个字段的长度都是两个字节。各字段意义如下：</p><ol><li>源端口： 源端口号。在需要对方回信时选用。不需要时可用全0.</li><li>目的端口： 目的端口号。这在终点交付报文时必须使用。</li><li>长度： UDP用户数据报的长度，其最小值是8（仅有首部）。</li><li>检验和： 检测UDP用户数据报在传输中是否有错。有错就丢弃。<br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTIdvxBiL4KDInWkzrXig480ZDk0-d1YIrNgA&amp;usqp=CAU" alt=""></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;用户数据报协议UDP只在IP的数据报服务之上增加了很少一点的功能，这就是复用和分用的功能以及差错检测的功能。UDP的主要特点是：&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="https://shen-yu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="UDP" scheme="https://shen-yu.gitee.io/tags/UDP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>客户机/服务器通信</title>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc969000faq9k6vy2c6a7/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc969000faq9k6vy2c6a7/</id>
+    <published>2020-09-08T06:00:00.000Z</published>
+    <updated>2020-09-21T12:54:35.135Z</updated>
+    
+    <content type="html"><![CDATA[<p>在进程间通信已经列举了如何通过共享内存和消息传递进行通信。这些技术也可以用于客户机/服务器系统的通信。这里主要讨论客户机/服务器通信的三种其他策略：套接字、远程程序调用（RPC）和管道。</p><h3 id="1-套接字"><a href="#1-套接字" class="headerlink" title="1.套接字"></a>1.套接字</h3><p><strong>套接字</strong>为通信的断点。通过网络通信的每对进程需要使用一对套接字，即每个进程各有一个。每个套接字由一个IP地址和一个端口号组成。通常，套接字采用客户机-服务器架构。服务器通过监听指定端口，来等待客户机请求。服务器在收到请求后，接收来自客户套接字的连接，从而完成连接。</p><h5 id="server-cpp"><a href="#server-cpp" class="headerlink" title="server.cpp"></a>server.cpp</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;winsock2.h&gt;  </span></span></span><br><span class="line">  </span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib,<span class="meta-string">&quot;ws2_32.lib&quot;</span>)  </span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="comment">//初始化WSA  </span></span><br><span class="line">    WORD sockVersion = MAKEWORD(<span class="number">2</span>,<span class="number">2</span>);  </span><br><span class="line">    WSADATA wsaData;  </span><br><span class="line">    <span class="keyword">if</span>(WSAStartup(sockVersion, &amp;wsaData)!=<span class="number">0</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//创建套接字  </span></span><br><span class="line">    SOCKET slisten = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);  </span><br><span class="line">    <span class="keyword">if</span>(slisten == INVALID_SOCKET)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;socket error !&quot;</span>);  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//绑定IP和端口  </span></span><br><span class="line">    sockaddr_in <span class="built_in">sin</span>;  </span><br><span class="line">    <span class="built_in">sin</span>.sin_family = AF_INET;  </span><br><span class="line">    <span class="built_in">sin</span>.sin_port = htons(<span class="number">8888</span>);  </span><br><span class="line">    <span class="built_in">sin</span>.sin_addr.S_un.S_addr = INADDR_ANY;   </span><br><span class="line">    <span class="keyword">if</span>(bind(slisten, (LPSOCKADDR)&amp;<span class="built_in">sin</span>, <span class="keyword">sizeof</span>(<span class="built_in">sin</span>)) == SOCKET_ERROR)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;bind error !&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//开始监听  </span></span><br><span class="line">    <span class="keyword">if</span>(listen(slisten, <span class="number">5</span>) == SOCKET_ERROR)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;listen error !&quot;</span>);  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//循环接收数据  </span></span><br><span class="line">    SOCKET sClient;  </span><br><span class="line">    sockaddr_in remoteAddr;  </span><br><span class="line">    <span class="keyword">int</span> nAddrlen = <span class="keyword">sizeof</span>(remoteAddr);  </span><br><span class="line">    <span class="keyword">char</span> revData[<span class="number">255</span>];   </span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;等待连接...\n&quot;</span>);  </span><br><span class="line">        sClient = accept(slisten, (SOCKADDR *)&amp;remoteAddr, &amp;nAddrlen);  </span><br><span class="line">        <span class="keyword">if</span>(sClient == INVALID_SOCKET)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;accept error !&quot;</span>);  </span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;接受到一个连接：%s \r\n&quot;</span>, inet_ntoa(remoteAddr.sin_addr));  </span><br><span class="line">          </span><br><span class="line">        <span class="comment">//接收数据  </span></span><br><span class="line">        <span class="keyword">int</span> ret = recv(sClient, revData, <span class="number">255</span>, <span class="number">0</span>);         </span><br><span class="line">        <span class="keyword">if</span>(ret &gt; <span class="number">0</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            revData[ret] = <span class="number">0x00</span>;  </span><br><span class="line">            <span class="built_in">printf</span>(revData);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">//发送数据  </span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> * sendData = <span class="string">&quot;你好，TCP客户端！\n&quot;</span>;  </span><br><span class="line">        send(sClient, sendData, <span class="built_in">strlen</span>(sendData), <span class="number">0</span>);  </span><br><span class="line">        closesocket(sClient);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    closesocket(slisten);  </span><br><span class="line">    WSACleanup();  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><h5 id="client-cpp"><a href="#client-cpp" class="headerlink" title="client.cpp"></a>client.cpp</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;WINSOCK2.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;STDIO.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    WORD sockVersion = MAKEWORD(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">    WSADATA data;</span><br><span class="line">    <span class="keyword">if</span>(WSAStartup(sockVersion, &amp;data)!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        SOCKET sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);</span><br><span class="line">        <span class="keyword">if</span>(sclient == INVALID_SOCKET)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;invalid socket!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        sockaddr_in serAddr;</span><br><span class="line">        serAddr.sin_family = AF_INET;</span><br><span class="line">        serAddr.sin_port = htons(<span class="number">8888</span>);</span><br><span class="line">        serAddr.sin_addr.S_un.S_addr = inet_addr(<span class="string">&quot;127.0.0.1&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(connect(sclient, (sockaddr *)&amp;serAddr, <span class="keyword">sizeof</span>(serAddr)) == SOCKET_ERROR)</span><br><span class="line">        &#123;  <span class="comment">//连接失败 </span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;connect error !&quot;</span>);</span><br><span class="line">            closesocket(sclient);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">string</span> data;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;data;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> * sendData;</span><br><span class="line">        sendData = data.c_str();   <span class="comment">//string转const char* </span></span><br><span class="line">        <span class="comment">//char * sendData = &quot;你好，TCP服务端，我是客户端\n&quot;;</span></span><br><span class="line">        send(sclient, sendData, <span class="built_in">strlen</span>(sendData), <span class="number">0</span>);</span><br><span class="line">        <span class="comment">//send()用来将数据由指定的socket传给对方主机</span></span><br><span class="line">        <span class="comment">//int send(int s, const void * msg, int len, unsigned int flags)</span></span><br><span class="line">        <span class="comment">//s为已建立好连接的socket，msg指向数据内容，len则为数据长度，参数flags一般设0</span></span><br><span class="line">        <span class="comment">//成功则返回实际传送出去的字符数，失败返回-1，错误原因存于error </span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span> recData[<span class="number">255</span>];</span><br><span class="line">        <span class="keyword">int</span> ret = recv(sclient, recData, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(ret&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            recData[ret] = <span class="number">0x00</span>;</span><br><span class="line">            <span class="built_in">printf</span>(recData);</span><br><span class="line">        &#125; </span><br><span class="line">        closesocket(sclient);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    WSACleanup();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure><p>使用套接字的通信，虽然常用和高效，但是属于分布式进程之间的一种低级形式的通信。一个原因是，套接字只允许在通信进程之间交换无结构的字节流。客户机或服务器程序需要加上数据结构。下面种通信方法更加高效：远程程序调用（RPC）和管道。</p><h3 id="2-远程程序调用"><a href="#2-远程程序调用" class="headerlink" title="2. 远程程序调用"></a>2. 远程程序调用</h3><p>与IPC的消息不一样，RPC通信交换的消息具有明确结构，因此不再仅仅是数据包。消息传到RPC服务，RPC服务监听远程系统的端口号；消息包含用于指定：执行函数的一个标志符以及传递给函数的一些参数。然后，函数按要求来执行，而所有结果会通过另一消息，传递回到请求者。</p><p>端口只是一个数字，用于消息分组头部。</p><h3 id="3-管道"><a href="#3-管道" class="headerlink" title="3. 管道"></a>3. 管道</h3><p>管道允许两个进程进行通信。管道是早起UNIX系统最早使用的一种IPC机制。管道为进程之间的相互通信提供了一种较为简单的方法，尽管也有一定的局限性。在实现管道时，应该考虑一下四个问题：</p><ul><li>管道允许单向通信还是双向通信？</li><li>如果允许双向通信，他是半双工还是全双工？</li><li>通信进程之间是否应该有一定的关系？</li><li>管道通信能否通过网络，还是只能在同一台机器上进行？</li></ul><h4 id="3-1普通管道"><a href="#3-1普通管道" class="headerlink" title="3.1普通管道"></a>3.1普通管道</h4><p>普通管道允许两个进程按标准的生产者-消费者方式进行通信：生产者向管道的一端（写入端）写，消费者从管道的另一端（读出端）读。因此，普通管道是单向的，只允许单向通行。如果需要双向通信，那么就采用两个管道，而每个管道向不同方向发送数据。</p><h6 id="UNIX的普通管道"><a href="#UNIX的普通管道" class="headerlink" title="UNIX的普通管道"></a>UNIX的普通管道</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFER_SIZE 25</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> READ_END 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WRITE_END 1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">char</span> write_msg[BUFFER_SIZE] = <span class="string">&quot;Greetings&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> read_msg[BUFFER_SIZE&#125;;</span><br><span class="line"><span class="keyword">int</span> fd[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">pid_t</span> pid;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* create the pipe */</span></span><br><span class="line"><span class="keyword">if</span> (pipe(fd == <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Pipe failed&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* fork a child process */</span></span><br><span class="line">pid = fork();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123; <span class="comment">/* error occurred */</span></span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Fork Failed&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (pid &gt; <span class="number">0</span>) &#123; <span class="comment">/* parent process */</span></span><br><span class="line">    <span class="comment">/* close the unused end of the pipe */</span></span><br><span class="line">    close(fd[READ_END]);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* write to the pipe */</span></span><br><span class="line">    write(fd[WRITE_END], write_msg, <span class="built_in">strlen</span>(write_msg) + <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* close the read end of the pipe */</span></span><br><span class="line">    close(fd[WRITE_END]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123; <span class="comment">/* */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在进程间通信已经列举了如何通过共享内存和消息传递进行通信。这些技术也可以用于客户机/服务器系统的通信。这里主要讨论客户机/服务器通信的三种其他策略：套接字、远程程序调用（RPC）和管道。&lt;/p&gt;
+&lt;h3 id=&quot;1-套接字&quot;&gt;&lt;a href=&quot;#1-套接字&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="https://shen-yu.gitee.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="进程通信" scheme="https://shen-yu.gitee.io/tags/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>unigine cantainers</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6e000ec79k9bcp8y6y/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6e000ec79k9bcp8y6y/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc967000eaq9kcuax2glg/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc967000eaq9kcuax2glg/</id>
     <published>2020-09-05T06:00:00.000Z</published>
     <updated>2020-09-14T09:17:37.260Z</updated>
     
@@ -45,8 +99,8 @@
   
   <entry>
     <title>unigine UI</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit720028c79kdzm57vxk/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit720028c79kdzm57vxk/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc976002haq9k98p44x9v/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc976002haq9k98p44x9v/</id>
     <published>2020-09-02T06:00:00.000Z</published>
     <updated>2020-09-14T09:17:35.797Z</updated>
     
@@ -71,8 +125,8 @@
   
   <entry>
     <title>投影矩阵</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6a0009c79k6nkpcyo9/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6a0009c79k6nkpcyo9/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc9650009aq9k8i8k88zs/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc9650009aq9k8i8k88zs/</id>
     <published>2020-08-30T06:00:00.000Z</published>
     <updated>2020-09-14T09:17:34.998Z</updated>
     
@@ -97,8 +151,8 @@
   
   <entry>
     <title>矩阵</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit690007c79k1imq8op3/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit690007c79k1imq8op3/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc9600003aq9k30jwfh40/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc9600003aq9k30jwfh40/</id>
     <published>2020-08-27T06:00:00.000Z</published>
     <updated>2020-09-05T02:19:45.089Z</updated>
     
@@ -123,8 +177,8 @@
   
   <entry>
     <title>点和矢量</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit700020c79kgk2mf6z5/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit700020c79kgk2mf6z5/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc9740029aq9kh76a6mii/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc9740029aq9kh76a6mii/</id>
     <published>2020-08-23T06:00:00.000Z</published>
     <updated>2020-09-05T01:17:06.923Z</updated>
     
@@ -149,8 +203,8 @@
   
   <entry>
     <title>贪心算法</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6m000yc79k1g650u0m/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6m000yc79k1g650u0m/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96k0014aq9k36sb06f4/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96k0014aq9k36sb06f4/</id>
     <published>2020-08-20T06:00:00.000Z</published>
     <updated>2020-09-02T15:06:50.189Z</updated>
     
@@ -175,8 +229,8 @@
   
   <entry>
     <title>动态规划</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6f000gc79k6i7t4fb4/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6f000gc79k6i7t4fb4/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96d000maq9k9ikubt9o/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96d000maq9k9ikubt9o/</id>
     <published>2020-08-17T06:00:00.000Z</published>
     <updated>2020-09-01T14:44:38.942Z</updated>
     
@@ -201,8 +255,8 @@
   
   <entry>
     <title>雷火引擎一面二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6o0014c79k742sa98x/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6o0014c79k742sa98x/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96q001eaq9khcwp0pws/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96q001eaq9khcwp0pws/</id>
     <published>2020-08-13T06:00:00.000Z</published>
     <updated>2020-08-14T15:05:23.556Z</updated>
     
@@ -227,8 +281,8 @@
   
   <entry>
     <title>网易互联网笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6h000mc79kccxz5a76/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6h000mc79kccxz5a76/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96g000taq9k73158ujn/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96g000taq9k73158ujn/</id>
     <published>2020-08-08T06:00:00.000Z</published>
     <updated>2020-08-12T15:07:29.851Z</updated>
     
@@ -253,8 +307,8 @@
   
   <entry>
     <title>网易互娱图形开发工程师sp</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6n0012c79kdan65jwc/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6n0012c79kdan65jwc/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96p001caq9kgttwg8wt/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96p001caq9kgttwg8wt/</id>
     <published>2020-08-04T06:00:00.000Z</published>
     <updated>2020-08-05T04:42:26.562Z</updated>
     
@@ -280,8 +334,8 @@
   
   <entry>
     <title>网易雷火游戏研发笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6g000lc79k01hpcdu1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6g000lc79k01hpcdu1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96f000raq9k3t010led/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96f000raq9k3t010led/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-03T13:01:25.538Z</updated>
     
@@ -306,8 +360,8 @@
   
   <entry>
     <title>拼多多ios客户端笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6l000wc79ket8f2c2i/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6l000wc79ket8f2c2i/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96l0016aq9kgiax5k73/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96l0016aq9kgiax5k73/</id>
     <published>2020-08-02T06:00:00.000Z</published>
     <updated>2020-08-04T04:39:42.173Z</updated>
     
@@ -332,8 +386,8 @@
   
   <entry>
     <title>7.31 阿里笔试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6j000qc79k6m5gg0bv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6j000qc79k6m5gg0bv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96i000xaq9k4lr5752y/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96i000xaq9k4lr5752y/</id>
     <published>2020-07-31T06:00:00.000Z</published>
     <updated>2020-07-31T16:04:31.871Z</updated>
     
@@ -359,8 +413,8 @@
   
   <entry>
     <title>华为提前批综合面试</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6u001hc79kbazad94q/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6u001hc79kbazad94q/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96v001paq9k4is259qi/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96v001paq9k4is259qi/</id>
     <published>2020-07-30T06:00:00.000Z</published>
     <updated>2020-07-30T15:19:07.032Z</updated>
     
@@ -385,8 +439,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批二面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6s001cc79kbzfb9o1a/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6s001cc79kbzfb9o1a/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96s001jaq9k5t8b77tl/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96s001jaq9k5t8b77tl/</id>
     <published>2020-07-28T04:33:28.944Z</published>
     <updated>2020-07-28T04:33:28.944Z</updated>
     
@@ -412,8 +466,8 @@
   
   <entry>
     <title>华为软件开发工程师提前批一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6t001gc79kazfc9xvo/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6t001gc79kazfc9xvo/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96u001naq9kfrfl5jjf/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96u001naq9kfrfl5jjf/</id>
     <published>2020-07-26T08:04:28.466Z</published>
     <updated>2020-07-26T08:04:28.466Z</updated>
     
@@ -439,8 +493,8 @@
   
   <entry>
     <title>华为笔试总结</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6k000sc79ka0ld2t13/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6k000sc79ka0ld2t13/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96j0010aq9ka270akws/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96j0010aq9ka270akws/</id>
     <published>2020-07-23T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:20.252Z</updated>
     
@@ -465,8 +519,8 @@
   
   <entry>
     <title>进程间通信</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit640003c79k5nrw37lv/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit640003c79k5nrw37lv/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc9640007aq9k2n9w5dyi/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc9640007aq9k2n9w5dyi/</id>
     <published>2020-07-14T06:00:00.000Z</published>
     <updated>2020-07-25T09:17:59.758Z</updated>
     
@@ -492,8 +546,8 @@
   
   <entry>
     <title>字节跳动秋招提前批c++客户端一面</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6r001ac79k9np5dn8r/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6r001ac79k9np5dn8r/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96s001iaq9kdebn6ebu/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96s001iaq9kdebn6ebu/</id>
     <published>2020-07-06T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:16.217Z</updated>
     
@@ -519,8 +573,8 @@
   
   <entry>
     <title>动态库与静态库的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6w001nc79k8ket55id/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6w001nc79k8ket55id/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96y001waq9kd0ft68o3/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96y001waq9kd0ft68o3/</id>
     <published>2020-06-27T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:03.467Z</updated>
     
@@ -548,12 +602,12 @@
   
   <entry>
     <title>什么是死锁？在什么情况下产生？怎么解决？</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6b000ac79key0nczk1/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6b000ac79key0nczk1/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96c000jaq9khervh6jr/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96c000jaq9khervh6jr/</id>
     <published>2020-06-23T06:00:00.000Z</published>
-    <updated>2020-07-25T09:20:12.901Z</updated>
+    <updated>2020-09-20T15:07:34.046Z</updated>
     
-    <content type="html"><![CDATA[<p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p><p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p><ul><li><strong>互斥（ mutual exclusion）</strong>：至少一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li><li><strong>占有并等待（ hold and wait ）</strong>：一个进程应占有至少一个资源，并等待另一个资源，该资源为其他进程所占有。</li><li><strong>非抢占（ no preemption ）</strong>：资源不能被抢占，即资源只能被进程完成任务后自愿释放。</li><li><strong>循环等待（ circular wait ）</strong>：有一组等待进程{P0,P1,···，Pn},P0等待的资源为P1占有，P1等待的资源为P2占有，·······，P（n-1）等待的资源为Pn占有，Pn等待的资源被P0占有。</li></ul><p>四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p><p>一般来说，处理死锁问题有三种方法：</p><ul><li>通过协议来预防和避免死锁，确保系统不进入死锁状态。</li><li>可以允许系统进入死锁状态，然后检测它，并加以恢复。</li><li>可以忽视这个问题，认为死锁不可能在系统内发生。</li></ul><p>第三种解决为大多数操作系统所采用，包括Linux和windows。因此应用程序开发人员需要自己编写程序，以便处理死锁。</p><p>死锁预防 死锁避免 死锁检测 死锁恢复。</p>]]></content>
+    <content type="html"><![CDATA[<p>在多道程序环境中，多个进程可以竞争有限数量的资源。当一个进程申请资源时，如果这时没有可用资源，那么这个进程进入等待状态。有时，如果所申请的资源被其他等待进程占有，那么等待进程有可能再也无法改变状态。这种情况称为死锁（deadlock）。</p><p>死锁的必要条件：如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p><ul><li><strong>互斥（ mutual exclusion）</strong>：至少一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li><li><strong>占有并等待（ hold and wait ）</strong>：一个进程应占有至少一个资源，并等待另一个资源，该资源为其他进程所占有。</li><li><strong>非抢占（ no preemption ）</strong>：资源不能被抢占，即资源只能被进程完成任务后自愿释放。</li><li><strong>循环等待（ circular wait ）</strong>：$有一组等待进程{P<em>{0} , P</em>{1} ,···,P<em>{n}) ,P</em>{0}等待的资源为P<em>{1}占有，P</em>{1}等待的资源为P<em>{2}占有，·······,P</em>{n-1}等待的资源为P<em>{n}占有，P</em>{n}等待的资源被P_{0}占有。$</li></ul><p>四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p><p>一般来说，处理死锁问题有三种方法：</p><ul><li>通过协议来预防和避免死锁，确保系统不进入死锁状态。</li><li>可以允许系统进入死锁状态，然后检测它，并加以恢复。</li><li>可以忽视这个问题，认为死锁不可能在系统内发生。</li></ul><p>第三种解决为大多数操作系统所采用，包括Linux和windows。因此应用程序开发人员需要自己编写程序，以便处理死锁。</p><p>死锁预防 死锁避免 死锁检测 死锁恢复。</p>]]></content>
     
     <summary type="html">
     
@@ -575,8 +629,8 @@
   
   <entry>
     <title>虚函数</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit73002bc79k792h3m0b/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit73002bc79k792h3m0b/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc978002kaq9k979nc73b/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc978002kaq9k979nc73b/</id>
     <published>2020-06-20T10:22:26.698Z</published>
     <updated>2020-07-25T09:03:11.346Z</updated>
     
@@ -601,8 +655,8 @@
   
   <entry>
     <title>new与malloc的区别</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6y001vc79kfj590u6e/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6y001vc79kfj590u6e/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc9710024aq9k5kwjhew8/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc9710024aq9k5kwjhew8/</id>
     <published>2020-06-18T16:15:16.710Z</published>
     <updated>2020-06-18T16:16:47.994Z</updated>
     
@@ -623,8 +677,8 @@
   
   <entry>
     <title>进程和线程</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit710023c79k5p4obm7u/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit710023c79k5p4obm7u/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc975002caq9k1v9xabrb/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc975002caq9k1v9xabrb/</id>
     <published>2020-06-17T06:00:00.000Z</published>
     <updated>2020-07-25T09:19:45.091Z</updated>
     
@@ -651,8 +705,8 @@
   
   <entry>
     <title>java的基本程序设计结构</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6v001mc79k0z2m0h5w/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6v001mc79k0z2m0h5w/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96x001taq9ka87x9gh5/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96x001taq9ka87x9gh5/</id>
     <published>2020-03-18T06:00:00.000Z</published>
     <updated>2020-07-25T09:18:33.115Z</updated>
     
@@ -680,8 +734,8 @@
   
   <entry>
     <title>数据链路层</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit620001c79kc55o0hf9/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit620001c79kc55o0hf9/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc95y0001aq9k1u65h6up/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc95y0001aq9k1u65h6up/</id>
     <published>2020-03-08T12:28:52.720Z</published>
     <updated>2020-07-25T08:55:18.010Z</updated>
     
@@ -706,8 +760,8 @@
   
   <entry>
     <title>我的博客诞生了</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6x001sc79kbsxkgxds/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6x001sc79kbsxkgxds/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc9700021aq9k2jmi4mub/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc9700021aq9k2jmi4mub/</id>
     <published>2020-03-05T06:00:00.000Z</published>
     <updated>2020-07-25T09:23:47.738Z</updated>
     
@@ -735,8 +789,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://shen-yu.gitee.io/2020/ckf2bit6q0018c79k8ydvabno/"/>
-    <id>https://shen-yu.gitee.io/2020/ckf2bit6q0018c79k8ydvabno/</id>
+    <link href="https://shen-yu.gitee.io/2020/ckfcnc96o001aaq9kf44p3a64/"/>
+    <id>https://shen-yu.gitee.io/2020/ckfcnc96o001aaq9kf44p3a64/</id>
     <published>2020-03-03T06:00:00.000Z</published>
     <updated>2020-07-25T09:22:03.544Z</updated>
     

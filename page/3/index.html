@@ -74,6 +74,172 @@
     
     
     
+    <article id="post-interview_ByteDance" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckfcnc96s001iaq9kdebn6ebu/"
+    >字节跳动秋招提前批c++客户端一面</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckfcnc96s001iaq9kdebn6ebu/" class="article-date">
+  <time datetime="2020-07-06T06:00:00.000Z" itemprop="datePublished">2020-07-06</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
+<h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
+<li>简短的自我介绍</li>
+<li>询问项目相关</li>
+<li>QML和QWeight比较，当初项目为什么选用这个</li>
+<li>OpenGL版本</li>
+<li>QT的信号与槽， 可以用什么代替</li>
+<li>进程间通信方式，线程间通信方式</li>
+<li>c++面向对象的三个特性具体解释一下</li>
+<li>关于一段代码的虚函数调用后结果</li>
+<li>关于虚函数表的问题</li>
+</ol>
+<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>感觉对于图形学实际学习还存在欠缺，对于操作系统和C++语言深入了解不够细致，只是懂个大概，实际应用能力还有待增长。QT相关的应用也应该更加深入了解。查漏补缺吧。对于一面提及到的知识点回去好好温习巩固一下。只是提前批的第一波，不知道后面的公司有没有音讯，继续学习。期待能有二面吧，目前还是很想去字节上班的。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-libvdll" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckfcnc96y001waq9kd0ft68o3/"
+    >动态库与静态库的区别</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckfcnc96y001waq9kd0ft68o3/" class="article-date">
+  <time datetime="2020-06-27T06:00:00.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <ul>
+<li>区别：静态库和动态库最本质的区别就是：该库是否被编译进目标（程序）内部。</li>
+</ul>
+<h4 id="静态（函数）库"><a href="#静态（函数）库" class="headerlink" title="静态（函数）库"></a>静态（函数）库</h4><p>一般拓展名为（.a或者.lib),这类的函数库通常拓展名为libxxx.a或者xxx.lib。<br>这类库在编译的时候会直接整合到目标程序中，所以利用静态函数库编译程的文件会比较大，这类函数库最大的优点就是编译成功的可执行文件可以独立运行，而不再需要向外部要求读取函数库的内容；但是从升级难易度来看明显没有优势，如果函数库更新，需要重新编译。</p>
+<h4 id="动态函数库"><a href="#动态函数库" class="headerlink" title="动态函数库"></a>动态函数库</h4><p>动态函数库的拓展名一般为 （.so或.dll)，这类函数库通常名为libxxx.so或xxx.dll。<br>与静态函数库被整个捕捉到程序中不同，动态函数库在编译的时候，在程序中只有一个“指向”的位置而已，也就是说当可执行文件需要使用到函数库的机制时，程序才会去读取函数库来使用；也就是说可执行文件无法单独运行。这样从产品功能升级角度方便升级，只要替换对应动态库即可，不必重新编译整个可执行文件。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>从产品化的角度，发布的算法库和功能库尽量使用动态库，这样方便更新和升级，不必重新编译整个可执行文件，只需新版本动态库替换掉旧动态库即可。</li>
+<li>从函数库集成的角度，若要将发布的所有子库（不止一个）集成成一个动态库向外提供接口，那么就需要将所有子库编译为静态库，这样所有子库就可以全部编译进目标动态库中，由最终的一个集成库向外提供功能。</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-deadlock" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +248,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6b000ac79key0nczk1/"
+  <a class="article-title" href="/2020/ckfcnc96c000jaq9khervh6jr/"
     >什么是死锁？在什么情况下产生？怎么解决？</a
   >
 </h2>
@@ -93,7 +259,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6b000ac79key0nczk1/" class="article-date">
+      <a href="/2020/ckfcnc96c000jaq9khervh6jr/" class="article-date">
   <time datetime="2020-06-23T06:00:00.000Z" itemprop="datePublished">2020-06-23</time>
 </a>
       
@@ -123,7 +289,7 @@
 <li><strong>互斥（ mutual exclusion）</strong>：至少一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li>
 <li><strong>占有并等待（ hold and wait ）</strong>：一个进程应占有至少一个资源，并等待另一个资源，该资源为其他进程所占有。</li>
 <li><strong>非抢占（ no preemption ）</strong>：资源不能被抢占，即资源只能被进程完成任务后自愿释放。</li>
-<li><strong>循环等待（ circular wait ）</strong>：有一组等待进程{P0,P1,···，Pn},P0等待的资源为P1占有，P1等待的资源为P2占有，·······，P（n-1）等待的资源为Pn占有，Pn等待的资源被P0占有。</li>
+<li><strong>循环等待（ circular wait ）</strong>：$有一组等待进程{P<em>{0} , P</em>{1} ,···,P<em>{n}) ,P</em>{0}等待的资源为P<em>{1}占有，P</em>{1}等待的资源为P<em>{2}占有，·······,P</em>{n-1}等待的资源为P<em>{n}占有，P</em>{n}等待的资源被P_{0}占有。$</li>
 </ul>
 <p>四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p>
 <p>一般来说，处理死锁问题有三种方法：</p>
@@ -171,7 +337,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit73002bc79k792h3m0b/"
+  <a class="article-title" href="/2020/ckfcnc978002kaq9k979nc73b/"
     >虚函数</a
   >
 </h2>
@@ -182,7 +348,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit73002bc79k792h3m0b/" class="article-date">
+      <a href="/2020/ckfcnc978002kaq9k979nc73b/" class="article-date">
   <time datetime="2020-06-20T10:22:26.698Z" itemprop="datePublished">2020-06-20</time>
 </a>
       
@@ -271,7 +437,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6y001vc79kfj590u6e/"
+  <a class="article-title" href="/2020/ckfcnc9710024aq9k5kwjhew8/"
     >new与malloc的区别</a
   >
 </h2>
@@ -282,7 +448,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6y001vc79kfj590u6e/" class="article-date">
+      <a href="/2020/ckfcnc9710024aq9k5kwjhew8/" class="article-date">
   <time datetime="2020-06-18T16:15:16.710Z" itemprop="datePublished">2020-06-19</time>
 </a>
       
@@ -337,7 +503,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit710023c79k5p4obm7u/"
+  <a class="article-title" href="/2020/ckfcnc975002caq9k1v9xabrb/"
     >进程和线程</a
   >
 </h2>
@@ -348,7 +514,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit710023c79k5p4obm7u/" class="article-date">
+      <a href="/2020/ckfcnc975002caq9k1v9xabrb/" class="article-date">
   <time datetime="2020-06-17T06:00:00.000Z" itemprop="datePublished">2020-06-17</time>
 </a>
       
@@ -422,7 +588,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6v001mc79k0z2m0h5w/"
+  <a class="article-title" href="/2020/ckfcnc96x001taq9ka87x9gh5/"
     >java的基本程序设计结构</a
   >
 </h2>
@@ -433,7 +599,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6v001mc79k0z2m0h5w/" class="article-date">
+      <a href="/2020/ckfcnc96x001taq9ka87x9gh5/" class="article-date">
   <time datetime="2020-03-18T06:00:00.000Z" itemprop="datePublished">2020-03-18</time>
 </a>
       
@@ -627,7 +793,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit620001c79kc55o0hf9/"
+  <a class="article-title" href="/2020/ckfcnc95y0001aq9k1u65h6up/"
     >数据链路层</a
   >
 </h2>
@@ -638,7 +804,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit620001c79kc55o0hf9/" class="article-date">
+      <a href="/2020/ckfcnc95y0001aq9k1u65h6up/" class="article-date">
   <time datetime="2020-03-08T12:28:52.720Z" itemprop="datePublished">2020-03-08</time>
 </a>
       
@@ -931,7 +1097,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6x001sc79kbsxkgxds/"
+  <a class="article-title" href="/2020/ckfcnc9700021aq9k2jmi4mub/"
     >我的博客诞生了</a
   >
 </h2>
@@ -942,7 +1108,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6x001sc79kbsxkgxds/" class="article-date">
+      <a href="/2020/ckfcnc9700021aq9k2jmi4mub/" class="article-date">
   <time datetime="2020-03-05T06:00:00.000Z" itemprop="datePublished">2020-03-05</time>
 </a>
       
@@ -1020,7 +1186,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6q0018c79k8ydvabno/"
+  <a class="article-title" href="/2020/ckfcnc96o001aaq9kf44p3a64/"
     >Hello World</a
   >
 </h2>
@@ -1031,7 +1197,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6q0018c79k8ydvabno/" class="article-date">
+      <a href="/2020/ckfcnc96o001aaq9kf44p3a64/" class="article-date">
   <time datetime="2020-03-03T06:00:00.000Z" itemprop="datePublished">2020-03-03</time>
 </a>
       

@@ -74,6 +74,213 @@
     
     
     
+    <article id="post-exam_163_internet" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckfcnc96g000taq9k73158ujn/"
+    >网易互联网笔试</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckfcnc96g000taq9k73158ujn/" class="article-date">
+  <time datetime="2020-08-08T06:00:00.000Z" itemprop="datePublished">2020-08-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>中午被麻辣香锅搞得死去活来，下午被网易笔试搞得死去活来。四道题AC1.25,第三题没看，第四题是强连通量，关于图的题目是我的薄弱，得去花些时间看看。</p>
+<h3 id="第一题-回文串"><a href="#第一题-回文串" class="headerlink" title="第一题 回文串"></a>第一题 回文串</h3><p>给定一个长度为n(n&lt;=1e3)的字符串，可以在后面加无限多的字母，问能组成的最短回文串是多长？<br>解法一：注意到n比较小，直接暴力<br>解法二：可以用manachar算法，算出原串最长回文后缀的长度，然后就可以得到最短的字符串了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="built_in">string</span> &amp;s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = start, j = end;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j &amp;&amp; s[i] == s[j]) &#123;</span><br><span class="line">        ++i, --j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i &gt;= j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s; <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> length = s.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (check(s, i, length - <span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">string</span> prefix = s.substr(<span class="number">0</span>, i);</span><br><span class="line">    reverse(prefix.begin(), prefix.end());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s + prefix &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第二题-物品价值"><a href="#第二题-物品价值" class="headerlink" title="第二题 物品价值"></a>第二题 物品价值</h3><p>现在有n个物品，每个物品都有一个价值，现在想将这些物品分给两个人，要求这两个人分到的物品价值总和相同(个数可以不同，总价值相同即可)，剩下的物品就要扔掉，现在想知道最少需要扔多少价值的物品才能满足要求分给两个人。<br>输入：</p>
+<ul>
+<li>第一行输入一个整数T，代表有T组测试数据</li>
+<li>对于每一组测试数据，一行输入一个整数n，代表物品的个数</li>
+<li>接下来n个数，a[i]代表每一个物品的价值</li>
+<li>1 &lt;= T &lt;= 10</li>
+<li>1 &lt;= n &lt;= 15</li>
+<li>1 &lt;= a[i] &lt;= 100000<br>输出：</li>
+<li>每一行输出最少需要扔掉多少价值的物品</li>
+</ul>
+<p>示例：<br>输入<br>1<br>5<br>30 60 5 15 30<br>输出<br>20</p>
+<p>说明<br>样例解释，扔掉第三个和第四个物品，然后将第一个物品和第五个物品给第一个人，第二个物品给第二个人，每个人分到的价值为60，扔掉的价值为20。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> siz=<span class="number">1500000</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">20</span>],dp[siz+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T, n, i, j, ans, sum;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">            sum += a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span> (j = sum; j &gt;= a[i]; --j)</span><br><span class="line">            dp[j] = dp[j] | dp[j-a[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        ans = sum;</span><br><span class="line">        <span class="keyword">for</span> (i = sum; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span>( i % <span class="number">2</span> != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] &amp;&amp; dp[i/<span class="number">2</span>]) &#123;</span><br><span class="line">                ans = sum - i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第三题-排队买票"><a href="#第三题-排队买票" class="headerlink" title="第三题 排队买票"></a>第三题 排队买票</h3><p>题目描述<br>n(n&lt;=2000)个人排队买票，第i个人要么单独买票，要么和后面一个人一起买（反过来，就是可以和前面一个人买），单独买花费时间a[i]，一起买是b[i]，求所有人买完票的最短时间。开始时间是早上08:00:00 am，输出结束时间。</p>
+<p>分析<br>动态规划，dp[i]表示第i个人买完票所需要的时间。对于每一个人他可以有两个选择，要么单独买票，那么需要的总的时间就是dp[i-1] + a[i]，要么和前一个人一起买票，需要的总的时间就是dp[i-2] + b[i]。最后输出的时候注意格式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2222</span>], b[<span class="number">2222</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">2222</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n; <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; b[i];</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>, dp[<span class="number">1</span>] = a[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        dp[i] = min(dp[i - <span class="number">1</span>] + a[i], dp[i - <span class="number">2</span>] + b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> hour = dp[n] / <span class="number">3600</span> + <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">int</span> minutes = dp[n] % <span class="number">3600</span> / <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">int</span> seconds = dp[n] % <span class="number">3600</span> % <span class="number">60</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%02d:%02d:%02d &quot;</span>, hour, minutes, seconds);</span><br><span class="line">    <span class="built_in">puts</span>(hour &lt;= <span class="number">12</span> ? <span class="string">&quot;am&quot;</span> : <span class="string">&quot;pm&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第四题-相互认可"><a href="#第四题-相互认可" class="headerlink" title="第四题 相互认可"></a>第四题 相互认可</h3><p>题目描述<br>a教授认可b教授，b教授认可c教授，那么a也认可c。现有n (小于50000)个教授，m（小于600000）个认可，可能自己认可自己，也可能重复。求互相认可的教授有多少对？<br>分析<br>学过强联通分量的应该可以一下子看出来这个就是要求强联通分量，每个强联通分量里的所有教授都是互相认可的。。没学过的话可以尝试暴力解解。 </p>
+<p>思考如果改变下条件，只要a认可b，那么b就默认认可a，这个时候求互相认可的教授有多少对该怎么算呢？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">555</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">int</span> low[maxn], num[maxn], dfn, cnt;</span><br><span class="line">ll ans;</span><br><span class="line"><span class="keyword">int</span> sccno[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    st.push(u);</span><br><span class="line">    low[u] = num[u] = ++dfn;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = G[u][i];</span><br><span class="line">        <span class="keyword">if</span> (!num[v])&#123;</span><br><span class="line">            dfs(v);</span><br><span class="line">            low[u] = min(low[u], low[v]);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!sccno[v]) &#123;</span><br><span class="line">            low[u] = min(low[u], num[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (low[u] == num[u]) &#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = st.top();</span><br><span class="line">            st.pop();</span><br><span class="line">            tmp++;</span><br><span class="line">            sccno[v] = cnt;</span><br><span class="line">            <span class="keyword">if</span> (u == v) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ans += tmp * (tmp - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    cnt = dfn = <span class="number">0</span>;</span><br><span class="line">    ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(sccno, <span class="number">0</span>, <span class="keyword">sizeof</span>(sccno));</span><br><span class="line">    <span class="built_in">memset</span>(low, <span class="number">0</span>, <span class="keyword">sizeof</span>(low));</span><br><span class="line">    <span class="built_in">memset</span>(num, <span class="number">0</span>, <span class="keyword">sizeof</span>(num));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!num[i]) dfs(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> a, b; <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        G[a].push_back(b);</span><br><span class="line">    &#125;</span><br><span class="line">    tarjan(n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>可能还是得多花些时间在刷题上，在这参加的四五次笔试中,目标还是得冲击AC3.0 4AC可能有点难，   下次可能还是得自己找四道题，然后花2小时看看能做多少。</p>
+<p>内容部分摘抄自公众号：<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI5MDA4ODczOA==&amp;mid=2648028133&amp;idx=1&amp;sn=4c819b2b17cb50aa40855468f7e2ef88&amp;chksm=f40421a8c373a8bed46bad37341a5c7b9c0f8c5a1d441774b3cfdfd6c5d9fe7bba213605c31c&amp;scene=158#rd">https://mp.weixin.qq.com/s?__biz=MzI5MDA4ODczOA==&amp;mid=2648028133&amp;idx=1&amp;sn=4c819b2b17cb50aa40855468f7e2ef88&amp;chksm=f40421a8c373a8bed46bad37341a5c7b9c0f8c5a1d441774b3cfdfd6c5d9fe7bba213605c31c&amp;scene=158#rd</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-interview_163_huyu" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/ckfcnc96p001caq9kgttwg8wt/"
+    >网易互娱图形开发工程师sp</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckfcnc96p001caq9kgttwg8wt/" class="article-date">
+  <time datetime="2020-08-04T06:00:00.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在面试之前，特地去网易互娱校招官网查看了图形开发工程师的职位描述和要求。</p>
+<p>以下复制一下 职位要求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">您可以：</span><br><span class="line">- 负责游戏产品的视觉效果，实现各种酷炫的效果，让所有平台和设备的玩家都有同样震撼的游戏体验；</span><br><span class="line">- 负责游戏产品的图形部分相关开发； </span><br><span class="line">- 与美术协作实现各种高级视觉效果，并优化content pipeline。</span><br><span class="line">任职资格</span><br><span class="line">我们希望您具备以下条件：</span><br><span class="line">- 计算机视觉或图形学等相关研究方向；</span><br><span class="line">- 有扎实的c++基础；</span><br><span class="line">- 有良好的图形学和数学基础；</span><br><span class="line">- 至少熟悉DirectX、OpenGL、Metal或者Vulkan中的一种图形API，并有很强的shader编写能力；</span><br><span class="line">- 熟悉AAA级游戏中常见的渲染技术，并对某一领域有深入理解，比如全局光照、粒子、材质表现、性能优化；</span><br><span class="line">- 有一定debug和性能分析能力。</span><br><span class="line"></span><br><span class="line">备注：广州需求80，杭州需求15，上海需求25。</span><br></pre></td></tr></table></figure></p>
+<p>当看到熟悉AAA级游戏中的渲染技术，对某一领域有深入理解。内心就频频发虚。看了看杭州需求15人，基本也没有我的什么机会了。<br>但是，面试就是抱试试水的心态，一探虚实。</p>
+<p>预约14：30面试，可能是面试官来不及安排，所以安排我们手撕了一道简单的算法题。</p>
+<h3 id="试前代码"><a href="#试前代码" class="headerlink" title="试前代码"></a>试前代码</h3><p>题目：区间合并（leetcode 56题原题）<br>给出一个区间的集合，请合并所有重叠的区间。</p>
+<p>示例 1:</p>
+<p>输入: [[1,3],[2,6],[8,10],[15,18]]<br>输出: [[1,6],[8,10],[15,18]]<br>解释: 区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].<br>示例2:</p>
+<p>输入: [[1,4],[4,5]]<br>输出: [[1,5]]<br>解释: 区间 [1,4] 和 [4,5] 可被视为重叠区间。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-intervals">https://leetcode-cn.com/problems/merge-intervals</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h4 id="题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）"><a href="#题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）" class="headerlink" title="题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）"></a>题解（自己花了15分钟写出来，这里复制官方题解，清晰明了方便日后学习）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; intervals)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(intervals.begin(), intervals.end());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; merged;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> L = intervals[i][<span class="number">0</span>], R = intervals[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (!merged.size() || merged.back()[<span class="number">1</span>] &lt; L) &#123;</span><br><span class="line">                merged.push_back(&#123;L, R&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                merged.back()[<span class="number">1</span>] = max(merged.back()[<span class="number">1</span>], R);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> merged;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https:<span class="comment">//leetcode-cn.com/problems/merge-intervals/solution/he-bing-qu-jian-by-leetcode-solution/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<h3 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h3><p>刷完笔试题后，15分钟看着电脑屏幕里的自己，不敢玩手机，怕被误认为作弊，也不管浏览网页，就这样傻傻的看着自己。</p>
+<p>15：00面试官来了。</p>
+<p>相比较字节和华为的面试官，网易的这位面试官发量明显稀少了很多。</p>
+<p>开篇：先做个简单的自我介绍，知识点考察主要分为c++和图形学相关知识</p>
+<h4 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h4><ol>
+<li>你知道程序由于异常退出，导致资源无法释放。这样的问题有什么解决方案么？（主要考察智能指针）</li>
+<li>由智能指针出发询问你是否知道RAII？</li>
+<li>考察了为什么要引入move</li>
+<li>new和molloc的区别</li>
+<li>vector和list遍历一遍谁比较快</li>
+<li>map和unordered_map的区别和使用场景</li>
+<li>你对多线程有了解么</li>
+<li>虚函数的考察：构造函数调用虚函数 字节面试官也问了(<a target="_blank" rel="noopener" href="https://blog.csdn.net/songchuwang1868/article/details/96481853">https://blog.csdn.net/songchuwang1868/article/details/96481853</a>)</li>
+</ol>
+<h4 id="图形学"><a href="#图形学" class="headerlink" title="图形学"></a>图形学</h4><ol>
+<li>这个渲染管线的流程</li>
+<li>顶点着色器完成了什么</li>
+<li>光栅化完成了什么</li>
+<li>混合和测试完成了什么</li>
+<li>用于加速光线追踪的算法</li>
+<li>阴影的算法</li>
+<li>描述一个算法如何实现只将你看到的内容加载，没看到的内容就不加载</li>
+</ol>
+<h3 id="回马枪笔试"><a href="#回马枪笔试" class="headerlink" title="回马枪笔试"></a>回马枪笔试</h3><p>考察了一下纸牌排序random_shuffle, 查了一下这个是stl的内部函数<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>, <span class="title">class</span> <span class="title">RandomNumberGenerator</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">void</span> <span class="title">random_shuffle</span> (<span class="title">RandomAccessIterator</span> <span class="title">first</span>, <span class="title">RandomAccessIterator</span> <span class="title">last</span>,</span></span><br><span class="line"><span class="class">                       <span class="title">RandomNumberGenerator</span>&amp; <span class="title">gen</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  iterator_traits&lt;RandomAccessIterator&gt;::difference_type i, n;</span><br><span class="line">  n = (last-first);</span><br><span class="line">  <span class="keyword">for</span> (i=n<span class="number">-1</span>; i&gt;<span class="number">0</span>; --i) &#123;</span><br><span class="line">    swap (first[i],first[gen(i+<span class="number">1</span>)]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="反问面试官"><a href="#反问面试官" class="headerlink" title="反问面试官"></a>反问面试官</h3><ol>
+<li>询问了RAII的意思</li>
+<li>询问了图形开发工程师和引擎开发工程师， 图形可能会更偏向渲染这一块， 引擎更偏向物理引擎这一块。</li>
+</ol>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>GAMES101更偏向讲rendering偏向图形开发， GAMES201更偏向讲物理引擎和数值计算偏向与引擎。但是GAMES201难度比GAMES101高多了，有时间还是得去复习一下GAMES101的内容如果想面试图形开发工程师的话，当然，多线程编程也需要去学习和弄个小项目自己玩玩。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-exam_163" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -82,7 +289,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6g000lc79k01hpcdu1/"
+  <a class="article-title" href="/2020/ckfcnc96f000raq9k3t010led/"
     >网易雷火游戏研发笔试</a
   >
 </h2>
@@ -93,7 +300,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6g000lc79k01hpcdu1/" class="article-date">
+      <a href="/2020/ckfcnc96f000raq9k3t010led/" class="article-date">
   <time datetime="2020-08-02T06:00:00.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
@@ -389,7 +596,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6l000wc79ket8f2c2i/"
+  <a class="article-title" href="/2020/ckfcnc96l0016aq9kgiax5k73/"
     >拼多多ios客户端笔试</a
   >
 </h2>
@@ -400,7 +607,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6l000wc79ket8f2c2i/" class="article-date">
+      <a href="/2020/ckfcnc96l0016aq9kgiax5k73/" class="article-date">
   <time datetime="2020-08-02T06:00:00.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
@@ -479,7 +686,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6j000qc79k6m5gg0bv/"
+  <a class="article-title" href="/2020/ckfcnc96i000xaq9k4lr5752y/"
     >7.31 阿里笔试</a
   >
 </h2>
@@ -490,7 +697,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6j000qc79k6m5gg0bv/" class="article-date">
+      <a href="/2020/ckfcnc96i000xaq9k4lr5752y/" class="article-date">
   <time datetime="2020-07-31T06:00:00.000Z" itemprop="datePublished">2020-07-31</time>
 </a>
       
@@ -568,7 +775,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6u001hc79kbazad94q/"
+  <a class="article-title" href="/2020/ckfcnc96v001paq9k4is259qi/"
     >华为提前批综合面试</a
   >
 </h2>
@@ -579,7 +786,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6u001hc79kbazad94q/" class="article-date">
+      <a href="/2020/ckfcnc96v001paq9k4is259qi/" class="article-date">
   <time datetime="2020-07-30T06:00:00.000Z" itemprop="datePublished">2020-07-30</time>
 </a>
       
@@ -658,7 +865,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6s001cc79kbzfb9o1a/"
+  <a class="article-title" href="/2020/ckfcnc96s001jaq9k5t8b77tl/"
     >华为软件开发工程师提前批二面</a
   >
 </h2>
@@ -669,7 +876,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6s001cc79kbzfb9o1a/" class="article-date">
+      <a href="/2020/ckfcnc96s001jaq9k5t8b77tl/" class="article-date">
   <time datetime="2020-07-28T04:33:28.944Z" itemprop="datePublished">2020-07-28</time>
 </a>
       
@@ -736,7 +943,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6t001gc79kazfc9xvo/"
+  <a class="article-title" href="/2020/ckfcnc96u001naq9kfrfl5jjf/"
     >华为软件开发工程师提前批一面</a
   >
 </h2>
@@ -747,7 +954,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6t001gc79kazfc9xvo/" class="article-date">
+      <a href="/2020/ckfcnc96u001naq9kfrfl5jjf/" class="article-date">
   <time datetime="2020-07-26T08:04:28.466Z" itemprop="datePublished">2020-07-26</time>
 </a>
       
@@ -814,7 +1021,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6k000sc79ka0ld2t13/"
+  <a class="article-title" href="/2020/ckfcnc96j0010aq9ka270akws/"
     >华为笔试总结</a
   >
 </h2>
@@ -825,7 +1032,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit6k000sc79ka0ld2t13/" class="article-date">
+      <a href="/2020/ckfcnc96j0010aq9ka270akws/" class="article-date">
   <time datetime="2020-07-23T06:00:00.000Z" itemprop="datePublished">2020-07-23</time>
 </a>
       
@@ -899,7 +1106,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit640003c79k5nrw37lv/"
+  <a class="article-title" href="/2020/ckfcnc9640007aq9k2n9w5dyi/"
     >进程间通信</a
   >
 </h2>
@@ -910,7 +1117,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ckf2bit640003c79k5nrw37lv/" class="article-date">
+      <a href="/2020/ckfcnc9640007aq9k2n9w5dyi/" class="article-date">
   <time datetime="2020-07-14T06:00:00.000Z" itemprop="datePublished">2020-07-14</time>
 </a>
       
@@ -1002,172 +1209,6 @@
 <li><strong>无限容量</strong>： 队列长度可以无限，因此，不管多少消息都可以在其中等待。发送者从不阻塞。</li>
 </ul>
 <p>零容量情况称为无缓冲的消息系统，其他情况称为自动缓冲的消息系统。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-interview_ByteDance" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6r001ac79k9np5dn8r/"
-    >字节跳动秋招提前批c++客户端一面</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/ckf2bit6r001ac79k9np5dn8r/" class="article-date">
-  <time datetime="2020-07-06T06:00:00.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8B%9B%E8%81%98/">招聘</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h3 id="内心独白"><a href="#内心独白" class="headerlink" title="内心独白"></a>内心独白</h3><p>算是第一次正式的视频面试，还是很紧张……( ´▽｀)；</p>
-<h3 id="过程总结"><a href="#过程总结" class="headerlink" title="过程总结"></a>过程总结</h3><ol>
-<li>简短的自我介绍</li>
-<li>询问项目相关</li>
-<li>QML和QWeight比较，当初项目为什么选用这个</li>
-<li>OpenGL版本</li>
-<li>QT的信号与槽， 可以用什么代替</li>
-<li>进程间通信方式，线程间通信方式</li>
-<li>c++面向对象的三个特性具体解释一下</li>
-<li>关于一段代码的虚函数调用后结果</li>
-<li>关于虚函数表的问题</li>
-</ol>
-<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>感觉对于图形学实际学习还存在欠缺，对于操作系统和C++语言深入了解不够细致，只是懂个大概，实际应用能力还有待增长。QT相关的应用也应该更加深入了解。查漏补缺吧。对于一面提及到的知识点回去好好温习巩固一下。只是提前批的第一波，不知道后面的公司有没有音讯，继续学习。期待能有二面吧，目前还是很想去字节上班的。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-libvdll" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/ckf2bit6w001nc79k8ket55id/"
-    >动态库与静态库的区别</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/ckf2bit6w001nc79k8ket55id/" class="article-date">
-  <time datetime="2020-06-27T06:00:00.000Z" itemprop="datePublished">2020-06-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <ul>
-<li>区别：静态库和动态库最本质的区别就是：该库是否被编译进目标（程序）内部。</li>
-</ul>
-<h4 id="静态（函数）库"><a href="#静态（函数）库" class="headerlink" title="静态（函数）库"></a>静态（函数）库</h4><p>一般拓展名为（.a或者.lib),这类的函数库通常拓展名为libxxx.a或者xxx.lib。<br>这类库在编译的时候会直接整合到目标程序中，所以利用静态函数库编译程的文件会比较大，这类函数库最大的优点就是编译成功的可执行文件可以独立运行，而不再需要向外部要求读取函数库的内容；但是从升级难易度来看明显没有优势，如果函数库更新，需要重新编译。</p>
-<h4 id="动态函数库"><a href="#动态函数库" class="headerlink" title="动态函数库"></a>动态函数库</h4><p>动态函数库的拓展名一般为 （.so或.dll)，这类函数库通常名为libxxx.so或xxx.dll。<br>与静态函数库被整个捕捉到程序中不同，动态函数库在编译的时候，在程序中只有一个“指向”的位置而已，也就是说当可执行文件需要使用到函数库的机制时，程序才会去读取函数库来使用；也就是说可执行文件无法单独运行。这样从产品功能升级角度方便升级，只要替换对应动态库即可，不必重新编译整个可执行文件。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>从产品化的角度，发布的算法库和功能库尽量使用动态库，这样方便更新和升级，不必重新编译整个可执行文件，只需新版本动态库替换掉旧动态库即可。</li>
-<li>从函数库集成的角度，若要将发布的所有子库（不止一个）集成成一个动态库向外提供接口，那么就需要将所有子库编译为静态库，这样所有子库就可以全部编译进目标动态库中，由最终的一个集成库向外提供功能。</li>
-</ul>
 
       
       <!-- reward -->
