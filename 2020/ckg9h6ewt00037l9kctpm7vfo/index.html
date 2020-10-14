@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="生活,旅行,思考,代码,博客" />
+   
+  <meta name="description" content="一个猪窝" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    进程间通信 |  猪猪侠
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="猪猪侠" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Interprocess_communication" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  进程间通信
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ckg9h6ewt00037l9kctpm7vfo/" class="article-date">
+  <time datetime="2020-07-14T06:00:00.000Z" itemprop="datePublished">2020-07-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="进程协作的目的"><a href="#进程协作的目的" class="headerlink" title="进程协作的目的"></a>进程协作的目的</h3><ul>
+<li><strong>信息共享</strong>： 由于多用户可能对同样的信息感兴趣（例如共享文件），所以应提供环境以允许并发访问这些信息。</li>
+<li><strong>计算加速</strong>： 如果希望一个特定快速运行，那么应将系统功能划分成子任务，而每个子任务可以与其他子任务一起并行执行。注意，如果要实现这样的加速，那么计算机需要有多个处理核。</li>
+<li><strong>模块化</strong>： 可以需要按模块化方式构造系统，如第2章所讨论的，可将系统功能划分成独立的进程和线程。</li>
+<li><strong>方便</strong>： 即使单个用户也可以同时执行许多任务。例如，用户可以并行的编辑、收听音乐、编译。</li>
+</ul>
+<h5 id="协作进程需要进程间通信（IPC"><a href="#协作进程需要进程间通信（IPC" class="headerlink" title="协作进程需要进程间通信（IPC)"></a>协作进程需要进程间通信（IPC)</h5><h3 id="进程间通信的两种基本模型：共享内存和消息传递"><a href="#进程间通信的两种基本模型：共享内存和消息传递" class="headerlink" title="进程间通信的两种基本模型：共享内存和消息传递"></a>进程间通信的两种基本模型：共享内存和消息传递</h3><h4 id="共享内存系统"><a href="#共享内存系统" class="headerlink" title="共享内存系统"></a>共享内存系统</h4><p>采用共享内存的进程间通信，需要通信进程建立共享内存区域。通常，一片共享内存区域驻留在创建共享内存段的进程空间内。其他希望使用这个共享内存段进行通信段进行通信的进程应将其附加到自己的地址空间。</p>
+<p>生产者进程生成信息，以供消费者进程消费。为了允许生存者进程和消费者进程并发执行，应有一个可用的缓冲区，以被生存者填充和被消费者清空。这个缓冲区驻留在生产者进程和消费者进程的共享内存区域内。当消费者使用一项时，生产者可生产另一项。生产者和消费者必须同步，这样消费者不会试图消费一个尚未生产出来的项。</p>
+<p>缓冲区域类型可分为两种。<br><strong>无界缓冲区</strong>没有限制缓冲区的大小。消费者可能不得不等待新的项，但生产者总是可以产生新项。<br><strong>有界缓冲区</strong>假设固定大小的缓冲区。对于这种情况，如果缓冲区空，那么消费者必须等待；并且如果缓冲区满，那么生产者必须等待。</p>
+<h6 id="采用共享内存的生产者进程如下："><a href="#采用共享内存的生产者进程如下：" class="headerlink" title="采用共享内存的生产者进程如下："></a>采用共享内存的生产者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    &#x2F;* produce an item in next_produced *&#x2F;</span><br><span class="line">    </span><br><span class="line">    while(((in + 1) % BUFFER_SIZE) &#x3D;&#x3D; out)</span><br><span class="line">        ; &#x2F;* do nothing *&#x2F;</span><br><span class="line">    </span><br><span class="line">    buffer[in] &#x3D; next_produced;</span><br><span class="line">    in &#x3D; (in + 1) % BUFFER_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="采用共享内存的消费者进程如下："><a href="#采用共享内存的消费者进程如下：" class="headerlink" title="采用共享内存的消费者进程如下："></a>采用共享内存的消费者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    while(in &#x3D;&#x3D; out)</span><br><span class="line">        ;&#x2F;* do nothing *&#x2F;</span><br><span class="line">    next_consumed &#x3D; buffer[out];</span><br><span class="line">    out &#x3D; (out + 1) % BUFFER_SIZE;</span><br><span class="line">    </span><br><span class="line">    &#x2F;* consume the item in next_consumed *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="消息传递系统"><a href="#消息传递系统" class="headerlink" title="消息传递系统"></a>消息传递系统</h4><p>对于分布式环境（通信进程可能位于通过网络连接的不同计算机），消息传递特别有用。<br>消息传递工具提供至少两种操作：</p>
+<ul>
+<li>send(message)     </li>
+<li>recevie(message)</li>
+</ul>
+<p>进程发送消息可以是定长的或变长的。如果只能发生定长消息，那么系统级实现就简单。不过，这一限制使得编程任务更加困难。相反，变长消息要求更复杂的系统级实现，但是编程任务就变得更简单。在整个操作系统设计中，这种折中很常见。</p>
+<p>如果进程P和Q需要通信，那么它们必须相互发送消息和接受消息：它们之间要有<strong>通信链路</strong>。该链路的实现有多种方法。这里不关心链路的物理实现，而只关心链路的逻辑实现。这里有几个方法，用于实现链路和操作send()/receive():</p>
+<ul>
+<li>直接或间接的通信</li>
+<li>同步或异步的通信</li>
+<li>自动或显式的缓冲</li>
+</ul>
+<h4 id="1-命名"><a href="#1-命名" class="headerlink" title="1. 命名"></a>1. 命名</h4><p>需要通信的进程应有一个方法，以便相互引用。它们可以直接或间接的通信。<br>对于<strong>直接通信</strong>，需要通信的每个进程必须指明指定通信的接收者或发送者。采用这种方案，原语send()和receive()定义如下：</p>
+<ul>
+<li>send(P, message): 向进程P发送message。</li>
+<li>receive(Q, message)： 从进程Q接收message。</li>
+</ul>
+<p>这种方案的通信链路具有以下属性：</p>
+<ul>
+<li>在需要通信的每对进程之间，自动建立链路。进程仅需知道对方身份就可交流。</li>
+<li>每个链路只与两个进程相关。</li>
+<li>每个进程只有一个链路。</li>
+</ul>
+<p>这种方案展示了寻址的对称性，即发送和接收进程必须指定对方，以便通信。这种方案的一个变形采用寻址的非对称性，即只要发送者指定接收者，而接受者不需要指定发送者。采用这种方案，原语send()和receive()的定义如下：</p>
+<ul>
+<li>send(P, message): 向进程P发送message。</li>
+<li>receive(id, message): 从任何进程，接收message，这里变量id被设置成与其通信进程的名称。</li>
+</ul>
+<p>这两个方案（对称和非对称的寻址）的缺点是：生成进程定义的有限模块化。更改进程的标志符可能需要分析其他进程定义。所有旧的标志符的引用都应找到，以便修改成为新标识符。通常，任何时候的硬编码技术（其中标志符需要明确指定），与下面所诉的采用间接技术相比要差。</p>
+<p>在<strong>间接通信</strong>中，通过邮箱和端口来接收消息。邮箱可以抽象成一个对象，进程可以向其中存放消息，也可以从中删除消息，每个邮箱都有一个唯一的标识符。一个进程可以通过不同邮箱与另一个进程通信，但是两个进程只有拥有一个共享邮箱时才能通信。原语send()和receive()定义如下：</p>
+<ul>
+<li>send(A, message): 向邮箱A发送message。</li>
+<li>receive(A, message): 从邮箱A接收messgae。</li>
+</ul>
+<p>对于这种方案，链路通信具有如下特点：</p>
+<ul>
+<li>只有两个进程共享一个邮箱时，才能建立通信链路。</li>
+<li>一个链路可以与两个或更多进程相关联。</li>
+<li>两个通信进程之间可有多个不同链路，每个链路对应于一个邮箱。</li>
+</ul>
+<h4 id="2-同步"><a href="#2-同步" class="headerlink" title="2. 同步"></a>2. 同步</h4><p>进程间通信可以通过调用原语send()和receive()来进行。实现这些原语有不同的设计方案。消息传递可以是阻塞或非阻塞，也称为同步或异步。</p>
+<ul>
+<li><strong>阻塞发送</strong>： 发送进程阻塞，直到消息由接收进程或邮箱所接收。</li>
+<li><strong>非阻塞发送</strong>： 发送进程发送消息，并且恢复操作。</li>
+<li><strong>阻塞接收</strong>： 接收进程阻塞，直到消息可用。</li>
+<li><strong>非阻塞接收</strong>： 接收进程收到一个有效消息或者空消息。</li>
+</ul>
+<p>不同组合的send()和receive()都有可能。当send()和receive()都是阻塞的，则在发送者和接收者之间就有一个<strong>交互</strong>。当采用阻塞的send()和receive()时，生产者-消费者问题的解决就简单了。生产者仅需调用阻塞send()并且等待，直到消息被送到接收者或者邮箱。同样，当消费者调用reiceve()时，它会阻塞直到有一个消息可用。</p>
+<h6 id="采用消息传递的生产者进程如下："><a href="#采用消息传递的生产者进程如下：" class="headerlink" title="采用消息传递的生产者进程如下："></a>采用消息传递的生产者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message next_produced</span><br><span class="line">while(true) &#123;</span><br><span class="line">    &#x2F;* produce an item in next_produced *&#x2F;</span><br><span class="line">    </span><br><span class="line">    send(next_produced);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="采用消息传递的消费者进程如下："><a href="#采用消息传递的消费者进程如下：" class="headerlink" title="采用消息传递的消费者进程如下："></a>采用消息传递的消费者进程如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message next_comsumed</span><br><span class="line">while(true) &#123;</span><br><span class="line">    receive(next_consumed);</span><br><span class="line">    </span><br><span class="line">    &#x2F;* consume the item in next_consumed *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-缓存"><a href="#3-缓存" class="headerlink" title="3. 缓存"></a>3. 缓存</h4><p>不管通信时直接的还是间接的，通信进程交换的消息总是驻留在临时队列中。简单地讲，队列实现有三种方法：</p>
+<ul>
+<li><strong>零容量</strong>：队列的最大长度为0；因此，链路中不能有任何消息处于等待。对于这种情况，发送者应阻塞，直到接收者接收消息。</li>
+<li><strong>有限容量</strong>： 队列长度为有限的n；因此，最多只能有n个消息驻留其中。如果在发送消失时队列未满，那么该消息可以放在队列中（或者复制消息或者保存消息的指针），且发生者可以继续执行而不必等待。然而，链路容量是有限。如果链路已满，那么发送者应阻塞，直到队列空间有有用的为止。</li>
+<li><strong>无限容量</strong>： 队列长度可以无限，因此，不管多少消息都可以在其中等待。发送者从不阻塞。</li>
+</ul>
+<p>零容量情况称为无缓冲的消息系统，其他情况称为自动缓冲的消息系统。</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shen-yu.gitee.io/2020/ckg9h6ewt00037l9kctpm7vfo/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/ckg9h6exf00137l9k5imrdyl8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            华为笔试总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/ckg9h6exq001p7l9k22ygg6m3/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">字节跳动秋招提前批c++客户端一面</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2019-2020
+        Jiaxi Zhang
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="猪猪侠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://zhuzhuxia32662.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+
+    
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+
+</html>
